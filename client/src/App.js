@@ -4,6 +4,9 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 
 App = () => {
+	const { userInfo, setuserInfo } = useState({
+		username: null,
+	})
 	return (
 		<Router>
 			<div>
