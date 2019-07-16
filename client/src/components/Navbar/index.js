@@ -1,6 +1,6 @@
 import React from 'react'
 
-Navbar = props => {
+function Navbar() {
     return (
         <div></div>
     )
