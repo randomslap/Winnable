@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import Navbar from '../components/Navbar'
 import { Link } from "react-router-dom";
 
 class Home extends Component {
-    state = {
-        user: null
-    }
     render() {
         return (
-            <div></div>
+            <div>
+                <p>hello</p>
+            </div>
         )
     }
 }
