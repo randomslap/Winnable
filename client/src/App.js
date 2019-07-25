@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MainNavbar from "./components/Navbar";
+import Features from "./components/Features";
 import Home from "./pages/Home";
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
 						<Route exact path="/" component={Home} />
 						<Route component={Home} />
 					</Switch>
+					<Features />
 				</div>
 			</Router>
 		);
