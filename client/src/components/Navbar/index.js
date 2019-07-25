@@ -1,65 +1,55 @@
 import React, { Component } from "react";
-import { Menu, Icon } from "antd";
-import "antd/dist/antd.css";
+import RightMenu from "./RightMenu";
+import { Drawer, Button } from "antd";
+import './index.css'
 
-const { SubMenu } = Menu;
-
-class MainNavbar extends Component {
+class Navbar extends Component {
 	state = {
-		current: "mail"
+		current: "mail",
+		visible: false
+    };
+	showDrawer = () => {
+		this.setState({
+			visible: true
+		});
 	};
 
-	handleClick = e => {
-		console.log("click ", e);
+	onClose = () => {
 		this.setState({
-			current: e.key
+			visible: false
 		});
 	};
 
 	render() {
 		return (
-			<Menu
-				onClick={this.handleClick}
-				selectedKeys={[this.state.current]}
-				mode="horizontal"
-			>
-				<Menu.Item key="mail">
-					<Icon type="mail" />
-					Navigation One
-				</Menu.Item>
-				<Menu.Item key="app">
-					<Icon type="appstore" />
-					Navigation Two
-				</Menu.Item>
-				<SubMenu
-					title={
-						<span className="submenu-title-wrapper">
-							<Icon type="login" />
-							Login
-						</span>
-					}
-				>
-					<Menu.ItemGroup title="Item 1">
-						<Menu.Item key="setting:1">Option 1</Menu.Item>
-						<Menu.Item key="setting:2">Option 2</Menu.Item>
-					</Menu.ItemGroup>
-					<Menu.ItemGroup title="Item 2">
-						<Menu.Item key="setting:3">Option 3</Menu.Item>
-						<Menu.Item key="setting:4">Option 4</Menu.Item>
-					</Menu.ItemGroup>
-				</SubMenu>
-				<Menu.Item key="alipay">
-					<a
-						href="https://ant.design"
-						target="_blank"
-						rel="noopener noreferrer"
+			<nav className="menuBar">
+				<div className="logo">
+					<a href="/">Winnable</a>
+				</div>
+				<div className="menuCon">
+					<div className="rightMenu">
+						<RightMenu />
+					</div>
+					<Button
+						className="barsMenu"
+						type="primary"
+						onClick={this.showDrawer}
 					>
-						Navigation Four - Link
-					</a>
-				</Menu.Item>
-			</Menu>
+						<span className="barsBtn" />
+					</Button>
+					<Drawer
+						title="Basic Drawer"
+						placement="right"
+						closable={false}
+						onClose={this.onClose}
+						visible={this.state.visible}
+					>
+						<RightMenu />
+					</Drawer>
+				</div>
+			</nav>
 		);
 	}
 }
 
-export default MainNavbar;
+export default Navbar;
