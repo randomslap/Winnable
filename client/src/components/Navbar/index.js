@@ -1,138 +1,65 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
+import React, { Component } from "react";
+import { Menu, Icon } from "antd";
+import "antd/dist/antd.css";
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		flexGrow: 1
-	},
-	menuButton: {
-		marginRight: theme.spacing(2)
-	},
-	title: {
-		flexGrow: 1
-	}
-}));
+const { SubMenu } = Menu;
 
-export default function MenuAppBar() {
-	const classes = useStyles();
-	const [auth, setAuth] = React.useState(true);
-	const [anchorEl, setAnchorEl] = React.useState(null);
-	const open = Boolean(anchorEl);
+class MainNavbar extends Component {
+	state = {
+		current: "mail"
+	};
 
-	function handleChange(event) {
-		setAuth(event.target.checked);
-	}
+	handleClick = e => {
+		console.log("click ", e);
+		this.setState({
+			current: e.key
+		});
+	};
 
-	function handleMenu(event) {
-		setAnchorEl(event.currentTarget);
-	}
-
-	function handleClose() {
-		setAnchorEl(null);
-	}
-
-	return (
-		<div className={classes.root}>
-			<FormGroup>
-				<FormControlLabel
-					control={
-						<Switch
-							checked={auth}
-							onChange={handleChange}
-							aria-label="LoginSwitch"
-						/>
+	render() {
+		return (
+			<Menu
+				onClick={this.handleClick}
+				selectedKeys={[this.state.current]}
+				mode="horizontal"
+			>
+				<Menu.Item key="mail">
+					<Icon type="mail" />
+					Navigation One
+				</Menu.Item>
+				<Menu.Item key="app">
+					<Icon type="appstore" />
+					Navigation Two
+				</Menu.Item>
+				<SubMenu
+					title={
+						<span className="submenu-title-wrapper">
+							<Icon type="login" />
+							Login
+						</span>
 					}
-					label={auth ? "Logout" : "Login"}
-				/>
-			</FormGroup>
-			<AppBar position="static">
-				<Toolbar>
-					<Typography variant="h6" className={classes.title}>
-						Winnable
-					</Typography>
-					{auth && (
-						<div>
-							<IconButton
-								aria-label="Account of current user"
-								aria-controls="menu-appbar"
-								aria-haspopup="true"
-								onClick={handleMenu}
-								color="inherit"
-							>
-								<AccountCircle />
-							</IconButton>
-							<Menu
-								id="menu-appbar"
-								anchorEl={anchorEl}
-								anchorOrigin={{
-									vertical: "top",
-									horizontal: "right"
-								}}
-								keepMounted
-								transformOrigin={{
-									vertical: "top",
-									horizontal: "right"
-								}}
-								open={open}
-								onClose={handleClose}
-							>
-								<MenuItem onClick={handleClose}>
-									Profile
-								</MenuItem>
-								<MenuItem onClick={handleClose}>
-									My account
-								</MenuItem>
-							</Menu>
-						</div>
-					)}
-					{!auth && (
-						<div>
-							<Button
-								aria-label="Account of current user"
-								aria-controls="menu-appbar"
-								aria-haspopup="true"
-								onClick={handleMenu}
-								color="inherit"
-							>
-								Login
-							</Button>
-							<Menu
-								id="menu-appbar"
-								anchorEl={anchorEl}
-								anchorOrigin={{
-									vertical: "top",
-									horizontal: "right"
-								}}
-								keepMounted
-								transformOrigin={{
-									vertical: "top",
-									horizontal: "right"
-								}}
-								open={open}
-								onClose={handleClose}
-							>
-								<MenuItem>
-									Test
-								</MenuItem>
-								<MenuItem>
-									Test
-								</MenuItem>
-							</Menu>
-						</div>
-					)}
-				</Toolbar>
-			</AppBar>
-		</div>
-	);
+				>
+					<Menu.ItemGroup title="Item 1">
+						<Menu.Item key="setting:1">Option 1</Menu.Item>
+						<Menu.Item key="setting:2">Option 2</Menu.Item>
+					</Menu.ItemGroup>
+					<Menu.ItemGroup title="Item 2">
+						<Menu.Item key="setting:3">Option 3</Menu.Item>
+						<Menu.Item key="setting:4">Option 4</Menu.Item>
+					</Menu.ItemGroup>
+				</SubMenu>
+				<Menu.Item key="alipay">
+					<a
+						href="https://ant.design"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Navigation Four - Link
+					</a>
+				</Menu.Item>
+			</Menu>
+		);
+	}
 }
+
+export default MainNavbar;
