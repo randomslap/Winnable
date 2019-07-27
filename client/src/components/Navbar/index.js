@@ -1,17 +1,28 @@
 import React, { Component } from "react";
-import {Navbar, Nav} from 'react-bootstrap'
+import { Navbar, Nav, Button, NavDropdown } from 'react-bootstrap'
 import "./index.css"
 
 class MainNavbar extends Component {
 	render() {
 		return (
-			<Navbar bg="light" variant="light">
-			<Navbar.Brand href="#home">Navbar</Navbar.Brand>
-				<Nav className="mr-auto">
-					<Nav href="#home">Home</Nav>
-					<Nav href="#features">Features</Nav>
-					<Nav href="#pricing">Pricing</Nav>
-				</Nav>
+			<Navbar bg="light" expand="lg">
+				<Navbar.Brand href="#home">Winnable</Navbar.Brand>
+				<Navbar.Toggle aria-controls="basic-navbar-nav" />
+				<Navbar.Collapse id="basic-navbar-nav">
+					<Nav className="mr-auto">
+						<Nav.Link href="#home">Home</Nav.Link>
+						<Nav.Link href="#link">Link</Nav.Link>
+						<NavDropdown title="Dropdown" id="basic-nav-dropdown">
+							<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+							<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+							<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+							<NavDropdown.Divider />
+							<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+						</NavDropdown>
+					</Nav>
+					<Button variant="outline-success">Login</Button>
+					<Nav.Link>Register</Nav.Link>
+				</Navbar.Collapse>
 			</Navbar>
 		)
 	}
