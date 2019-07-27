@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import {Navbar, Nav} from 'react-bootstrap/Navbar'
+import {Navbar, Nav} from 'react-bootstrap'
 import "./index.css"
 
 class MainNavbar extends Component {
 	render() {
 		return (
 			<Navbar bg="light" variant="light">
-			<Navbar href="#home">Navbar</Navbar>
-			<Nav className="mr-auto">
-				<Nav href="#home">Home</Nav>
-				<Nav href="#features">Features</Nav>
-				<Nav href="#pricing">Pricing</Nav>
-			</Nav>
-		</Navbar>
+			<Navbar.Brand href="#home">Navbar</Navbar.Brand>
+				<Nav className="mr-auto">
+					<Nav href="#home">Home</Nav>
+					<Nav href="#features">Features</Nav>
+					<Nav href="#pricing">Pricing</Nav>
+				</Nav>
+			</Navbar>
 		)
 	}
 }
