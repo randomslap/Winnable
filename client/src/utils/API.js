@@ -1,5 +1,7 @@
 import axios from "axios";
 
+
+
 export default {
 	getUsers: function() {
 		return axios.get("/api/users");
@@ -13,7 +15,10 @@ export default {
 	saveUser: function(userData) {
 		return axios.post("/api/users", userData);
 	},
-	getStats: function(name){
-		return axios.get("/api/ow", name)
+	getStats: function(bnetUser){
+		return axios.get("https://owapi.net/api/v3/u/"+bnetUser+"/stats");
+	},
+	getOWStats: function(bnetData) {
+		return axios.post("/api/ow", bnetData);
 	}
 };

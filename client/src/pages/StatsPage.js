@@ -7,18 +7,25 @@ class StatsPage extends Component {
     state = {
         bnetName: "",
         bnetNum: "",
-        battleNetUser: "",
         userRank: "",
         rankPicture: "",
         userIcon: "",
-        userLevel:""
+        userLevel:"",
+        userSR: 0,
     };
-
+    
       loadStats = () =>{
           console.log("Is load stats getting hit?")
-        API.getStats(this.state.bnetName + "#" + this.state.bnetNum)
-        .then(res => console.log(res.data))
+        API.getStats(this.state.bnetName + "-" + this.state.bnetNum)
+        .then(res => {
+            console.log(res.data.us.stats.competitive.overall_stats)
+            this.setState({
+                userRank: res.data.us.stats.competitive.overall_stats.tier,
+                userLevel: res.data.us.stats.competitive.overall_stats.level,
+                userSR: res.data.us.stats.competitive.overall_stats.comprank
+            })
         }
+        )}
 
         handleInputChange = event =>{
         let value = event.target.value;
@@ -28,6 +35,8 @@ class StatsPage extends Component {
             this.setState({
             [name]: value
             });
+            console.log(name)
+            console.log(value)
         }
 
         handleFormSubmit = event => {
@@ -58,10 +67,10 @@ class StatsPage extends Component {
                                                 value={this.state.bnetName}
                                                 onChange={this.handleInputChange}
                                                 name="bnetName"
-                                                type="email" 
-                                                placeholder="Enter email" />
+                                                type="text" 
+                                                placeholder="Enter Battletag" />
                                             <Form.Text className="text-muted">
-                                                We'll never share your email with anyone else.
+                                                Please make sure your Battletag is properly Capitalized
                                             </Form.Text>
                                         </Form.Group>
 
@@ -71,7 +80,7 @@ class StatsPage extends Component {
                                             value={this.state.title}
                                             onChange={this.handleInputChange}
                                             name="bnetNum"
-                                            type="password" placeholder="Password" />
+                                            type="text" placeholder="1234" />
                                         </Form.Group>
                                         <Button onClick={this.handleFormSubmit} variant="primary" type="submit">
                                             Submit
@@ -87,9 +96,10 @@ class StatsPage extends Component {
                                 <Card.Body>
                                     <Container></Container>
                                     <ul>
-                                        <li>Name: <span>{this.state.battleNetUser}</span></li>
+                                        <li>Name: <span>{this.state.bnetName + "#" + this.state.bnetNum}</span></li>
                                         <li>Level: <span>{this.state.userLevel}</span></li>
                                         <li>Rank: <span>{this.state.userRank}</span></li>
+                                        <li>Rank SR: <span>{this.state.userSR}</span></li>
                                     </ul>
                                 </Card.Body>
                             </Card>
