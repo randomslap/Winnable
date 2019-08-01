@@ -1,0 +1,13 @@
+.cardOne {
+    height: 800px;
+    width: 20%;
+}
+​
+.cardTwo {
+    height: 800px;
+    width: 80%;
+}
+​
+.container {
+    padding-top: 10px;
+}

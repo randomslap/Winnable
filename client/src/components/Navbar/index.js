@@ -25,7 +25,7 @@ class MainNavbar extends Component {
 		const register = (
 			<div>
 				<Button
-					variant="primary"
+					variant="dark"
 					onClick={() => this.setState({ modalShow: true })}
 				>
 					Register
@@ -36,22 +36,33 @@ class MainNavbar extends Component {
 				/>
 			</div>
 		);
+		const auth = (
+			<LoggedInForm />
+		);
 
+		const notAuth = (
+			<div>
+				<NavDropdown title="Login" controlId="basic-nav-dropdown">
+					<LoginForm />
+				</NavDropdown>
+			</div>
+		);
+		console.log(this.props.auth);
 		return (
-			<Navbar bg="light" expand="lg">
-				<Navbar.Brand href="#home">Winnable</Navbar.Brand>
+			<Navbar bg="dark" variant="dark" expand="lg">
+				<Navbar.Brand className="text-white" href="#home">
+					Winnable
+				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
+				<Navbar.Collapse
+					variant="secondary"
+					controlId="basic-navbar-nav"
+				>
 					<Nav className="mr-auto" />
-					<NavDropdown title="Login" id="basic-nav-dropdown">
-						{this.props.auth.name ? (
-							<LoggedInForm />
-						) : (
-							<LoginForm />
-						)}
-					</NavDropdown>
+					{this.props.auth.isAuthenticated ? auth : notAuth}
+
 					<ButtonToolbar>
-						{this.props.auth.name ? null : register}
+						{this.props.auth.isAuthenticated ? null : register}
 					</ButtonToolbar>
 				</Navbar.Collapse>
 			</Navbar>
@@ -60,7 +71,6 @@ class MainNavbar extends Component {
 }
 
 MainNavbar.propTypes = {
-	logoutUser: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({

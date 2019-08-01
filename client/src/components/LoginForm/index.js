@@ -38,7 +38,7 @@ class LoginForm extends Component {
 	render() {
 		const { errors } = this.state;
 		return (
-			<Form>
+			<Form noValidate onSubmit={this.onSubmit}>
 				<Container>
 					<Row>
 						<Col>
@@ -91,7 +91,7 @@ class LoginForm extends Component {
 					</Row>
 					<Row>
 						<Col>
-							<Button variant="primary" type="submit">
+							<Button variant="outline-success" type="submit">
 								Login
 							</Button>
 						</Col>

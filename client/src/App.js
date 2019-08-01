@@ -39,17 +39,9 @@ class App extends Component {
 			<Provider store={store}>
 				<Router>
 					<MainNavbar />
-					<Route exact path="/" component={Home} />
+					<PrivateRoute exact path="/" component={Home} />
 					<Route exact path="/stats" component={StatsPage} />
 					<Route component={Home} />
-					<Switch>
-						<PrivateRoute
-							exact
-							path="/"
-							component={Home}
-						/>
-					</Switch>
-
 					<Footer />
 				</Router>
 			</Provider>

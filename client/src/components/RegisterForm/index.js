@@ -14,7 +14,8 @@ class RegisterForm extends Component {
 			email: "",
 			password: "",
 			password2: "",
-			errors: {}
+			errors: {},
+			registered: false
 		};
 	}
 
@@ -43,12 +44,18 @@ class RegisterForm extends Component {
 			password2: this.state.password2
 		};
 		this.props.registerUser(newUser, this.props.history);
+		console.log(newUser);
+		console.log(this.state.errors);
+		// if ((this.state.errors = {})) {
+		// 	return this.setState({ registered: true });
+		// }
 	};
 
 	render() {
 		const { errors } = this.state;
-		return (
-			<Form>
+		const success = <h4>Successfully Registered!</h4>;
+		const signUp = (
+			<Form onSubmit={this.onSubmit}>
 				<Container>
 					<Row>
 						<Col>
@@ -129,6 +136,9 @@ class RegisterForm extends Component {
 									})}
 								/>
 							</Form.Group>
+							<Form.Text className="text-muted">
+								{errors.password2}
+							</Form.Text>
 						</Col>
 					</Row>
 					<Row>
@@ -151,6 +161,7 @@ class RegisterForm extends Component {
 				</Container>
 			</Form>
 		);
+		return this.state.registered ? success : signUp;
 	}
 }
 

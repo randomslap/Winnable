@@ -17,7 +17,7 @@ function RegisterModal(props) {
 			</Modal.Header>
 			<Modal.Body>
 				<RegisterForm />
-			</Modal.Body>
+			</Modal.Body >
 		</Modal>
 	);
 }
