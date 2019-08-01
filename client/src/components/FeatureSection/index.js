@@ -6,7 +6,11 @@ const Features = () => {
     return (
         <Container>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <h1 class="pt-3 text-center">Features</h1>
+=======
+            <h1 className="pt-3 text-center text-white">Features</h1>
+>>>>>>> Stashed changes
 =======
             <h1 className="pt-3 text-center text-white">Features</h1>
 >>>>>>> Stashed changes

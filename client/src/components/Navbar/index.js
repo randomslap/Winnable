@@ -66,6 +66,9 @@ class MainNavbar extends Component {
 						</Form>
 					</NavDropdown>
 					<Nav.Link id="oworange">Register</Nav.Link>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 				</Navbar.Collapse>
 			</Navbar>

@@ -8,12 +8,18 @@ const Jumbotron = () => {
     return (
         <div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <div class="overlay"></div>
 =======
+=======
+>>>>>>> Stashed changes
            
             <div className="overlay">
                 
             </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             
             <Carousel>
