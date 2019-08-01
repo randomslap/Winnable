@@ -1,6 +1,15 @@
 import React, { Component } from "react";
-import { Navbar, Nav, Button, NavDropdown } from 'react-bootstrap'
-import "./index.css"
+import {
+	Navbar,
+	Nav,
+	Button,
+	NavDropdown,
+	Form,
+	Container,
+	Row,
+	Col
+} from "react-bootstrap";
+import "./index.css";
 
 class MainNavbar extends Component {
 	render() {
@@ -9,7 +18,6 @@ class MainNavbar extends Component {
 				<Navbar.Brand className="text-white" href="#home">Winnable</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
-<<<<<<< Updated upstream
 					<Nav className="mr-auto">
 						<Nav.Link href="#home">Home</Nav.Link>
 						<Nav.Link href="#link">Link</Nav.Link>
@@ -22,8 +30,50 @@ class MainNavbar extends Component {
 						</NavDropdown>
 					</Nav>
 					<Button variant="outline-success">Login</Button>
+
+					<Nav className="mr-auto" />
+					<NavDropdown title="Login" id="basic-nav-dropdown">
+						<Form>
+							<Container>
+								<Row>
+									<Col>
+										<Form.Text className="text-muted">
+											Username/Email validation text
+										</Form.Text>
+										<Form.Group controlId="formBasicEmail">
+											<Form.Label>
+												Email address
+											</Form.Label>
+											<Form.Control type="email" />
+										</Form.Group>
+									</Col>
+								</Row>
+								<Row>
+									<Col>
+										<Form.Group controlId="formBasicPassword">
+											<Form.Label>Password</Form.Label>
+											<Form.Control type="password" />
+										</Form.Group>
+										<Form.Group controlId="formBasicChecbox">
+											<Form.Check
+												type="checkbox"
+												label="Remember me"
+											/>
+										</Form.Group>
+									</Col>
+								</Row>
+								<Row>
+									<Col>
+										<Button variant="primary" type="submit">
+											Login
+										</Button>
+									</Col>
+								</Row>
+							</Container>
+						</Form>
+					</NavDropdown>
 					<Nav.Link>Register</Nav.Link>
-=======
+
 					<Nav className="mr-auto" />
 					<NavDropdown title="Login" id="basic-nav-dropdown">
 						<Form>
@@ -66,41 +116,14 @@ class MainNavbar extends Component {
 						</Form>
 					</NavDropdown>
 					<Nav.Link id="oworange">Register</Nav.Link>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 				</Navbar.Collapse>
 			</Navbar>
-		)
+		);
 	}
 }
 
 export default MainNavbar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const { SubMenu } = Menu;
 
