@@ -1,0 +1,19 @@
+.dropdown-menu {
+	padding: 0px 10px 10px 10px;
+	margin-left: -40px;
+	margin-top: 8px;
+	min-width: 14rem;
+}
+
+.form-group {
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.row {
+	padding: 5px !important;
+}
+
+.col {
+	padding: 0px;
+}
