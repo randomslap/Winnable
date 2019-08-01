@@ -7,21 +7,9 @@ const Jumbotron = () => {
 
     return (
         <div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <div class="overlay"></div>
-=======
-=======
->>>>>>> Stashed changes
-           
             <div className="overlay">
-                
+
             </div>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-            
             <Carousel>
                 <Carousel.Item>
                     <img
@@ -30,7 +18,7 @@ const Jumbotron = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        
+
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -41,7 +29,7 @@ const Jumbotron = () => {
                     />
 
                     <Carousel.Caption>
-                        
+
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -52,7 +40,7 @@ const Jumbotron = () => {
                     />
 
                     <Carousel.Caption>
-                        
+
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -63,7 +51,7 @@ const Jumbotron = () => {
                     />
 
                     <Carousel.Caption>
-                        
+
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
