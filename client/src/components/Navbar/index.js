@@ -5,10 +5,11 @@ import "./index.css"
 class MainNavbar extends Component {
 	render() {
 		return (
-			<Navbar bg="light" expand="lg">
-				<Navbar.Brand href="#home">Winnable</Navbar.Brand>
+			<Navbar bg="dark" expand="lg">
+				<Navbar.Brand className="text-white" href="#home">Winnable</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
+<<<<<<< Updated upstream
 					<Nav className="mr-auto">
 						<Nav.Link href="#home">Home</Nav.Link>
 						<Nav.Link href="#link">Link</Nav.Link>
@@ -22,6 +23,50 @@ class MainNavbar extends Component {
 					</Nav>
 					<Button variant="outline-success">Login</Button>
 					<Nav.Link>Register</Nav.Link>
+=======
+					<Nav className="mr-auto" />
+					<NavDropdown title="Login" id="basic-nav-dropdown">
+						<Form>
+							<Container>
+								<Row>
+									<Col>
+										<Form.Text className="text-muted">
+											Username/Email validation text
+										</Form.Text>
+										<Form.Group controlId="formBasicEmail">
+											<Form.Label>
+												Email address
+											</Form.Label>
+											<Form.Control type="email" />
+										</Form.Group>
+									</Col>
+								</Row>
+								<Row>
+									<Col>
+										<Form.Group controlId="formBasicPassword">
+											<Form.Label>Password</Form.Label>
+											<Form.Control type="password" />
+										</Form.Group>
+										<Form.Group controlId="formBasicChecbox">
+											<Form.Check
+												type="checkbox"
+												label="Remember me"
+											/>
+										</Form.Group>
+									</Col>
+								</Row>
+								<Row>
+									<Col>
+										<Button variant="dark" type="submit">
+											Login
+										</Button>
+									</Col>
+								</Row>
+							</Container>
+						</Form>
+					</NavDropdown>
+					<Nav.Link id="oworange">Register</Nav.Link>
+>>>>>>> Stashed changes
 				</Navbar.Collapse>
 			</Navbar>
 		)

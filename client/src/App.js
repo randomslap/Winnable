@@ -4,6 +4,7 @@ import MainNavbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer"
 import StatsPage from "./pages/StatsPage"
+import Profile from "./pages/profile"
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/stats" component={StatsPage} />
+						<Route exact path="/profile" component={Profile} />
 						<Route component={Home} />
 					</Switch>
 					<Footer/>
