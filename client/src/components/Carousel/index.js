@@ -7,7 +7,7 @@ const Jumbotron = () => {
 
     return (
         <div>
-            <div class="overlay"></div>
+            <div className="overlay"></div>
             
             <Carousel>
                 <Carousel.Item>
