@@ -8,6 +8,7 @@ import MainNavbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import StatsPage from "./pages/StatsPage";
+import Profile from "./pages/Profile";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -39,9 +40,17 @@ class App extends Component {
 			<Provider store={store}>
 				<Router>
 					<MainNavbar />
-					<PrivateRoute exact path="/" component={Home} />
-					<Route exact path="/stats" component={StatsPage} />
-					<Route component={Home} />
+					<Switch>
+						<PrivateRoute exact path="/" component={Home} />
+						<PrivateRoute
+							exact
+							path="/profile"
+							component={Profile}
+						/>
+						<Route exact path="/" component={Home} />
+						<Route exact path="/stats" component={StatsPage} />
+						<Route component={Home} />
+					</Switch>
 					<Footer />
 				</Router>
 			</Provider>

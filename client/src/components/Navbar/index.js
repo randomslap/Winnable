@@ -47,7 +47,6 @@ class MainNavbar extends Component {
 				</NavDropdown>
 			</div>
 		);
-		console.log(this.props.auth);
 		return (
 			<Navbar bg="dark" variant="dark" expand="lg">
 				<Navbar.Brand className="text-white" href="#home">

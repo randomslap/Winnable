@@ -1,8 +1,5 @@
 import React from "react"
-import {Container, Row, Col, Card} from "react-bootstrap"
-import "./style/profile.css"
-​
-​
+import { Container, Row, Col, Card } from "react-bootstrap"
 const Profile = () => {
     return (
         <div>
@@ -42,5 +39,4 @@ const Profile = () => {
         </div>
     )
 }
-​
 export default Profile

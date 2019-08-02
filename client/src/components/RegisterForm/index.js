@@ -14,17 +14,10 @@ class RegisterForm extends Component {
 			email: "",
 			password: "",
 			password2: "",
-			errors: {},
-			registered: false
+			errors: {}
 		};
 	}
 
-	componentDidMount() {
-		// If logged in and user navigates to Register page, should redirect them to dashboard
-		if (this.props.auth.isAuthenticated) {
-			this.props.history.push("/");
-		}
-	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.errors) {
 			this.setState({
@@ -32,11 +25,21 @@ class RegisterForm extends Component {
 			});
 		}
 	}
+
+	componentDidUpdate() {
+		if (this.props.reg.registered) {
+			setInterval(() => {
+				window.location.reload();
+			}, 2000);
+		}
+	}
+
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
 	};
 	onSubmit = e => {
 		e.preventDefault();
+		console.log(this.props.reg);
 		const newUser = {
 			name: this.state.name,
 			email: this.state.email,
@@ -44,8 +47,14 @@ class RegisterForm extends Component {
 			password2: this.state.password2
 		};
 		this.props.registerUser(newUser, this.props.history);
+		// if (this.props.errors) {
+		// 	console.log(this.props.errors);
+		// } else {
+		// 	console.log("Success");
+		// }
+		// //
 		console.log(newUser);
-		console.log(this.state.errors);
+		// console.log(this.state.errors);
 		// if ((this.state.errors = {})) {
 		// 	return this.setState({ registered: true });
 		// }
@@ -161,19 +170,21 @@ class RegisterForm extends Component {
 				</Container>
 			</Form>
 		);
-		return this.state.registered ? success : signUp;
+		return this.props.reg.registered ? success : signUp;
 	}
 }
 
 RegisterForm.propTypes = {
 	registerUser: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
-	errors: PropTypes.object.isRequired
+	errors: PropTypes.object.isRequired,
+	reg: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
 	auth: state.auth,
-	errors: state.errors
+	errors: state.errors,
+	reg: state.reg
 });
 
 export default connect(
