@@ -1,0 +1,25 @@
+#searchBarCard {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#searchBarText {
+    font-size: 16px;
+
+}
+#userInfoCard {
+    padding-top: 20px;
+    padding-bottom: 83px;
+}
+#test {
+    text-align: left !important; 
+}
+#rankIcon {
+    max-width: 10%;
+
+}
+#statInfo {
+    padding-top: 80px;
+}
+#profilePicture {
+    width: 165px;
+}
