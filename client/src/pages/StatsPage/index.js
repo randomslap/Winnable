@@ -25,8 +25,8 @@ class StatsPage extends Component {
 
     convertTimeStringToNumber = val => Number(val.replace(/:/g, ''))
 
-      loadStats = () =>{
-          console.log("LoadStats Request...........................")
+    loadStats = () =>{
+        console.log("LoadStats Request...........................")
         API.getOWStats(encodeURIComponent(this.state.bnetName + "#" + this.state.bnetNum))
         .then(res => {
             console.log(res.data.heroStats.competitive)
