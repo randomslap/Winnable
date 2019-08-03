@@ -8,8 +8,18 @@
 }
 #userInfoCard {
     padding-top: 20px;
-    padding-bottom: 60px;
+    padding-bottom: 83px;
 }
 #test {
-    float: left;
+    text-align: left !important; 
+}
+#rankIcon {
+    max-width: 10%;
+
+}
+#statInfo {
+    padding-top: 80px;
+}
+#profilePicture {
+    width: 165px;
 }
