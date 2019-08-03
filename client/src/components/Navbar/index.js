@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import LoginForm from "../LoginForm";
 import LoggedInForm from "../LoggedInForm";
 import RegisterModal from "../Modal";
+
 import {
 	Navbar,
 	Nav,
@@ -19,6 +20,15 @@ class MainNavbar extends Component {
 		this.state = {
 			modalShow: false
 		};
+	}
+	componentDidUpdate() {
+		if (this.props.reg.registered) {
+			setInterval(() => {
+				this.setState({
+					modalShow: false
+				});
+			}, 3000);
+		}
 	}
 
 	render() {
@@ -37,7 +47,9 @@ class MainNavbar extends Component {
 			</div>
 		);
 		const auth = (
-			<LoggedInForm />
+			// <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
+			// </ScrollAnimation>
+				<LoggedInForm />
 		);
 
 		const notAuth = (
@@ -56,6 +68,7 @@ class MainNavbar extends Component {
 				<Navbar.Collapse
 					variant="secondary"
 					controlId="basic-navbar-nav"
+					className="notLoggedIn"
 				>
 					<Nav className="mr-auto" />
 					{this.props.auth.isAuthenticated ? auth : notAuth}
@@ -70,10 +83,12 @@ class MainNavbar extends Component {
 }
 
 MainNavbar.propTypes = {
-	auth: PropTypes.object.isRequired
+	auth: PropTypes.object.isRequired,
+	reg: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-	auth: state.auth
+	auth: state.auth,
+	reg: state.reg
 });
 
 export default connect(mapStateToProps)(MainNavbar);

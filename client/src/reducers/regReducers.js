@@ -5,7 +5,6 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-	console.log(state);
 	switch (action.type) {
 		case REGISTER_SUCCESS:
 			return {
