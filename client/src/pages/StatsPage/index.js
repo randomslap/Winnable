@@ -39,7 +39,10 @@ class StatsPage extends Component {
                     return char2timePlayed - char1timePlayed
                 })
                 console.log('sorted?', characters)
-
+                
+                // if (characters[1][0] === "ana") {
+                    
+                // }
 
 
                 this.setState({
@@ -95,7 +98,6 @@ class StatsPage extends Component {
                     hero6Damage: characters[6][1].combat.all_damage_done,
                     hero6ObjTime: characters[6][1].combat.objective_time,
 
-
                 })
             }
             )
@@ -119,6 +121,12 @@ class StatsPage extends Component {
     };
 
     render() {
+        const src1 = this.state ? require(`../../assets/images/HeroIcons/${this.state.hero1Name ? this.state.hero1Name : "Baptiste"}.png`) : null
+        const src2 = this.state ? require(`../../assets/images/HeroIcons/${this.state.hero2Name ? this.state.hero2Name : "Baptiste"}.png`) : null
+        const src3 = this.state ? require(`../../assets/images/HeroIcons/${this.state.hero3Name ? this.state.hero3Name : "Baptiste"}.png`) : null
+        const src4 = this.state ? require(`../../assets/images/HeroIcons/${this.state.hero4Name ? this.state.hero4Name : "Baptiste"}.png`) : null
+        const src5 = this.state ? require(`../../assets/images/HeroIcons/${this.state.hero5Name ? this.state.hero5Name : "Baptiste"}.png`) : null
+        const src6 = this.state ? require(`../../assets/images/HeroIcons/${this.state.hero6Name ? this.state.hero6Name : "Baptiste"}.png`) : null
         return (
             <div>
 
@@ -227,7 +235,7 @@ class StatsPage extends Component {
                                                     <Row>
                                                         <Col md={2}>
                                                             <p>{this.state.hero1Name}</p>
-                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                            <img src={src1}></img>
                                                         </Col>
                                                         <Col md={2} id="statInfo">
                                                             <p>{this.state.hero1Time}</p>
@@ -259,7 +267,7 @@ class StatsPage extends Component {
                                                     <Row>
                                                         <Col md={2}>
                                                             <p>{this.state.hero2Name}</p>
-                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                            <img src={src2} ></img>
                                                         </Col>
                                                         <Col md={2} id="statInfo">
                                                             <p>{this.state.hero2Time}</p>
@@ -291,7 +299,7 @@ class StatsPage extends Component {
                                                     <Row>
                                                         <Col md={2}>
                                                             <p>{this.state.hero3Name}</p>
-                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                            <img src={src3} ></img>
                                                         </Col>
                                                         <Col md={2} id="statInfo">
                                                             <p>{this.state.hero3Time}</p>
@@ -323,7 +331,7 @@ class StatsPage extends Component {
                                                     <Row>
                                                         <Col md={2}>
                                                             <p>{this.state.hero4Name}</p>
-                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                            <img src={src4} ></img>
                                                         </Col>
                                                         <Col md={2} id="statInfo">
                                                             <p>{this.state.hero4Time}</p>
@@ -355,7 +363,7 @@ class StatsPage extends Component {
                                                     <Row>
                                                         <Col md={2}>
                                                             <p>{this.state.hero5Name}</p>
-                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                            <img src={src5} ></img>
                                                         </Col>
                                                         <Col md={2} id="statInfo">
                                                             <p>{this.state.hero5Time}</p>
@@ -387,7 +395,7 @@ class StatsPage extends Component {
                                                     <Row>
                                                         <Col md={2}>
                                                             <p>{this.state.hero6Name}</p>
-                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                            <img src={src6} ></img>
                                                         </Col>
                                                         <Col md={2} id="statInfo">
                                                             <p>{this.state.hero6Time}</p>
