@@ -4,16 +4,19 @@
 	margin-top: 8px;
 	min-width: 14rem;
 }
-
 .form-group {
 	margin: 0px !important;
 	padding: 0px !important;
 }
-
 .row {
 	padding: 5px !important;
 }
-
 .col {
 	padding: 0px;
+}
+.navbar {
+	background-color: #1b1b20 !important;
+}
+#oworange {
+	color: #f79c15;
 }

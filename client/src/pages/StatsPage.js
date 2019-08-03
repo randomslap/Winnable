@@ -158,4 +158,4 @@ class StatsPage extends Component {
     }
 }
 
-export default StatsPage
+export default StatsPage;
