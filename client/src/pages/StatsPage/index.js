@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { InputGroup, FormControl, Container, Row, Col, Card, Form, Button, Image } from "react-bootstrap"
-import API from "../utils/API";
-import "./StatsPage.css"
+import API from "../../utils/API";
+import "./index.css"
 
 class StatsPage extends Component {
 
@@ -25,8 +25,8 @@ class StatsPage extends Component {
 
     convertTimeStringToNumber = val => Number(val.replace(/:/g, ''))
 
-      loadStats = () =>{
-          console.log("LoadStats Request...........................")
+    loadStats = () =>{
+        console.log("LoadStats Request...........................")
         API.getOWStats(encodeURIComponent(this.state.bnetName + "#" + this.state.bnetNum))
         .then(res => {
             console.log(res.data.heroStats.competitive)
