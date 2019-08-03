@@ -7,22 +7,94 @@ class StatsPage extends Component {
     state = {
         bnetName: "",
         bnetNum: "",
-        userRank: "",
-        rankPicture: "",
+        userRankImg: "",
         userIcon: "",
         userLevel:"",
+        userEndorsLvl: 0,
         userSR: 0,
+        gamesWon: 0,
+        hero1Name: "", hero1Time: "", hero1Medals: "", hero1Elims: "", hero1Damage: "", hero1ObjTime: "",
+        hero2Name: "", hero2Time: "", hero2Medals: "", hero2Elims: "", hero2Damage: "", hero2ObjTime: "",
+        hero3Name: "", hero3Time: "", hero3Medals: "", hero3Elims: "", hero3Damage: "", hero3ObjTime: "",
+        hero4Name: "", hero4Time: "", hero4Medals: "", hero4Elims: "", hero4Damage: "", hero4ObjTime: "",
+        hero5Name: "", hero5Time: "", hero5Medals: "", hero5Elims: "", hero5Damage: "", hero5ObjTime: "",
+        hero6Name: "", hero6Time: "", hero6Medals: "", hero6Elims: "", hero6Damage: "", hero6ObjTime: "",
+
     };
+
+    convertTimeStringToNumber = val => Number(val.replace(/:/g, ''))
     
       loadStats = () =>{
-          console.log("Is load stats getting hit?")
-        API.getStats(this.state.bnetName + "-" + this.state.bnetNum)
+          console.log("LoadStats Request...........................")
+        API.getOWStats(encodeURIComponent(this.state.bnetName + "#" + this.state.bnetNum))
         .then(res => {
-            console.log(res.data.us.stats.competitive.overall_stats)
+            console.log(res.data.heroStats.competitive)
+            var characters = Object.entries(res.data.heroStats.competitive)
+            characters.sort((char1, char2) => {
+                const char1timePlayed = this.convertTimeStringToNumber(char1[1].game.time_played)
+                const char2timePlayed = this.convertTimeStringToNumber(char2[1].game.time_played)
+                
+
+                return char2timePlayed - char1timePlayed
+            })
+            console.log('sorted?', characters)
+            
+            
+
             this.setState({
-                userRank: res.data.us.stats.competitive.overall_stats.tier,
-                userLevel: res.data.us.stats.competitive.overall_stats.level,
-                userSR: res.data.us.stats.competitive.overall_stats.comprank
+                userRankImg: res.data.rankIconURL,
+                userLevel: res.data.level,
+                userSR: res.data.rank,
+                userIcon: res.data.iconURL,
+                userEndorsLvl: res.data.endorsementLevel,
+                gamesWon: res.data.heroStats.competitive.overall.game.games_won,
+                hero1Name: characters[1][0].charAt(0).toUpperCase() + characters[1][0].slice(1),
+                hero1Time: characters[1][1].game.time_played,
+                hero1Medals: characters[1][1].match_awards.medals,
+                hero1Elims: characters[1][1].combat.eliminations,
+                hero1Damage: characters[1][1].combat.all_damage_done,
+                hero1ObjTime: characters[1][1].combat.objective_time,
+
+                hero2Name: characters[2][0].charAt(0).toUpperCase() + characters[2][0].slice(1),
+                hero2Time: characters[2][1].game.time_played,
+                hero2Medals: characters[2][1].match_awards.medals,
+                hero2Elims: characters[2][1].combat.eliminations,
+                hero2Damage: characters[2][1].combat.all_damage_done,
+                hero2ObjTime: characters[2][1].combat.objective_time,
+
+
+                hero3Name: characters[3][0].charAt(0).toUpperCase() + characters[3][0].slice(1),
+                hero3Time: characters[3][1].game.time_played,
+                hero3Medals: characters[3][1].match_awards.medals,
+                hero3Elims: characters[3][1].combat.eliminations,
+                hero3Damage: characters[3][1].combat.all_damage_done,
+                hero3ObjTime: characters[3][1].combat.objective_time,
+
+
+                hero4Name: characters[4][0].charAt(0).toUpperCase() + characters[4][0].slice(1),
+                hero4Time: characters[4][1].game.time_played,
+                hero4Medals: characters[4][1].match_awards.medals,
+                hero4Elims: characters[4][1].combat.eliminations,
+                hero4Damage: characters[4][1].combat.all_damage_done,
+                hero4ObjTime: characters[4][1].combat.objective_time,
+
+
+                hero5Name: characters[5][0].charAt(0).toUpperCase() + characters[5][0].slice(1),
+                hero5Time: characters[5][1].game.time_played,
+                hero5Medals: characters[5][1].match_awards.medals,
+                hero5Elims: characters[5][1].combat.eliminations,
+                hero5Damage: characters[5][1].combat.all_damage_done,
+                hero5ObjTime: characters[5][1].combat.objective_time,
+
+
+                hero6Name: characters[6][0].charAt(0).toUpperCase() + characters[6][0].slice(1),
+                hero6Time: characters[6][1].game.time_played,
+                hero6Medals: characters[6][1].match_awards.medals,
+                hero6Elims: characters[6][1].combat.eliminations,
+                hero6Damage: characters[6][1].combat.all_damage_done,
+                hero6ObjTime: characters[6][1].combat.objective_time,
+
+               
             })
         }
         )}
@@ -94,20 +166,48 @@ class StatsPage extends Component {
                         <Col>
                             <Card>
                                 <Card.Body>
-                                    <Container></Container>
+                                    <Container>
                                     <ul>
+                                        <li> <img src={this.state.userIcon} ></img></li>
                                         <li>Name: <span>{this.state.bnetName + "#" + this.state.bnetNum}</span></li>
                                         <li>Level: <span>{this.state.userLevel}</span></li>
-                                        <li>Rank: <span>{this.state.userRank}</span></li>
+                                        <li>Rank: <img src={this.state.userRankImg} ></img></li>
                                         <li>Rank SR: <span>{this.state.userSR}</span></li>
+                                        <li>Endorsement Level: <span>{this.state.userEndorsLvl}</span></li>
+                                        <li>Games Won: <span>{this.state.gamesWon}</span></li>
+
                                     </ul>
+                                    </Container>
+                                    
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col>
+                            <Card>
+                                <Card.Body>
+                                <div>Hero: {this.state.hero1Name}</div>
+                                <div>Time Played: {this.state.hero1Time}</div>
+                                <div>Medals:{this.state.hero1Medals}  </div>
+                                <div>Eliminations: {this.state.hero1Elims} </div>
+                                <div>Damage Done: {this.state.hero1Damage}</div>
+                                <div>Objective Time: {this.state.hero1ObjTime} </div>
                                 </Card.Body>
                             </Card>
                         </Col>
 
                         <Col>
                             <Card>
-                                <Card.Body>This is some text within a card body.</Card.Body>
+                                <Card.Body>
+                                <div>Hero: {this.state.hero2Name}</div>
+                                <div>Time Played: {this.state.hero2Time}</div>
+                                <div>Medals:{this.state.hero2Medals}  </div>
+                                <div>Eliminations: {this.state.hero2Elims} </div>
+                                <div>Damage Done: {this.state.hero2Damage}</div>
+                                <div>Objective Time: {this.state.hero2ObjTime} </div>
+                                </Card.Body>
                             </Card>
                         </Col>
                     </Row>
@@ -115,29 +215,55 @@ class StatsPage extends Component {
                     <Row>
                         <Col>
                             <Card>
-                                <Card.Body>This is some text within a card body.</Card.Body>
-                            </Card>
-                        </Col>
 
-                        <Col>
-                            <Card>
-                                <Card.Body>This is some text within a card body.</Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col>
-                            <Card>
-
-                                <Card.Body>This is some text within a card body.</Card.Body>
+                                <Card.Body>
+                                <div>Hero: {this.state.hero3Name}</div>
+                                <div>Time Played: {this.state.hero3Time}</div>
+                                <div>Medals:{this.state.hero3Medals}  </div>
+                                <div>Eliminations: {this.state.hero3Elims} </div>
+                                <div>Damage Done: {this.state.hero3Damage}</div>
+                                <div>Objective Time: {this.state.hero3ObjTime} </div>
+                                </Card.Body>
                             </Card>
                         </Col>
 
                         <Col>
                             <Card>
                                 <Card.Body>
+                                <div>Hero: {this.state.hero4Name}</div>
+                                <div>Time Played: {this.state.hero4Time}</div>
+                                <div>Medals:{this.state.hero4Medals}  </div>
+                                <div>Eliminations: {this.state.hero4Elims} </div>
+                                <div>Damage Done: {this.state.hero4Damage}</div>
+                                <div>Objective Time: {this.state.hero4ObjTime} </div>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Card>
 
+                                <Card.Body>
+                                <div>Hero: {this.state.hero5Name}</div>
+                                <div>Time Played: {this.state.hero5Time}</div>
+                                <div>Medals:{this.state.hero5Medals}  </div>
+                                <div>Eliminations: {this.state.hero5Elims} </div>
+                                <div>Damage Done: {this.state.hero5Damage}</div>
+                                <div>Objective Time: {this.state.hero5ObjTime} </div>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+
+                        <Col>
+                            <Card>
+                                <Card.Body>
+                                <div>Hero: {this.state.hero6Name}</div>
+                                <div>Time Played: {this.state.hero6Time}</div>
+                                <div>Medals:{this.state.hero6Medals}  </div>
+                                <div>Eliminations: {this.state.hero6Elims} </div>
+                                <div>Damage Done: {this.state.hero6Damage}</div>
+                                <div>Objective Time: {this.state.hero6ObjTime} </div>
                                 </Card.Body>
                             </Card>
                         </Col>
