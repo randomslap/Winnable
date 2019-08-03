@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import { InputGroup, FormControl, Container, Row, Col, Card, Form, Button } from "react-bootstrap"
+import { InputGroup, FormControl, Container, Row, Col, Card, Form, Button, Image } from "react-bootstrap"
 import API from "../utils/API";
+import "./StatsPage.css"
 
 class StatsPage extends Component {
 
@@ -99,172 +100,209 @@ class StatsPage extends Component {
         }
         )}
 
-        handleInputChange = event =>{
+    handleInputChange = event => {
         let value = event.target.value;
         const name = event.target.name;
 
         // Updating the input's state
-            this.setState({
+        this.setState({
             [name]: value
-            });
-            console.log(name)
-            console.log(value)
-        }
+        });
+        console.log(name)
+        console.log(value)
+    }
 
-        handleFormSubmit = event => {
-            event.preventDefault();
-            this.loadStats()
-        };
+    handleFormSubmit = event => {
+        event.preventDefault();
+        this.loadStats()
+    };
 
     render() {
         return (
             <div>
-                <Container>
-                    <Row>
-                        <Col>
-                            <Card>
 
+                <Container className="pt-3">
+                    <Row>
+                        <Col md={12}>
+                            <Card>
+                                <Row>
+                                    <Col md={{ span: 3 }}>
+                                        <Row>
+                                            <Col>
+                                                <p id="searchBarText">CHECK PLAYER RANK AND STATS</p>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                    <Col md={{ span: 5 }}>
+                                        <Form.Control 
+                                        value={this.state.bnetName}
+                                        onChange={this.handleInputChange}
+                                        name="bnetName"
+                                        size="lg" type="text" placeholder="search user here..." />
+                                    </Col>
+                                    <Col md={{ span: 2 }}>
+                                        <Form.Control 
+                                        value={this.state.title}
+                                        onChange={this.handleInputChange}
+                                        name="bnetNum"
+                                        size="lg" type="text" placeholder="battletag..." />
+                                    </Col>
+                                    <Col md={{ span: 2 }}>
+                                        <Button 
+                                        onClick={this.handleFormSubmit}
+                                        size="lg" type="submit">SEARCH</Button>
+                                    </Col>
+                                </Row>
                             </Card>
                         </Col>
                     </Row>
+                </Container>
 
+                <Container className="pt-5">
                     <Row>
-                        <Col>
+                        <Col md={9}>
+                            <Card id="userInfoCard">
+                                <Row>
+                                    <Col md={{ span: 3, offset: 1 }}>
+                                        <Image src={this.state.userIcon} rounded />
+                                    </Col>
+                                    <Col md={{ span: 8 }}>
+                                        <h1>{this.state.bnetName + "#" + this.state.bnetNum}</h1>
+                                    </Col>
+                                </Row>
+                            </Card>
+                        </Col>
+                        <Col md={3}>
                             <Card>
-                                <Card.Body>
-                                    <Form>
-                                        <Form.Group controlId="formBasicEmail">
-                                            <Form.Label>Name</Form.Label>
-                                            <Form.Control 
-                                                value={this.state.bnetName}
-                                                onChange={this.handleInputChange}
-                                                name="bnetName"
-                                                type="text" 
-                                                placeholder="Enter Battletag" />
-                                            <Form.Text className="text-muted">
-                                                Please make sure your Battletag is properly Capitalized
-                                            </Form.Text>
-                                        </Form.Group>
-
-                                        <Form.Group controlId="formBasicPassword">
-                                            <Form.Label>Number</Form.Label>
-                                            <Form.Control 
-                                            value={this.state.title}
-                                            onChange={this.handleInputChange}
-                                            name="bnetNum"
-                                            type="text" placeholder="1234" />
-                                        </Form.Group>
-                                        <Button onClick={this.handleFormSubmit} variant="primary" type="submit">
-                                            Submit
-                                            </Button>
-                                    </Form></Card.Body>
+                                <Row>
+                                    <Col md={12}>
+                                        <Row>
+                                            <Col md={12}>
+                                                <p>COMPETITIVE STATS</p>
+                                                <hr></hr>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col md={12}>
+                                                <p id="test">LEVEL: <span>{this.state.userLevel}</span> </p>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col md={12}>
+                                            <img src={this.state.userRankImg} ></img>
+                                                <p id="test">RANK: <span>{this.state.userSR}</span></p>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col md={12}>
+                                                <p id="test">GAMES WON: <span>{this.state.gamesWon}</span></p>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col md={12}>
+                                                <p id="test">ENDORSMENT: <span>{this.state.userEndorsLvl}</span></p>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
                             </Card>
                         </Col>
                     </Row>
+                </Container>
 
+                <Container className="pt-5">
                     <Row>
-                        <Col>
+                        <Col md={12}>
                             <Card>
-                                <Card.Body>
-                                    <Container>
-                                    <ul>
-                                        <li> <img src={this.state.userIcon} ></img></li>
-                                        <li>Name: <span>{this.state.bnetName + "#" + this.state.bnetNum}</span></li>
-                                        <li>Level: <span>{this.state.userLevel}</span></li>
-                                        <li>Rank: <img src={this.state.userRankImg} ></img></li>
-                                        <li>Rank SR: <span>{this.state.userSR}</span></li>
-                                        <li>Endorsement Level: <span>{this.state.userEndorsLvl}</span></li>
-                                        <li>Games Won: <span>{this.state.gamesWon}</span></li>
+                            <Row>
+                            <Col>
+                                <Card>
+                                    <Card.Body>
+                                    <div>Hero: {this.state.hero1Name}</div>
+                                    <div>Time Played: {this.state.hero1Time}</div>
+                                    <div>Medals:{this.state.hero1Medals}  </div>
+                                    <div>Eliminations: {this.state.hero1Elims} </div>
+                                    <div>Damage Done: {this.state.hero1Damage}</div>
+                                    <div>Objective Time: {this.state.hero1ObjTime} </div>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
 
-                                    </ul>
-                                    </Container>
-                                    
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
+                            <Col>
+                                <Card>
+                                    <Card.Body>
+                                    <div>Hero: {this.state.hero2Name}</div>
+                                    <div>Time Played: {this.state.hero2Time}</div>
+                                    <div>Medals:{this.state.hero2Medals}  </div>
+                                    <div>Eliminations: {this.state.hero2Elims} </div>
+                                    <div>Damage Done: {this.state.hero2Damage}</div>
+                                    <div>Objective Time: {this.state.hero2ObjTime} </div>
+                                    </Card.Body>
+                                    </Card>
+                                    </Col>
+                                    </Row>
 
-                    <Row>
-                        <Col>
-                            <Card>
-                                <Card.Body>
-                                <div>Hero: {this.state.hero1Name}</div>
-                                <div>Time Played: {this.state.hero1Time}</div>
-                                <div>Medals:{this.state.hero1Medals}  </div>
-                                <div>Eliminations: {this.state.hero1Elims} </div>
-                                <div>Damage Done: {this.state.hero1Damage}</div>
-                                <div>Objective Time: {this.state.hero1ObjTime} </div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-                        <Col>
-                            <Card>
-                                <Card.Body>
-                                <div>Hero: {this.state.hero2Name}</div>
-                                <div>Time Played: {this.state.hero2Time}</div>
-                                <div>Medals:{this.state.hero2Medals}  </div>
-                                <div>Eliminations: {this.state.hero2Elims} </div>
-                                <div>Damage Done: {this.state.hero2Damage}</div>
-                                <div>Objective Time: {this.state.hero2ObjTime} </div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col>
-                            <Card>
-
-                                <Card.Body>
-                                <div>Hero: {this.state.hero3Name}</div>
+                                    <Row>
+                                    <Col>
+                                        <Card>
+                                            <Card.Body>
+                                            <div>Hero: {this.state.hero3Name}</div>
                                 <div>Time Played: {this.state.hero3Time}</div>
                                 <div>Medals:{this.state.hero3Medals}  </div>
                                 <div>Eliminations: {this.state.hero3Elims} </div>
                                 <div>Damage Done: {this.state.hero3Damage}</div>
                                 <div>Objective Time: {this.state.hero3ObjTime} </div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-
-                        <Col>
-                            <Card>
-                                <Card.Body>
-                                <div>Hero: {this.state.hero4Name}</div>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+        
+                                    <Col>
+                                        <Card>
+                                            <Card.Body>
+                                            <div>Hero: {this.state.hero4Name}</div>
                                 <div>Time Played: {this.state.hero4Time}</div>
                                 <div>Medals:{this.state.hero4Medals}  </div>
                                 <div>Eliminations: {this.state.hero4Elims} </div>
                                 <div>Damage Done: {this.state.hero4Damage}</div>
                                 <div>Objective Time: {this.state.hero4ObjTime} </div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Card>
+                                            </Card.Body>
+                                            </Card>
+                                            </Col>
+                                            </Row>
 
-                                <Card.Body>
-                                <div>Hero: {this.state.hero5Name}</div>
+
+                                            <Row>
+                            <Col>
+                                <Card>
+                                    <Card.Body>
+                                    <div>Hero: {this.state.hero5Name}</div>
                                 <div>Time Played: {this.state.hero5Time}</div>
                                 <div>Medals:{this.state.hero5Medals}  </div>
                                 <div>Eliminations: {this.state.hero5Elims} </div>
                                 <div>Damage Done: {this.state.hero5Damage}</div>
                                 <div>Objective Time: {this.state.hero5ObjTime} </div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
 
-                        <Col>
-                            <Card>
-                                <Card.Body>
-                                <div>Hero: {this.state.hero6Name}</div>
+                            <Col>
+                                <Card>
+                                    <Card.Body>
+                                    <div>Hero: {this.state.hero6Name}</div>
                                 <div>Time Played: {this.state.hero6Time}</div>
                                 <div>Medals:{this.state.hero6Medals}  </div>
                                 <div>Eliminations: {this.state.hero6Elims} </div>
                                 <div>Damage Done: {this.state.hero6Damage}</div>
                                 <div>Objective Time: {this.state.hero6ObjTime} </div>
-                                </Card.Body>
+                                    </Card.Body>
+                                    </Card>
+                                    </Col>
+                                    </Row>
+
+                            
+                                    
+
+
                             </Card>
                         </Col>
                     </Row>
