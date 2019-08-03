@@ -4,20 +4,20 @@ import "./index.css"
 
 const Features = () => {
     return (
-        <Container>
-            <h1 className="pt-3 text-center">Features</h1>
+        <Container className="text-white">
+            <h1 className="text-center pb-5">Features</h1>
             <Row>
-                <Col md={3}><img src="https://via.placeholder.com/100x100"/>
-                    <p>sdadjksndklsajd</p>
+                <Col md={3}><i class="fas fa-binoculars fa-6x"></i>
+                    <p className="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </Col>
-                <Col md={3}><img src="https://via.placeholder.com/100x100"/>
-                    <p>sdadjksndklsajd</p>
+                <Col md={3}><i class="fas fa-chart-line fa-6x"></i>
+                    <p className="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </Col>
-                <Col md={3}><img src="https://via.placeholder.com/100x100"/>
-                    <p>sdadjksndklsajd</p>
+                <Col md={3}><i class="fas fa-users fa-6x"></i>
+                    <p className="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </Col>
-                <Col md={3}><img src="https://via.placeholder.com/100x100"/>
-                    <p>sdadjksndklsajd</p>
+                <Col md={3}><i class="fab fa-battle-net fa-6x"></i>
+                    <p className="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </Col>
             </Row>
         </Container>

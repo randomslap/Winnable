@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import StatsPage from "./pages/StatsPage";
 import Profile from "./pages/Profile";
+import TeamProfile from "./pages/TeamProfile"
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -49,6 +50,7 @@ class App extends Component {
 						/>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/stats" component={StatsPage} />
+						<Route exact path="/teamprofile" component={TeamProfile} />
 						<Route component={Home} />
 					</Switch>
 					<Footer />
