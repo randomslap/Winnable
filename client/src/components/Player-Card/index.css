@@ -1,0 +1,18 @@
+#leftTabContent {
+    text-align: left; 
+    padding-bottom: 10px;
+}
+#leftTabContentDescPlayers {
+    text-align: center;
+    padding-bottom: 126px;
+}
+#name {
+    text-align: left;
+    padding-left: 20px;
+}
+#joinButton {
+    float: right; 
+}
+#descriptionCard {
+    min-height: 206px;
+}
