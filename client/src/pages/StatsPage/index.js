@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { InputGroup, FormControl, Container, Row, Col, Card, Form, Button, Image } from "react-bootstrap"
-import API from "../utils/API";
-import "./StatsPage.css"
+import API from "../../utils/API";
+import "./index.css"
 
 class StatsPage extends Component {
 
