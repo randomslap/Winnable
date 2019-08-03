@@ -4,6 +4,11 @@
 	margin-top: 8px;
 	min-width: 14rem;
 }
+
+.modal-body form div.container,
+div.dropdown-menu form div.container {
+	padding-top: 0px !important;
+}
 .form-group {
 	margin: 0px !important;
 	padding: 0px !important;
