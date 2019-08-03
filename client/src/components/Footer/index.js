@@ -5,7 +5,7 @@ import "./index.css"
 const Footer = () => {
     return (
         <div className="pt-5">
-            <footer>
+            <footer className="">
                 <h1 className="text-center">Footer</h1>
             </footer>
         </div>
