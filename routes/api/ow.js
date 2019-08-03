@@ -2,25 +2,26 @@ const express = require("express");
 const router = express.Router();
 
 var owjs = require('overwatch-js');
-//const ow = require('overwatch-stats-api');
-//const platform = "pc"
+const ow = require('overwatch-stats-api');
+// const platform = "pc"
 
 //Matches with /api/ow ???
-router.route("/")
+router.route("/:gamertag")
 .get( (req, res) => {
 
-    console.log("Request console logged? "+ req.params)
+    console.log("Request console logged? "+ req.params.gamertag)
 
     owjs
-    .search("Loghandi#1297")
-    .then((data) => console.dir(data, {depth : 2, colors : true}) );
+    .search(req.params.gamertag)
+    .then((response) => {
+        (async () => {
+            const stats = await ow.getAllStats(response[0].urlName, response[0].platform);
+            res.json(stats)
+        })();
+    });
 
-    // .then((response) => {
-    //     (async () => {
-    //         const stats = await ow.getBasicInfo(response[0].urlName, platform);
-    //         console.log(stats)
-    //     })();
-    // });
+    
+    
 
 })
 

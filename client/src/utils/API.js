@@ -15,10 +15,7 @@ export default {
 	saveUser: function(userData) {
 		return axios.post("/api/users", userData);
 	},
-	getStats: function(bnetUser){
-		return axios.get("https://owapi.net/api/v3/u/"+bnetUser+"/stats");
-	},
-	getOWStats: function(bnetData) {
-		return axios.post("/api/ow", bnetData);
+	getOWStats: function(gamertag) {
+		return axios.get(`/api/ow/${gamertag}`);
 	}
 };
