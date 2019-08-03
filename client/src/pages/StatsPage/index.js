@@ -10,7 +10,7 @@ class StatsPage extends Component {
         bnetNum: "",
         userRankImg: "",
         userIcon: "",
-        userLevel:"",
+        userLevel: "",
         userEndorsLvl: 0,
         userSR: 0,
         gamesWon: 0,
@@ -25,80 +25,81 @@ class StatsPage extends Component {
 
     convertTimeStringToNumber = val => Number(val.replace(/:/g, ''))
 
-    loadStats = () =>{
+    loadStats = () => {
         console.log("LoadStats Request...........................")
         API.getOWStats(encodeURIComponent(this.state.bnetName + "#" + this.state.bnetNum))
-        .then(res => {
-            console.log(res.data.heroStats.competitive)
-            var characters = Object.entries(res.data.heroStats.competitive)
-            characters.sort((char1, char2) => {
-                const char1timePlayed = this.convertTimeStringToNumber(char1[1].game.time_played)
-                const char2timePlayed = this.convertTimeStringToNumber(char2[1].game.time_played)
+            .then(res => {
+                console.log(res.data.heroStats.competitive)
+                var characters = Object.entries(res.data.heroStats.competitive)
+                characters.sort((char1, char2) => {
+                    const char1timePlayed = this.convertTimeStringToNumber(char1[1].game.time_played)
+                    const char2timePlayed = this.convertTimeStringToNumber(char2[1].game.time_played)
 
 
-                return char2timePlayed - char1timePlayed
-            })
-            console.log('sorted?', characters)
+                    return char2timePlayed - char1timePlayed
+                })
+                console.log('sorted?', characters)
 
 
 
-            this.setState({
-                userRankImg: res.data.rankIconURL,
-                userLevel: res.data.level,
-                userSR: res.data.rank,
-                userIcon: res.data.iconURL,
-                userEndorsLvl: res.data.endorsementLevel,
-                gamesWon: res.data.heroStats.competitive.overall.game.games_won,
-                hero1Name: characters[1][0].charAt(0).toUpperCase() + characters[1][0].slice(1),
-                hero1Time: characters[1][1].game.time_played,
-                hero1Medals: characters[1][1].match_awards.medals,
-                hero1Elims: characters[1][1].combat.eliminations,
-                hero1Damage: characters[1][1].combat.all_damage_done,
-                hero1ObjTime: characters[1][1].combat.objective_time,
+                this.setState({
+                    userRankImg: res.data.rankIconURL,
+                    userLevel: res.data.level,
+                    userSR: res.data.rank,
+                    userIcon: res.data.iconURL,
+                    userEndorsLvl: res.data.endorsementLevel,
+                    gamesWon: res.data.heroStats.competitive.overall.game.games_won,
+                    hero1Name: characters[1][0].charAt(0).toUpperCase() + characters[1][0].slice(1),
+                    hero1Time: characters[1][1].game.time_played,
+                    hero1Medals: characters[1][1].match_awards.medals,
+                    hero1Elims: characters[1][1].combat.eliminations,
+                    hero1Damage: characters[1][1].combat.all_damage_done,
+                    hero1ObjTime: characters[1][1].combat.objective_time,
 
-                hero2Name: characters[2][0].charAt(0).toUpperCase() + characters[2][0].slice(1),
-                hero2Time: characters[2][1].game.time_played,
-                hero2Medals: characters[2][1].match_awards.medals,
-                hero2Elims: characters[2][1].combat.eliminations,
-                hero2Damage: characters[2][1].combat.all_damage_done,
-                hero2ObjTime: characters[2][1].combat.objective_time,
-
-
-                hero3Name: characters[3][0].charAt(0).toUpperCase() + characters[3][0].slice(1),
-                hero3Time: characters[3][1].game.time_played,
-                hero3Medals: characters[3][1].match_awards.medals,
-                hero3Elims: characters[3][1].combat.eliminations,
-                hero3Damage: characters[3][1].combat.all_damage_done,
-                hero3ObjTime: characters[3][1].combat.objective_time,
+                    hero2Name: characters[2][0].charAt(0).toUpperCase() + characters[2][0].slice(1),
+                    hero2Time: characters[2][1].game.time_played,
+                    hero2Medals: characters[2][1].match_awards.medals,
+                    hero2Elims: characters[2][1].combat.eliminations,
+                    hero2Damage: characters[2][1].combat.all_damage_done,
+                    hero2ObjTime: characters[2][1].combat.objective_time,
 
 
-                hero4Name: characters[4][0].charAt(0).toUpperCase() + characters[4][0].slice(1),
-                hero4Time: characters[4][1].game.time_played,
-                hero4Medals: characters[4][1].match_awards.medals,
-                hero4Elims: characters[4][1].combat.eliminations,
-                hero4Damage: characters[4][1].combat.all_damage_done,
-                hero4ObjTime: characters[4][1].combat.objective_time,
+                    hero3Name: characters[3][0].charAt(0).toUpperCase() + characters[3][0].slice(1),
+                    hero3Time: characters[3][1].game.time_played,
+                    hero3Medals: characters[3][1].match_awards.medals,
+                    hero3Elims: characters[3][1].combat.eliminations,
+                    hero3Damage: characters[3][1].combat.all_damage_done,
+                    hero3ObjTime: characters[3][1].combat.objective_time,
 
 
-                hero5Name: characters[5][0].charAt(0).toUpperCase() + characters[5][0].slice(1),
-                hero5Time: characters[5][1].game.time_played,
-                hero5Medals: characters[5][1].match_awards.medals,
-                hero5Elims: characters[5][1].combat.eliminations,
-                hero5Damage: characters[5][1].combat.all_damage_done,
-                hero5ObjTime: characters[5][1].combat.objective_time,
+                    hero4Name: characters[4][0].charAt(0).toUpperCase() + characters[4][0].slice(1),
+                    hero4Time: characters[4][1].game.time_played,
+                    hero4Medals: characters[4][1].match_awards.medals,
+                    hero4Elims: characters[4][1].combat.eliminations,
+                    hero4Damage: characters[4][1].combat.all_damage_done,
+                    hero4ObjTime: characters[4][1].combat.objective_time,
 
 
-                hero6Name: characters[6][0].charAt(0).toUpperCase() + characters[6][0].slice(1),
-                hero6Time: characters[6][1].game.time_played,
-                hero6Medals: characters[6][1].match_awards.medals,
-                hero6Elims: characters[6][1].combat.eliminations,
-                hero6Damage: characters[6][1].combat.all_damage_done,
-                hero6ObjTime: characters[6][1].combat.objective_time,
+                    hero5Name: characters[5][0].charAt(0).toUpperCase() + characters[5][0].slice(1),
+                    hero5Time: characters[5][1].game.time_played,
+                    hero5Medals: characters[5][1].match_awards.medals,
+                    hero5Elims: characters[5][1].combat.eliminations,
+                    hero5Damage: characters[5][1].combat.all_damage_done,
+                    hero5ObjTime: characters[5][1].combat.objective_time,
 
 
-            })
-        }
-        )}
+                    hero6Name: characters[6][0].charAt(0).toUpperCase() + characters[6][0].slice(1),
+                    hero6Time: characters[6][1].game.time_played,
+                    hero6Medals: characters[6][1].match_awards.medals,
+                    hero6Elims: characters[6][1].combat.eliminations,
+                    hero6Damage: characters[6][1].combat.all_damage_done,
+                    hero6ObjTime: characters[6][1].combat.objective_time,
+
+
+                })
+            }
+            )
+    }
 
     handleInputChange = event => {
         let value = event.target.value;
@@ -134,23 +135,23 @@ class StatsPage extends Component {
                                         </Row>
                                     </Col>
                                     <Col md={{ span: 5 }}>
-                                        <Form.Control 
-                                        value={this.state.bnetName}
-                                        onChange={this.handleInputChange}
-                                        name="bnetName"
-                                        size="lg" type="text" placeholder="search user here..." />
+                                        <Form.Control
+                                            value={this.state.bnetName}
+                                            onChange={this.handleInputChange}
+                                            name="bnetName"
+                                            size="lg" type="text" placeholder="search user here..." />
                                     </Col>
                                     <Col md={{ span: 2 }}>
-                                        <Form.Control 
-                                        value={this.state.title}
-                                        onChange={this.handleInputChange}
-                                        name="bnetNum"
-                                        size="lg" type="text" placeholder="battletag..." />
+                                        <Form.Control
+                                            value={this.state.title}
+                                            onChange={this.handleInputChange}
+                                            name="bnetNum"
+                                            size="lg" type="text" placeholder="battletag..." />
                                     </Col>
                                     <Col md={{ span: 2 }}>
-                                        <Button 
-                                        onClick={this.handleFormSubmit}
-                                        size="lg" type="submit">SEARCH</Button>
+                                        <Button
+                                            onClick={this.handleFormSubmit}
+                                            size="lg" type="submit">SEARCH</Button>
                                     </Col>
                                 </Row>
                             </Card>
@@ -164,7 +165,7 @@ class StatsPage extends Component {
                             <Card id="userInfoCard">
                                 <Row>
                                     <Col md={{ span: 3, offset: 1 }}>
-                                        <Image src={this.state.userIcon} rounded />
+                                        <Image id="profilePicture" src={this.state.userIcon} />
                                     </Col>
                                     <Col md={{ span: 8 }}>
                                         <h1>{this.state.bnetName + "#" + this.state.bnetNum}</h1>
@@ -189,8 +190,7 @@ class StatsPage extends Component {
                                         </Row>
                                         <Row>
                                             <Col md={12}>
-                                            <img src={this.state.userRankImg} ></img>
-                                                <p id="test">RANK: <span>{this.state.userSR}</span></p>
+                                                <p id="test">RANK: <span>{this.state.userSR}</span> <img id="rankIcon" src={this.state.userRankImg}></img></p>
                                             </Col>
                                         </Row>
                                         <Row>
@@ -214,6 +214,220 @@ class StatsPage extends Component {
                     <Row>
                         <Col md={12}>
                             <Card>
+                                <Container>
+                                    <Row>
+                                        <Col md={12}>
+                                        <h1 className="pt-3">TOP SIX HEROES</h1>
+                                        </Col>
+                                        </Row>
+                                        <Row>
+                                        <Col md={12} className="pt-3">
+                                            <Card>
+                                                <Container>
+                                                    <Row>
+                                                        <Col md={2}>
+                                                            <p>{this.state.hero1Name}</p>
+                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero1Time}</p>
+                                                            <p>TIME PLAYED</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero1Medals}</p>
+                                                            <p>MEDALS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero1Elims}</p>
+                                                            <p>ELIMINATIONS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero1Damage}</p>
+                                                            <p>DAMAGE DONE</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero1ObjTime}</p>
+                                                            <p>OBJECTIVE TIME</p>
+                                                        </Col>
+                                                    </Row>
+                                                </Container>
+                                            </Card>
+                                        </Col>
+                                        <Col md={12} className="pt-3">
+                                            <Card>
+                                                <Container>
+                                                    <Row>
+                                                        <Col md={2}>
+                                                            <p>{this.state.hero2Name}</p>
+                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero2Time}</p>
+                                                            <p>TIME PLAYED</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero2Medals}</p>
+                                                            <p>MEDALS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero2Elims}</p>
+                                                            <p>ELIMINATIONS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero2Damage}</p>
+                                                            <p>DAMAGE DONE</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero2ObjTime}</p>
+                                                            <p>OBJECTIVE TIME</p>
+                                                        </Col>
+                                                    </Row>
+                                                </Container>
+                                            </Card>
+                                        </Col>
+                                        <Col md={12} className="pt-3">
+                                            <Card>
+                                                <Container>
+                                                    <Row>
+                                                        <Col md={2}>
+                                                            <p>{this.state.hero3Name}</p>
+                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero3Time}</p>
+                                                            <p>TIME PLAYED</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero3Medals}</p>
+                                                            <p>MEDALS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero3Elims}</p>
+                                                            <p>ELIMINATIONS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero3Damage}</p>
+                                                            <p>DAMAGE DONE</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero3ObjTime}</p>
+                                                            <p>OBJECTIVE TIME</p>
+                                                        </Col>
+                                                    </Row>
+                                                </Container>
+                                            </Card>
+                                        </Col>
+                                        <Col md={12} className="pt-3">
+                                            <Card>
+                                                <Container>
+                                                    <Row>
+                                                        <Col md={2}>
+                                                            <p>{this.state.hero4Name}</p>
+                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero4Time}</p>
+                                                            <p>TIME PLAYED</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero4Medals}</p>
+                                                            <p>MEDALS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero4Elims}</p>
+                                                            <p>ELIMINATIONS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero4Damage}</p>
+                                                            <p>DAMAGE DONE</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero4ObjTime}</p>
+                                                            <p>OBJECTIVE TIME</p>
+                                                        </Col>
+                                                    </Row>
+                                                </Container>
+                                            </Card>
+                                        </Col>
+                                        <Col md={12} className="pt-3">
+                                            <Card>
+                                                <Container>
+                                                    <Row>
+                                                        <Col md={2}>
+                                                            <p>{this.state.hero5Name}</p>
+                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero5Time}</p>
+                                                            <p>TIME PLAYED</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero5Medals}</p>
+                                                            <p>MEDALS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero5Elims}</p>
+                                                            <p>ELIMINATIONS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero5Damage}</p>
+                                                            <p>DAMAGE DONE</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero5ObjTime}</p>
+                                                            <p>OBJECTIVE TIME</p>
+                                                        </Col>
+                                                    </Row>
+                                                </Container>
+                                            </Card>
+                                        </Col>
+                                        <Col md={12} className="pt-3 pb-3">
+                                            <Card>
+                                                <Container>
+                                                    <Row>
+                                                        <Col md={2}>
+                                                            <p>{this.state.hero6Name}</p>
+                                                            <img src="http://placehold.jp/150x150.png" ></img>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero6Time}</p>
+                                                            <p>TIME PLAYED</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero6Medals}</p>
+                                                            <p>MEDALS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero6Elims}</p>
+                                                            <p>ELIMINATIONS</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero6Damage}</p>
+                                                            <p>DAMAGE DONE</p>
+                                                        </Col>
+                                                        <Col md={2} id="statInfo">
+                                                            <p>{this.state.hero6ObjTime}</p>
+                                                            <p>OBJECTIVE TIME</p>
+                                                        </Col>
+                                                    </Row>
+                                                </Container>
+                                            </Card>
+                                        </Col>
+                                    </Row>
+                                </Container>
+                            </Card>
+                        </Col>
+                    </Row>
+
+                </Container>
+            </div>
+        )
+    }
+}
+
+export default StatsPage;
+
+{/* <Card>
                             <Row>
                             <Col>
                                 <Card>
@@ -303,14 +517,4 @@ class StatsPage extends Component {
 
 
 
-                            </Card>
-                        </Col>
-                    </Row>
-
-                </Container>
-            </div>
-        )
-    }
-}
-
-export default StatsPage;
+                            </Card> */}
