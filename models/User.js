@@ -14,6 +14,20 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
+	team: {
+		type: String,
+		required: false
+	},
+	battleTag: {
+		name: {
+			type: String,
+			required: false
+		},
+		number: {
+			type: Number,
+			required: false
+		}
+	},
 	date: {
 		type: Date,
 		default: Date.now

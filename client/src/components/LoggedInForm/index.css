@@ -1,6 +1,3 @@
-#dropdown-menu-align-right {
-	background: transparent;
-	border: 0px;
-	margin-left: -17px;
-	margin-top: 8px;
+.loggedIn div.dropdown-menu {
+	min-width: 8.2rem !important;
 }

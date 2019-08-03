@@ -2,14 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import {
-	ButtonGroup,
-	Button,
-	DropdownButton,
-	Dropdown,
-	NavDropdown
-} from "react-bootstrap";
-import "./index.css"
+import { NavDropdown } from "react-bootstrap";
+import "./index.css";
 
 class LoggedInForm extends Component {
 	onLogoutClick = e => {
@@ -21,12 +15,14 @@ class LoggedInForm extends Component {
 		return (
 			<NavDropdown
 				title={this.props.auth.user.name}
-				controlId="basic-nav-dropdown loggedIn"
+				controlId="nav-dropdown"
+				className="loggedIn"
 			>
-				<ButtonGroup vertical>
-					<Button>Account</Button>
-					<Button onClick={this.onLogoutClick}>Logout</Button>
-				</ButtonGroup>
+				<NavDropdown.Item href="/profile">Account</NavDropdown.Item>
+				<NavDropdown.Divider />
+				<NavDropdown.Item onClick={this.onLogoutClick}>
+					Logout
+				</NavDropdown.Item>
 			</NavDropdown>
 		);
 	}
