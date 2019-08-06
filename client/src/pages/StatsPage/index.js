@@ -160,7 +160,8 @@ class StatsPage extends Component {
 					hero6ObjTime: characters[6][1].combat.objective_time,
 
 					loading: false,
-					loaded: true
+					loaded: true,
+					notFound: false
 				});
 			})
 			.catch(err => {
