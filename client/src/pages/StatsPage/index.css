@@ -1,13 +1,19 @@
 #searchBarCard {
-	padding-top: 10px;
+	padding-top: 15px;
 	padding-bottom: 10px;
 }
 #searchBarText {
-	font-size: 16px;
+	font-size: 15px;
+	padding-top: 8px;
+	padding-left: 20px;
+}
+#searchBarText2 {
+	padding-top: 10px;
 }
 #userInfoCard {
 	padding-top: 20px;
 	padding-bottom: 83px;
+	background-color: #26262c;
 }
 #test {
 	text-align: left !important;
@@ -20,8 +26,56 @@
 }
 #profilePicture {
 	width: 165px;
+	border: solid 3px #1b1b20;
 }
-
 .results {
 	padding-bottom: 30rem;
+}
+
+#heroContainer {
+	background-color: #26262c;
+	color: white;
+}
+#userStatsCard {
+	background-color: #26262c;
+	color: white;
+}
+#resultsCard {
+	background-color: #1b1b20;
+	border: none;
+	color: white;
+	font-size: 18px;
+}
+#searchBarCard {
+	background-color: #26262c;
+	color: white;
+	border: 5px none;
+    border-radius: 5px 5px 30px 5px;
+}
+.btn-orange {
+	background-color: #f79c15 !important;
+	border: 2px solid orange;
+	border-radius: 0px;
+	color: black;
+	width: 110px;
+	font-size: 17px;
+}
+.btn-orange:hover {
+	border: 2px solid orange;
+	background-color: transparent !important;
+	border-radius: 0px;
+	color: white;
+}
+#heroName {
+	font-size: 28px;
+}
+#statsInfoSize {
+	font-size: 35px;
+	color: #f79c15;
+}
+#owOrange {
+	color: #f79c15;
+}
+hr {
+	border-top: 1px solid #f79c15;
 }
