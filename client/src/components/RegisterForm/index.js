@@ -16,6 +16,10 @@ class RegisterForm extends Component {
 			password2: "",
 			battleTagName: "",
 			battleTagNumber: "",
+			hero1: "",
+			hero2: "",
+			hero3: "",
+			role: "",
 			errors: {},
 			registered: false
 		};
@@ -54,7 +58,8 @@ class RegisterForm extends Component {
 			battleTag: {
 				name: this.state.battleTagName,
 				number: this.state.battleTagNumber
-			}
+			},
+			preferredRole: this.state.role
 		};
 		this.props.registerUser(newUser, this.props.history);
 	};
@@ -121,7 +126,7 @@ class RegisterForm extends Component {
 									// error={}
 									id="battleTagName"
 									type="battleTagName"
-									placeholder="Optional"
+									placeholder="Soldier"
 									// className={classnames("", {
 									// 	invalid: errors.password2
 									// })}
@@ -139,7 +144,7 @@ class RegisterForm extends Component {
 									// error={}
 									id="battleTagNumber"
 									type="battleTagNumber"
-									placeholder="Optional"
+									placeholder="1234"
 									// className={classnames("", {
 									// 	invalid: errors.password2
 									// })}
@@ -148,6 +153,20 @@ class RegisterForm extends Component {
 							{/* <Form.Text className="text-muted">
 								{errors.password2}
 							</Form.Text> */}
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<Form.Group controlId="formBasicEmail">
+							<Form.Label>Preferred Role</Form.Label>
+							<Form.Control
+									onChange={this.onChange}
+									value={this.state.role}
+									id="role"
+									type="role"
+									placeholder="Damage / Tank / Support"	
+								/>
+							</Form.Group>
 						</Col>
 					</Row>
 					<Row>
