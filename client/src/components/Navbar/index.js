@@ -60,34 +60,6 @@ class MainNavbar extends Component {
 			</div>
 		);
 		return (
-<<<<<<< HEAD
-			<nav className="menuBar">
-				<div className="logo">
-					<a href="/">Winnable</a>
-				</div>
-				<div className="menuCon">
-					<div className="rightMenu">
-						<RightMenu />
-					</div>
-					<Button
-						className="barsMenu"
-						type="primary"
-						onClick={this.showDrawer}
-					>
-						<span className="barsBtn" />
-					</Button>
-					<Drawer
-						title="Basic Drawer"
-						placement="right"
-						closable={false}
-						onClose={this.onClose}
-						visible={this.state.visible}
-					>
-						<RightMenu />
-					</Drawer>
-				</div>
-			</nav>
-=======
 			<Navbar bg="dark" variant="dark" expand="lg">
 				<Navbar.Brand href="#home">
 					<img src={require('../Navbar/winnablenavbar.png')} width="180px" height="35px"/>
@@ -106,14 +78,10 @@ class MainNavbar extends Component {
 					</ButtonToolbar>
 				</Navbar.Collapse>
 			</Navbar>
->>>>>>> 07dae6c163432a4a2a1ef8a155cbe9d00943b986
 		);
 	}
 }
 
-<<<<<<< HEAD
-export default Navbar;
-=======
 MainNavbar.propTypes = {
 	auth: PropTypes.object.isRequired,
 	reg: PropTypes.object.isRequired
@@ -124,4 +92,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(MainNavbar);
->>>>>>> 07dae6c163432a4a2a1ef8a155cbe9d00943b986

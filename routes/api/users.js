@@ -23,12 +23,6 @@ router.post("/register", (req, res) => {
 					email: "Email already exists",
 					name: "Username already exists"
 				});
-<<<<<<< HEAD
-			} else if (user.email === req.body.email) {
-				console.log("Email");
-				return res.status(400).json({ email: "Email already exists" });
-			} else if (user.name === req.body.name) {
-=======
 			} else if (
 				user.email === req.body.email &&
 				user.name != req.body.name
@@ -39,16 +33,12 @@ router.post("/register", (req, res) => {
 				user.name === req.body.name &&
 				user.email != req.body.email
 			) {
->>>>>>> 07dae6c163432a4a2a1ef8a155cbe9d00943b986
 				console.log("Name");
 				return res
 					.status(400)
 					.json({ name: "Username already exists" });
 			}
-<<<<<<< HEAD
-=======
 			return;
->>>>>>> 07dae6c163432a4a2a1ef8a155cbe9d00943b986
 		} else {
 			const newUser = new User({
 				name: req.body.name,
@@ -80,11 +70,6 @@ router.post("/login", (req, res) => {
 	}
 	const name = req.body.name;
 	const password = req.body.password;
-<<<<<<< HEAD
-	User.findOne({ name }).then(user => {
-		if (!user) {
-			return res.status(404).json({ namenotfound: "Username not found" });
-=======
 	User.findOne({
 		$or: [{ email: req.body.email }, { name: req.body.name }]
 	}).then(user => {
@@ -92,7 +77,6 @@ router.post("/login", (req, res) => {
 			return res
 				.status(404)
 				.json({ emailnotfound: "Email or Password does not match" });
->>>>>>> 07dae6c163432a4a2a1ef8a155cbe9d00943b986
 		}
 		bcrypt.compare(password, user.password).then(isMatch => {
 			if (isMatch) {

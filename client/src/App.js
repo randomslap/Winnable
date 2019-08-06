@@ -1,22 +1,17 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-<<<<<<< HEAD
-import Navbar from "./components/Navbar";
-=======
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import MainNavbar from "./components/Navbar";
->>>>>>> 07dae6c163432a4a2a1ef8a155cbe9d00943b986
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import StatsPage from "./pages/StatsPage";
 import Profile from "./pages/Profile";
 
-import TeamProfile from "./pages/TeamProfile"
-import Finder from './pages/Finder';
-
+import TeamProfile from "./pages/TeamProfile";
+import Finder from "./pages/Finder";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -45,36 +40,29 @@ if (localStorage.jwtToken) {
 class App extends Component {
 	render() {
 		return (
-<<<<<<< HEAD
-			<Router>
-					<Navbar />
-=======
 			<Provider store={store}>
 				<Router>
 					<MainNavbar />
->>>>>>> 07dae6c163432a4a2a1ef8a155cbe9d00943b986
 					<Switch>
 						<PrivateRoute
 							exact
 							path="/profile"
 							component={Profile}
 						/>
-						<Route exact path="/teams" component={Finder}/>
+						<Route exact path="/teams" component={Finder} />
 						<Route exact path="/" component={Home} />
-<<<<<<< HEAD
-						<Route component={null} />
-					</Switch>
-			</Router>
-=======
 						<Route exact path="/stats" component={StatsPage} />
-						<Route exact path="/teamprofile" component={TeamProfile} />
-						
+						<Route
+							exact
+							path="/teamprofile"
+							component={TeamProfile}
+						/>
+
 						<Route component={Home} />
 					</Switch>
 					<Footer />
 				</Router>
 			</Provider>
->>>>>>> 07dae6c163432a4a2a1ef8a155cbe9d00943b986
 		);
 	}
 }
