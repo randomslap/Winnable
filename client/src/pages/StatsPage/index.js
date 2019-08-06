@@ -198,7 +198,7 @@ class StatsPage extends Component {
 			display: block;
 			margin-left: 34rem;
 			margin-top: 50px;
-			margin-bottom: 100rem;
+			margin-bottom: 65rem;
 			border-color: red;
 		`;
 		const src1 = this.state
@@ -1002,10 +1002,20 @@ class StatsPage extends Component {
 					</Row>
 				</Container>
 				<div>
+					(
+					{!this.state.loading && !this.state.loaded ? (
+						<div className="results" />
+					) : (
+						<div />
+					)}
+					)
+				</div>
+				<div>
 					{this.state.loading || !this.state.loaded ? (
 						<ScrollAnimation
 							animateIn="fadeIn"
 							animateOut="fadeOut"
+							animateOnce={true}
 						>
 							<Container>
 								<Row>
