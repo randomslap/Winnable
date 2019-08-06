@@ -1,0 +1,20 @@
+.btn-black {
+	background-color: transparent !important;
+	border: 2px solid white;
+	border-radius: 0px;
+	width: 150px;
+	font-size: 17px;
+}
+
+.btn-black:hover {
+	border: 2px solid orange;
+	background-color: orange !important;
+	color: black;
+}
+
+.dropdown-menu {
+	background-color: #1b1b20 !important;
+	color: white;
+}
+
+
