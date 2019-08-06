@@ -11,7 +11,7 @@ const Features = () => {
                     <p className="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </Col>
                 <Col md={3}><i class="fas fa-chart-line fa-6x"></i>
-                    <p className="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p className="pt-3">Improve your game play with Winnable - our leaderboard system keeps track of all your progress.</p>
                 </Col>
                 <Col md={3}><i class="fas fa-users fa-6x"></i>
                     <p className="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
