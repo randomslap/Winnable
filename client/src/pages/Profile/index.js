@@ -13,7 +13,7 @@ class Profile extends Component {
 						<Card className="cardOne">
 							<Row>
 								<Col md={12}>
-									<h2>Username</h2>
+									<h2>{this.props.auth.user.name}</h2>
 									<img src="https://place-hold.it/184x184" />
 									<h6 className="pt-3">Battle.net</h6>
 									<p>
