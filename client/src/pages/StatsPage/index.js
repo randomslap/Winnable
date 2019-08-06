@@ -63,6 +63,7 @@ class StatsPage extends Component {
 		hero6Damage: "",
 		hero6ObjTime: "",
 		loading: false,
+		loaded: false,
 		notFound: false
 	};
 
@@ -157,15 +158,16 @@ class StatsPage extends Component {
 					hero6Damage: characters[6][1].combat.all_damage_done,
 					hero6ObjTime: characters[6][1].combat.objective_time,
 
-					loading: false
+					loading: false,
+					loaded: true
 				});
 			})
 			.catch(err => {
 				if (err) {
 					this.setState({
 						notFound: true
-                    });
-                    console.log("error");
+					});
+					console.log("error " + this.state.notFound);
 				}
 			});
 	};
@@ -184,15 +186,7 @@ class StatsPage extends Component {
 
 	handleFormSubmit = event => {
 		event.preventDefault();
-        this.loadStats();
-        setInterval(() => {
-            if (this.state.loading) {
-                this.setState({
-                    loading:false,
-                    notFound: true
-                })
-            }
-        }, 7000)
+		this.loadStats();
 	};
 
 	render() {
@@ -869,7 +863,7 @@ class StatsPage extends Component {
 					</Row>
 				</Container>
 				<div>
-					{this.state.loading ? (
+					{this.state.loading || !this.state.loaded ? (
 						<Fade timeout={1000} in={this.state.loading}>
 							<PacmanLoader
 								css={override}
@@ -880,7 +874,11 @@ class StatsPage extends Component {
 							/>
 						</Fade>
 					) : (
-						<Fade appear={this.state.loading} timeout={1000} in={this.state.loading ? false : true}>
+						<Fade
+							appear={this.state.loading}
+							timeout={1000}
+							in={this.state.loading ? false : true}
+						>
 							{results}
 						</Fade>
 					)}

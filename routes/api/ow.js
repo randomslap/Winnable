@@ -11,18 +11,22 @@ router.route("/:gamertag").get((req, res) => {
 
 	owjs.search(req.params.gamertag)
 		.then(response => {
-			(async () => {
-				const stats = await ow.getAllStats(
-					response[0].urlName,
-					response[0].platform
-				);
-				res.json(stats);
-			})();
+			if (response[0].urlName) {
+				(async () => {
+					const stats = await ow.getAllStats(
+						response[0].urlName,
+						response[0].platform
+					);
+					res.json(stats);
+				})();
+			} else {
+				console.log("tester");
+			}
 		})
 		.catch(err => {
 			if (err) {
 				console.log("err backend");
-				return res.status(404);
+				return res.status(404).send("error at catch backend");
 			}
 		});
 });
