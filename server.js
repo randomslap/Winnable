@@ -13,12 +13,19 @@ app.use(
 );
 app.use(bodyParser.json());
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/project3";
+const MONGODB_URI =
+	process.env.MONGODB_URI ||
+	"mongodb://localhost/project3" ||
+	"mongodb://heroku_z9wstwkk:winnable123@ds115352.mlab.com:15352/heroku_z9wstwkk";
 
 mongoose
 	.connect(MONGODB_URI, { useNewUrlParser: true })
 	.then(() => console.log("MongoDB connected successfully"))
 	.catch(err => console.log(err));
+
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("client/build"));
+}
 
 // Passport middleware
 app.use(passport.initialize());
@@ -29,8 +36,6 @@ app.use("/api/users", users);
 
 app.use("/api/ow", ow);
 
+const PORT = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 
-
-const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
-
-app.listen(port, () => console.log(`Server up and running on port ${port}!`));
+app.listen(PORT, () => console.log(`Server up and running on port ${PORT}!`));
