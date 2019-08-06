@@ -64,6 +64,9 @@ class MainNavbar extends Component {
 				<Navbar.Brand href="/">
 					<img src={require('../Navbar/winnablenavbar.png')} width="180px" height="35px"/>
 				</Navbar.Brand>
+				<div className="betatext">
+					BETA
+				</div>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse
 					variant="secondary"
