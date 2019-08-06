@@ -240,7 +240,7 @@ class StatsPage extends Component {
 								animateIn="fadeInLeft"
 								animateOut="fadeOutLeft"
 								animateOnce={true}
-								initiallyVisible={true}
+								initiallyVisible={false}
 							>
 								<Card id="userInfoCard">
 									<Row>
@@ -266,7 +266,7 @@ class StatsPage extends Component {
 								animateIn="fadeInRight"
 								animateOut="fadeOutRight"
 								animateOnce={true}
-								initiallyVisible={true}
+								initiallyVisible={false}
 							>
 								<Card>
 									<Row>
@@ -348,7 +348,7 @@ class StatsPage extends Component {
 								animateIn="fadeInUp"
 								animateOut="fadeOutDown"
 								animateOnce={true}
-								initiallyVisible={true}
+								initiallyVisible={false}
 							>
 								<Card>
 									<Container>
