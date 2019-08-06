@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Fade from "react-bootstrap/Fade";
 import { css } from "@emotion/core";
-import { PacmanLoader } from "react-spinners";
+import { PropagateLoader } from "react-spinners";
 import ScrollAnimation from "react-animate-on-scroll";
 import {
 	InputGroup,
@@ -196,9 +196,9 @@ class StatsPage extends Component {
 	render() {
 		const override = css`
 			display: block;
-			margin: 0 auto;
+			margin-left: 34rem;
 			margin-top: 50px;
-			text-align: center;
+			margin-bottom: 100rem;
 			border-color: red;
 		`;
 		const src1 = this.state
@@ -236,87 +236,107 @@ class StatsPage extends Component {
 				<Container className="pt-5">
 					<Row>
 						<Col md={9}>
-							<Card id="userInfoCard">
-								<Row>
-									<Col md={{ span: 3, offset: 1 }}>
-										<Image
-											id="profilePicture"
-											src={this.state.userIcon}
-										/>
-									</Col>
-									<Col md={{ span: 8 }}>
-										<h1>
-											{this.state.bnetName +
-												"#" +
-												this.state.bnetNum}
-										</h1>
-									</Col>
-								</Row>
-							</Card>
+							<ScrollAnimation
+								animateIn="fadeInLeft"
+								animateOut="fadeOutLeft"
+								animateOnce={true}
+								initiallyVisible={true}
+							>
+								<Card id="userInfoCard">
+									<Row>
+										<Col md={{ span: 3, offset: 1 }}>
+											<Image
+												id="profilePicture"
+												src={this.state.userIcon}
+											/>
+										</Col>
+										<Col md={{ span: 8 }}>
+											<h1>
+												{this.state.bnetName +
+													"#" +
+													this.state.bnetNum}
+											</h1>
+										</Col>
+									</Row>
+								</Card>
+							</ScrollAnimation>
 						</Col>
 						<Col md={3}>
-							<Card>
-								<Row>
-									<Col md={12}>
-										<Row>
-											<Col md={12}>
-												<p>COMPETITIVE STATS</p>
-												<hr />
-											</Col>
-										</Row>
-										<Row>
-											<Col md={12}>
-												<p id="test">
-													LEVEL:{" "}
-													<span>
-														{this.state.userLevel}
-													</span>{" "}
-												</p>
-											</Col>
-										</Row>
-										<Row>
-											<Col md={12}>
-												<p id="test">
-													RANK:{" "}
-													<span>
-														{this.state.userSR}
-													</span>{" "}
-													<img
-														id="rankIcon"
-														src={
-															this.state
-																.userRankImg
-														}
-													/>
-												</p>
-											</Col>
-										</Row>
-										<Row>
-											<Col md={12}>
-												<p id="test">
-													GAMES WON:{" "}
-													<span>
-														{this.state.gamesWon}
-													</span>
-												</p>
-											</Col>
-										</Row>
-										<Row>
-											<Col md={12}>
-												<p id="test">
-													ENDORSMENT:{" "}
-													<span>
-														{
-															this.state
-																.userEndorsLvl
-														}
-													</span>
-												</p>
-											</Col>
-										</Row>
-									</Col>
-								</Row>
-							</Card>
+							<ScrollAnimation
+								animateIn="fadeInRight"
+								animateOut="fadeOutRight"
+								animateOnce={true}
+								initiallyVisible={true}
+							>
+								<Card>
+									<Row>
+										<Col md={12}>
+											<Row>
+												<Col md={12}>
+													<p>COMPETITIVE STATS</p>
+													<hr />
+												</Col>
+											</Row>
+											<Row>
+												<Col md={12}>
+													<p id="test">
+														LEVEL:{" "}
+														<span>
+															{
+																this.state
+																	.userLevel
+															}
+														</span>{" "}
+													</p>
+												</Col>
+											</Row>
+											<Row>
+												<Col md={12}>
+													<p id="test">
+														RANK:{" "}
+														<span>
+															{this.state.userSR}
+														</span>{" "}
+														<img
+															id="rankIcon"
+															src={
+																this.state
+																	.userRankImg
+															}
+														/>
+													</p>
+												</Col>
+											</Row>
+											<Row>
+												<Col md={12}>
+													<p id="test">
+														GAMES WON:{" "}
+														<span>
+															{
+																this.state
+																	.gamesWon
+															}
+														</span>
+													</p>
+												</Col>
+											</Row>
+											<Row>
+												<Col md={12}>
+													<p id="test">
+														ENDORSMENT:{" "}
+														<span>
+															{
+																this.state
+																	.userEndorsLvl
+															}
+														</span>
+													</p>
+												</Col>
+											</Row>
+										</Col>
+									</Row>
+								</Card>
+							</ScrollAnimation>
 						</Col>
 					</Row>
 				</Container>
@@ -324,493 +344,590 @@ class StatsPage extends Component {
 				<Container className="pt-5">
 					<Row>
 						<Col md={12}>
-							<Card>
-								<Container>
-									<Row>
-										<Col md={12}>
-											<h1 className="pt-3">
-												TOP SIX HEROES
-											</h1>
-										</Col>
-									</Row>
-									<Row>
-										<Col md={12} className="pt-3">
-											<Card>
-												<Container>
-													<Row>
-														<Col md={2}>
-															<p>
-																{
-																	this.state
-																		.hero1Name
-																}
-															</p>
-															<img src={src1} />
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero1Time
-																}
-															</p>
-															<p>TIME PLAYED</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero1Medals
-																}
-															</p>
-															<p>MEDALS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero1Elims
-																}
-															</p>
-															<p>ELIMINATIONS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero1Damage
-																}
-															</p>
-															<p>DAMAGE DONE</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero1ObjTime
-																}
-															</p>
-															<p>
-																OBJECTIVE TIME
-															</p>
-														</Col>
-													</Row>
-												</Container>
-											</Card>
-										</Col>
-										<Col md={12} className="pt-3">
-											<Card>
-												<Container>
-													<Row>
-														<Col md={2}>
-															<p>
-																{
-																	this.state
-																		.hero2Name
-																}
-															</p>
-															<img src={src2} />
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero2Time
-																}
-															</p>
-															<p>TIME PLAYED</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero2Medals
-																}
-															</p>
-															<p>MEDALS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero2Elims
-																}
-															</p>
-															<p>ELIMINATIONS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero2Damage
-																}
-															</p>
-															<p>DAMAGE DONE</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero2ObjTime
-																}
-															</p>
-															<p>
-																OBJECTIVE TIME
-															</p>
-														</Col>
-													</Row>
-												</Container>
-											</Card>
-										</Col>
-										<Col md={12} className="pt-3">
-											<Card>
-												<Container>
-													<Row>
-														<Col md={2}>
-															<p>
-																{
-																	this.state
-																		.hero3Name
-																}
-															</p>
-															<img src={src3} />
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero3Time
-																}
-															</p>
-															<p>TIME PLAYED</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero3Medals
-																}
-															</p>
-															<p>MEDALS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero3Elims
-																}
-															</p>
-															<p>ELIMINATIONS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero3Damage
-																}
-															</p>
-															<p>DAMAGE DONE</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero3ObjTime
-																}
-															</p>
-															<p>
-																OBJECTIVE TIME
-															</p>
-														</Col>
-													</Row>
-												</Container>
-											</Card>
-										</Col>
-										<Col md={12} className="pt-3">
-											<Card>
-												<Container>
-													<Row>
-														<Col md={2}>
-															<p>
-																{
-																	this.state
-																		.hero4Name
-																}
-															</p>
-															<img src={src4} />
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero4Time
-																}
-															</p>
-															<p>TIME PLAYED</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero4Medals
-																}
-															</p>
-															<p>MEDALS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero4Elims
-																}
-															</p>
-															<p>ELIMINATIONS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero4Damage
-																}
-															</p>
-															<p>DAMAGE DONE</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero4ObjTime
-																}
-															</p>
-															<p>
-																OBJECTIVE TIME
-															</p>
-														</Col>
-													</Row>
-												</Container>
-											</Card>
-										</Col>
-										<Col md={12} className="pt-3">
-											<Card>
-												<Container>
-													<Row>
-														<Col md={2}>
-															<p>
-																{
-																	this.state
-																		.hero5Name
-																}
-															</p>
-															<img src={src5} />
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero5Time
-																}
-															</p>
-															<p>TIME PLAYED</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero5Medals
-																}
-															</p>
-															<p>MEDALS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero5Elims
-																}
-															</p>
-															<p>ELIMINATIONS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero5Damage
-																}
-															</p>
-															<p>DAMAGE DONE</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero5ObjTime
-																}
-															</p>
-															<p>
-																OBJECTIVE TIME
-															</p>
-														</Col>
-													</Row>
-												</Container>
-											</Card>
-										</Col>
-										<Col md={12} className="pt-3 pb-3">
-											<Card>
-												<Container>
-													<Row>
-														<Col md={2}>
-															<p>
-																{
-																	this.state
-																		.hero6Name
-																}
-															</p>
-															<img src={src6} />
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero6Time
-																}
-															</p>
-															<p>TIME PLAYED</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero6Medals
-																}
-															</p>
-															<p>MEDALS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero6Elims
-																}
-															</p>
-															<p>ELIMINATIONS</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero6Damage
-																}
-															</p>
-															<p>DAMAGE DONE</p>
-														</Col>
-														<Col
-															md={2}
-															id="statInfo"
-														>
-															<p>
-																{
-																	this.state
-																		.hero6ObjTime
-																}
-															</p>
-															<p>
-																OBJECTIVE TIME
-															</p>
-														</Col>
-													</Row>
-												</Container>
-											</Card>
-										</Col>
-									</Row>
-								</Container>
-							</Card>
+							<ScrollAnimation
+								animateIn="fadeInUp"
+								animateOut="fadeOutDown"
+								animateOnce={true}
+								initiallyVisible={true}
+							>
+								<Card>
+									<Container>
+										<Row>
+											<Col md={12}>
+												<h1 className="pt-3">
+													TOP SIX HEROES
+												</h1>
+											</Col>
+										</Row>
+										<Row>
+											<Col md={12} className="pt-3">
+												<Card>
+													<Container>
+														<Row>
+															<Col md={2}>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero1Name
+																	}
+																</p>
+																<img
+																	src={src1}
+																/>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero1Time
+																	}
+																</p>
+																<p>
+																	TIME PLAYED
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero1Medals
+																	}
+																</p>
+																<p>MEDALS</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero1Elims
+																	}
+																</p>
+																<p>
+																	ELIMINATIONS
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero1Damage
+																	}
+																</p>
+																<p>
+																	DAMAGE DONE
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero1ObjTime
+																	}
+																</p>
+																<p>
+																	OBJECTIVE
+																	TIME
+																</p>
+															</Col>
+														</Row>
+													</Container>
+												</Card>
+											</Col>
+											<Col md={12} className="pt-3">
+												<Card>
+													<Container>
+														<Row>
+															<Col md={2}>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero2Name
+																	}
+																</p>
+																<img
+																	src={src2}
+																/>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero2Time
+																	}
+																</p>
+																<p>
+																	TIME PLAYED
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero2Medals
+																	}
+																</p>
+																<p>MEDALS</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero2Elims
+																	}
+																</p>
+																<p>
+																	ELIMINATIONS
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero2Damage
+																	}
+																</p>
+																<p>
+																	DAMAGE DONE
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero2ObjTime
+																	}
+																</p>
+																<p>
+																	OBJECTIVE
+																	TIME
+																</p>
+															</Col>
+														</Row>
+													</Container>
+												</Card>
+											</Col>
+											<Col md={12} className="pt-3">
+												<Card>
+													<Container>
+														<Row>
+															<Col md={2}>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero3Name
+																	}
+																</p>
+																<img
+																	src={src3}
+																/>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero3Time
+																	}
+																</p>
+																<p>
+																	TIME PLAYED
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero3Medals
+																	}
+																</p>
+																<p>MEDALS</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero3Elims
+																	}
+																</p>
+																<p>
+																	ELIMINATIONS
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero3Damage
+																	}
+																</p>
+																<p>
+																	DAMAGE DONE
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero3ObjTime
+																	}
+																</p>
+																<p>
+																	OBJECTIVE
+																	TIME
+																</p>
+															</Col>
+														</Row>
+													</Container>
+												</Card>
+											</Col>
+											<Col md={12} className="pt-3">
+												<Card>
+													<Container>
+														<Row>
+															<Col md={2}>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero4Name
+																	}
+																</p>
+																<img
+																	src={src4}
+																/>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero4Time
+																	}
+																</p>
+																<p>
+																	TIME PLAYED
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero4Medals
+																	}
+																</p>
+																<p>MEDALS</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero4Elims
+																	}
+																</p>
+																<p>
+																	ELIMINATIONS
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero4Damage
+																	}
+																</p>
+																<p>
+																	DAMAGE DONE
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero4ObjTime
+																	}
+																</p>
+																<p>
+																	OBJECTIVE
+																	TIME
+																</p>
+															</Col>
+														</Row>
+													</Container>
+												</Card>
+											</Col>
+											<Col md={12} className="pt-3">
+												<Card>
+													<Container>
+														<Row>
+															<Col md={2}>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero5Name
+																	}
+																</p>
+																<img
+																	src={src5}
+																/>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero5Time
+																	}
+																</p>
+																<p>
+																	TIME PLAYED
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero5Medals
+																	}
+																</p>
+																<p>MEDALS</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero5Elims
+																	}
+																</p>
+																<p>
+																	ELIMINATIONS
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero5Damage
+																	}
+																</p>
+																<p>
+																	DAMAGE DONE
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero5ObjTime
+																	}
+																</p>
+																<p>
+																	OBJECTIVE
+																	TIME
+																</p>
+															</Col>
+														</Row>
+													</Container>
+												</Card>
+											</Col>
+											<Col md={12} className="pt-3 pb-3">
+												<Card>
+													<Container>
+														<Row>
+															<Col md={2}>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero6Name
+																	}
+																</p>
+																<img
+																	src={src6}
+																/>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero6Time
+																	}
+																</p>
+																<p>
+																	TIME PLAYED
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero6Medals
+																	}
+																</p>
+																<p>MEDALS</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero6Elims
+																	}
+																</p>
+																<p>
+																	ELIMINATIONS
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero6Damage
+																	}
+																</p>
+																<p>
+																	DAMAGE DONE
+																</p>
+															</Col>
+															<Col
+																md={2}
+																id="statInfo"
+															>
+																<p>
+																	{
+																		this
+																			.state
+																			.hero6ObjTime
+																	}
+																</p>
+																<p>
+																	OBJECTIVE
+																	TIME
+																</p>
+															</Col>
+														</Row>
+													</Container>
+												</Card>
+											</Col>
+										</Row>
+									</Container>
+								</Card>
+							</ScrollAnimation>
 						</Col>
 					</Row>
 				</Container>
@@ -820,7 +937,9 @@ class StatsPage extends Component {
 			<Container>
 				<Col>
 					<Row>
-						<h1>Player not found</h1>
+						<Card>
+							<h1>Player not found</h1>
+						</Card>
 					</Row>
 				</Col>
 			</Container>
@@ -888,13 +1007,19 @@ class StatsPage extends Component {
 							animateIn="fadeIn"
 							animateOut="fadeOut"
 						>
-							<PacmanLoader
-								css={override}
-								sizeUnit={"px"}
-								size={30}
-								color={"#123abc"}
-								loading={this.state.loading}
-							/>
+							<Container>
+								<Row>
+									<Col md="auto">
+										<PropagateLoader
+											css={override}
+											sizeUnit={"px"}
+											size={30}
+											color={"white"}
+											loading={this.state.loading}
+										/>
+									</Col>
+								</Row>
+							</Container>
 						</ScrollAnimation>
 					) : (
 						<div>
