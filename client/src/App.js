@@ -53,6 +53,7 @@ class App extends Component {
 						<Route exact path="/stats" component={StatsPage} />
 						<Route exact path="/teamprofile" component={TeamProfile} />
 						
+						
 						<Route component={Home} />
 					</Switch>
 					<Footer />
