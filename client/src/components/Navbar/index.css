@@ -21,6 +21,7 @@ div.dropdown-menu form div.container {
 }
 .navbar {
 	background-color: #1b1b20 !important;
+	border-bottom: 1px solid #f79c15;
 }
 #oworange {
 	color: #f79c15;
