@@ -5,6 +5,28 @@ import { connect } from "react-redux";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
 class Profile extends Component {
+
+	// state = {
+    //     bnetUser: "",
+    //     region: "",
+    //     language: "",
+    //     rank: "",
+    // }
+    
+    // componentDidMount = () =>{
+    //     this.loadStats()
+    // }
+
+    // loadStats = () =>{
+    //     console.log("loading stats......................................")
+    //     API.getOWStats(encodeURIComponent(this.state.bnetName + "#" + this.state.bnetNum))
+    //     .then(res => {
+    //         console.log(res.data)
+    //     })
+    // }
+
+
+
 	render() {
 		return (
 			<div>
