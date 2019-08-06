@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import RegisterForm from "../RegisterForm";
+import "./index.css"
 
 function RegisterModal(props) {
 	return (

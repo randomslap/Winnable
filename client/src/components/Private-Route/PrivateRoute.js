@@ -26,7 +26,7 @@ const modal = (
 				</Row>
 				<Row>
 					<Col>
-						<Button href="/" centered>
+						<Button variant="danger" href="/" centered>
 							Go back
 						</Button>
 					</Col>

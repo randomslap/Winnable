@@ -1,0 +1,13 @@
+.modal-content {
+	background-color: #1b1b20 !important;
+	color: white;
+}
+
+.close {
+	color: white;
+}
+
+.close:hover {
+	color: orange;
+	border-style: none !important;
+}
