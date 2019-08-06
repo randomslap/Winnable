@@ -45,7 +45,6 @@ class App extends Component {
 				<Router>
 					<MainNavbar />
 					<Switch>
-						<PrivateRoute exact path="/" component={Home} />
 						<PrivateRoute
 							exact
 							path="/profile"
