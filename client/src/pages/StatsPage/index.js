@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Fade from "react-bootstrap/Fade";
 import { css } from "@emotion/core";
 import { PacmanLoader } from "react-spinners";
+import ScrollAnimation from "react-animate-on-scroll";
 import {
 	InputGroup,
 	FormControl,
@@ -165,6 +166,8 @@ class StatsPage extends Component {
 			.catch(err => {
 				if (err) {
 					this.setState({
+						loading: false,
+						loaded: true,
 						notFound: true
 					});
 					console.log("error " + this.state.notFound);
@@ -812,6 +815,15 @@ class StatsPage extends Component {
 				</Container>
 			</div>
 		);
+		const notFound = (
+			<Container>
+				<Col>
+					<Row>
+						<h1>Player not found</h1>
+					</Row>
+				</Col>
+			</Container>
+		);
 		return (
 			<div>
 				<Container className="pt-3">
@@ -835,8 +847,15 @@ class StatsPage extends Component {
 											name="bnetName"
 											size="lg"
 											type="text"
-											placeholder="search user here..."
+											placeholder=""
 										/>
+									</Col>
+									<Col
+										xs={{ span: false }}
+										md={{ span: false }}
+										lg={{ span: false }}
+									>
+										<h3>#</h3>
 									</Col>
 									<Col md={{ span: 2 }}>
 										<Form.Control
@@ -845,10 +864,10 @@ class StatsPage extends Component {
 											name="bnetNum"
 											size="lg"
 											type="text"
-											placeholder="battletag..."
+											placeholder=""
 										/>
 									</Col>
-									<Col md={{ span: 2 }}>
+									<Col md={{ span: 1 }}>
 										<Button
 											onClick={this.handleFormSubmit}
 											size="lg"
@@ -864,7 +883,7 @@ class StatsPage extends Component {
 				</Container>
 				<div>
 					{this.state.loading || !this.state.loaded ? (
-						<Fade timeout={1000} in={this.state.loading}>
+						<ScrollAnimation animateIn="fadeIn">
 							<PacmanLoader
 								css={override}
 								sizeUnit={"px"}
@@ -872,15 +891,14 @@ class StatsPage extends Component {
 								color={"#123abc"}
 								loading={this.state.loading}
 							/>
-						</Fade>
+						</ScrollAnimation>
 					) : (
-						<Fade
-							appear={this.state.loading}
-							timeout={1000}
-							in={this.state.loading ? false : true}
-						>
-							{results}
-						</Fade>
+						<div>
+							{this.state.loaded && !this.state.notFound
+								? results
+								: notFound}
+							}
+						</div>
 					)}
 				</div>
 			</div>
