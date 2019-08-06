@@ -61,7 +61,7 @@ class MainNavbar extends Component {
 		);
 		return (
 			<Navbar bg="dark" variant="dark" expand="lg">
-				<Navbar.Brand href="#home">
+				<Navbar.Brand href="/">
 					<img src={require('../Navbar/winnablenavbar.png')} width="180px" height="35px"/>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />

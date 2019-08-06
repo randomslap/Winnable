@@ -204,7 +204,7 @@ class RegisterForm extends Component {
 					</Row>
 					<Row>
 						<Col>
-							<Button variant="primary" type="submit">
+							<Button className="btn btn-black" type="submit">
 								Sign-up
 							</Button>
 						</Col>
