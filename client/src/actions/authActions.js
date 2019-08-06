@@ -1,7 +1,12 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, REGISTER_SUCCESS } from "./types";
+import {
+	GET_ERRORS,
+	SET_CURRENT_USER,
+	USER_LOADING,
+	REGISTER_SUCCESS
+} from "./types";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
 	axios
@@ -10,15 +15,15 @@ export const registerUser = (userData, history) => dispatch => {
 			console.log("Success");
 			dispatch({
 				type: REGISTER_SUCCESS
-			})
+			});
 			// window.location.reload();
 		}) // re-direct to login on successful register
-		.catch(err =>
+		.catch(err => {
 			dispatch({
 				type: GET_ERRORS,
 				payload: err.response.data
-			})
-		);
+			});
+		});
 };
 // Login - get user token
 export const loginUser = userData => dispatch => {
@@ -60,8 +65,8 @@ export const setUserLoading = () => {
 export const setRegistered = () => {
 	return {
 		type: REGISTER_SUCCESS
-	}
-}
+	};
+};
 // Log user out
 export const logoutUser = () => dispatch => {
 	// Remove token from local storage

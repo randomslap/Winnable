@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
+import "./index.css"
 
 class LoginForm extends Component {
 	constructor() {
@@ -91,7 +92,10 @@ class LoginForm extends Component {
 					</Row>
 					<Row>
 						<Col>
-							<Button variant="outline-success" type="submit">
+							<Button
+								className="btn btn-black mr-4"
+								type="submit"
+							>
 								Login
 							</Button>
 						</Col>

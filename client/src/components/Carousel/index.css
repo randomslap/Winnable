@@ -36,7 +36,6 @@
 	position: relative;
 	z-index: 2;
 	color: white;
-	
 	font-size: 45px;
 }
 
@@ -55,26 +54,27 @@
 	border-radius: 0px;
 	width: 150px;
 	font-size: 17px;
-	
 }
 
 .btn-white:hover {
 	border: 2px solid white;
 	background-color: white !important;
+	border-radius: 0px;
 	color: black;
 }
 
 .btn-orange {
 	background-color: #f79c15 !important;
 	border: 2px solid orange;
+	border-radius: 0px;
 	color: black;
 	width: 150px;
 	font-size: 17px;
-	
 }
 
 .btn-orange:hover {
 	border: 2px solid orange;
 	background-color: transparent !important;
+	border-radius: 0px;
 	color: white;
 }

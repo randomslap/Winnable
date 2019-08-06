@@ -46,7 +46,7 @@ router.post("/register", (req, res) => {
 				password: req.body.password,
 				battleTag: {
 					name: req.body.battleTag.name,
-					number: req.body.battleTag.number 
+					number: req.body.battleTag.number
 				}
 			});
 			bcrypt.genSalt(10, (err, salt) => {
@@ -82,7 +82,13 @@ router.post("/login", (req, res) => {
 			if (isMatch) {
 				const payload = {
 					id: user.id,
-					name: user.name
+					name: user.name,
+					email: user.email,
+					team: user.team,
+					battleTag: {
+						name: user.battleTag.name,
+						number: user.battleTag.number
+					}
 				};
 				jwt.sign(
 					payload,
