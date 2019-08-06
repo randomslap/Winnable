@@ -35,7 +35,7 @@ class Jumbotron extends Component {
 			},
 			{
 				row1: "Lead Your",
-				row2: "Overwatch Team to the Top",
+				row2: "Overwatch Team to victory",
 				row3: ""
 			},
 			{
@@ -61,7 +61,7 @@ class Jumbotron extends Component {
 				<div className="zindexfix">
 				<Container>
 				<Row>
-						<Col md={{ offset: 3 }}>
+						<Col md={{ offset: 1 }}>
 							<Animated
 								animationIn="fadeInLeft"
 								animationOut="fadeOutRight"
@@ -79,16 +79,24 @@ class Jumbotron extends Component {
 						</Col>
 					</Row>
 					<Row>
-						<Col md={{ offset: 3 }}>
+						<Col md={{ offset: 1 }}>
 							<div className="jumboText">
 								{this.state.currentItem.row2}
 							</div>
 						</Col>
 					</Row>
+					<Row>
+						<Col md={{ offset: 1}}>
+							<div className="ptext mt-3">
+								<p>Helping players and teams improve their game.</p>
+								<p>Winnable will guide you to the <span id="oworange">top.</span></p>
+							</div>
+						</Col>
+					</Row>
 					
 					<Row>
-						<Col md={{ offset: 3}}>
-							<div className="jumboText mt-5">
+						<Col md={{ offset: 1}}>
+							<div className="jumboText">
 								<Button className="btn btn-white mr-4">Create a team</Button>
 								<Button className="btn btn-orange">Join a team</Button>
 							</div>
