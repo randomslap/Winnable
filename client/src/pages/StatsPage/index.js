@@ -884,7 +884,10 @@ class StatsPage extends Component {
 				</Container>
 				<div>
 					{this.state.loading || !this.state.loaded ? (
-						<ScrollAnimation animateIn="fadeIn">
+						<ScrollAnimation
+							animateIn="fadeIn"
+							animateOut="fadeOut"
+						>
 							<PacmanLoader
 								css={override}
 								sizeUnit={"px"}
@@ -895,10 +898,15 @@ class StatsPage extends Component {
 						</ScrollAnimation>
 					) : (
 						<div>
-							{this.state.loaded && !this.state.notFound
-								? results
-								: notFound}
-							}
+							<ScrollAnimation
+								animateIn="fadeIn"
+								animateOut="fadeOut"
+							>
+								{this.state.loaded && !this.state.notFound
+									? results
+									: notFound}
+								}
+							</ScrollAnimation>
 						</div>
 					)}
 				</div>
