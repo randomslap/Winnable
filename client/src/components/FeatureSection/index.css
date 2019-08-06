@@ -2,3 +2,8 @@
     padding-top: 20px;
     text-align: center;
 }
+
+#featureheader {
+    font-weight: 800;
+    letter-spacing: 3px;
+}

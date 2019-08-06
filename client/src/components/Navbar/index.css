@@ -28,6 +28,16 @@ div.dropdown-menu form div.container {
 	color: #f79c15;
 }
 
+
+.betatext {
+	color: #888c94;
+	font-size: 10px;
+	position: relative;
+	top: 5px;
+	right: 10px;
+	line-height: 1;
+}
+
 .dropdown .dropdown-menu {
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;

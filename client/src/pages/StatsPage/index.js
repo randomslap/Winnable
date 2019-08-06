@@ -252,7 +252,7 @@ class StatsPage extends Component {
 										</Col>
 										<Col md={{ span: 8 }}>
 											<h1>
-												{this.state.bnetName +
+												{this.state.bnetName.toUpperCase() +
 													"#" +
 													this.state.bnetNum}
 											</h1>

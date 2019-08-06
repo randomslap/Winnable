@@ -1,5 +1,5 @@
 .carousel {
-	height: 500px;
+	height: 600px;
 	left: 40%;
 	width: 60%;
 	position: relative;
@@ -15,14 +15,14 @@
 	display: none;
 }
 .carousel-item {
-	height: 500px;
+	height: 600px;
 }
 .overlay {
 	position: absolute;
 	top: auto;
 	left: -240px;
 	width: 70%;
-	height: 500px;
+	height: 600px;
 	background-color: #26262c;
 	z-index: 1;
 	-moz-transform: skew(-19deg, 0deg);
@@ -36,8 +36,17 @@
 	position: relative;
 	z-index: 2;
 	color: white;
+  font-weight: 800;
+  font-size: 45px;
+	letter-spacing: 3px;
+}
 
-	font-size: 45px;
+.ptext {
+	position: relative;
+	z-index: 2;
+	color: white;
+	
+	font-size: 20px;
 }
 
 .zindexfix {
@@ -71,6 +80,10 @@
 	color: black;
 	width: 150px;
 	font-size: 17px;
+}
+
+#oworange {
+	color: #f79c15;
 }
 
 .btn-orange:hover {
