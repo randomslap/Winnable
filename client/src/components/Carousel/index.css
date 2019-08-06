@@ -36,8 +36,8 @@
 	position: relative;
 	z-index: 2;
 	color: white;
-	font-weight: 800;
-	font-size: 45px;
+  font-weight: 800;
+  font-size: 45px;
 	letter-spacing: 3px;
 }
 
@@ -64,22 +64,22 @@
 	border-radius: 0px;
 	width: 150px;
 	font-size: 17px;
-	
 }
 
 .btn-white:hover {
 	border: 2px solid white;
 	background-color: white !important;
+	border-radius: 0px;
 	color: black;
 }
 
 .btn-orange {
 	background-color: #f79c15 !important;
 	border: 2px solid orange;
+	border-radius: 0px;
 	color: black;
 	width: 150px;
 	font-size: 17px;
-	
 }
 
 #oworange {
@@ -89,5 +89,6 @@
 .btn-orange:hover {
 	border: 2px solid orange;
 	background-color: transparent !important;
+	border-radius: 0px;
 	color: white;
 }
