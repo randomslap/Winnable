@@ -10,11 +10,14 @@ class LoggedInForm extends Component {
 		e.preventDefault();
 		this.props.logoutUser();
 	};
+	componentDidMount(){
+		console.log(this.props.auth.user)
+	}
 
 	render() {
 		return (
 			<NavDropdown
-				title={this.props.auth.user.name}
+				title={this.props.auth.user.email}
 				controlId="nav-dropdown"
 				className="loggedIn"
 			>
