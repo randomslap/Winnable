@@ -13,7 +13,10 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import StatsPage from "./pages/StatsPage";
 import Profile from "./pages/Profile";
+
 import TeamProfile from "./pages/TeamProfile"
+import Finder from './pages/Finder';
+
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -51,12 +54,12 @@ class App extends Component {
 					<MainNavbar />
 >>>>>>> 07dae6c163432a4a2a1ef8a155cbe9d00943b986
 					<Switch>
-						<PrivateRoute exact path="/" component={Home} />
 						<PrivateRoute
 							exact
 							path="/profile"
 							component={Profile}
 						/>
+						<Route exact path="/teams" component={Finder}/>
 						<Route exact path="/" component={Home} />
 <<<<<<< HEAD
 						<Route component={null} />
@@ -65,6 +68,7 @@ class App extends Component {
 =======
 						<Route exact path="/stats" component={StatsPage} />
 						<Route exact path="/teamprofile" component={TeamProfile} />
+						
 						<Route component={Home} />
 					</Switch>
 					<Footer />

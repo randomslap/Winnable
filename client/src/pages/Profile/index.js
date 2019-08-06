@@ -31,7 +31,7 @@ const Profile = () => {
                                 <h3 className="">Team:</h3>
                             </Col>
                             <Col className="text-right" md={10}>
-                                <button className="btn btn-primary">Invite Player</button>
+                                <Button className="btn btn-primary">Invite Player</Button>
                             </Col>
                         </Row>
                         <Row>
