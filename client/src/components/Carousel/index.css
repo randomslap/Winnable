@@ -33,12 +33,48 @@
 }
 
 .jumboText {
-	position: absolute;
+	position: relative;
 	z-index: 2;
 	color: white;
-	-moz-transform: (0deg, 0deg) !important;
-	-webkit-transform: (0deg, 0deg) !important;
-	-o-transform: (0deg, 0deg) !important;
-	-ms-transform: (0deg, 0deg) !important;
-	transform: (0deg, 0deg) !important;
+	font-size: 45px;
+}
+
+.zindexfix {
+	position: absolute;
+	z-index: 2;
+	left: -240px;
+	top: auto;
+	width: 70%;
+	height: 500px;
+}
+
+.btn-white {
+	background-color: transparent !important;
+	border: 2px solid white;
+	border-radius: 0px;
+	width: 150px;
+	font-size: 17px;
+}
+
+.btn-white:hover {
+	border: 2px solid white;
+	background-color: white !important;
+	border-radius: 0px;
+	color: black;
+}
+
+.btn-orange {
+	background-color: #f79c15 !important;
+	border: 2px solid orange;
+	border-radius: 0px;
+	color: black;
+	width: 150px;
+	font-size: 17px;
+}
+
+.btn-orange:hover {
+	border: 2px solid orange;
+	background-color: transparent !important;
+	border-radius: 0px;
+	color: white;
 }

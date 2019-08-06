@@ -21,7 +21,65 @@ div.dropdown-menu form div.container {
 }
 .navbar {
 	background-color: #1b1b20 !important;
+	border-bottom: 1px solid #f79c15;
 }
 #oworange {
 	color: #f79c15;
+}
+
+.dropdown .dropdown-menu {
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: linear 0.3s;
+
+	max-height: 0;
+	display: block;
+	overflow: hidden;
+	opacity: 0;
+}
+
+.dropdown.show .dropdown-menu {
+	max-height: 400px;
+	opacity: 1;
+}
+
+.text-muted {
+	color: red !important;
+}
+
+.dropdown-item {
+	color: black;
+	background-color: orange !important;
+	border: 2px solid orange;
+	border-radius: 0px;
+	font-size: 17px;
+}
+
+.dropdown-item:hover {
+	border: 2px solid orange;
+	background-color: transparent !important;
+	color: white;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: linear 0.3s;
+}
+.dropdown-divider {
+	border-color: orange !important;
+}
+
+.nav-link {
+	color: white;
+}
+
+.nav-link:hover {
+	color: orange;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
 }
