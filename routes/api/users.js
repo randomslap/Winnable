@@ -46,8 +46,9 @@ router.post("/register", (req, res) => {
 				password: req.body.password,
 				battleTag: {
 					name: req.body.battleTag.name,
-					number: req.body.battleTag.number
-				}
+					number: req.body.battleTag.number 
+				},
+				preferredRole: req.body.preferredRole
 			});
 			bcrypt.genSalt(10, (err, salt) => {
 				bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -73,6 +74,7 @@ router.post("/login", (req, res) => {
 	User.findOne({
 		$or: [{ email: req.body.email }, { name: req.body.name }]
 	}).then(user => {
+		console.log(user)
 		if (!user) {
 			return res
 				.status(404)

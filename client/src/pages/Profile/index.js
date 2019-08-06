@@ -5,6 +5,28 @@ import { connect } from "react-redux";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
 class Profile extends Component {
+
+	// state = {
+    //     bnetUser: "",
+    //     region: "",
+    //     language: "",
+    //     rank: "",
+    // }
+    
+    // componentDidMount = () =>{
+    //     this.loadStats()
+    // }
+
+    // loadStats = () =>{
+    //     console.log("loading stats......................................")
+    //     API.getOWStats(encodeURIComponent(this.state.bnetName + "#" + this.state.bnetNum))
+    //     .then(res => {
+    //         console.log(res.data)
+    //     })
+    // }
+
+
+
 	render() {
 		return (
 			<div>
@@ -13,7 +35,7 @@ class Profile extends Component {
 						<Card className="cardOne">
 							<Row>
 								<Col md={12}>
-									<h2>Username</h2>
+									<h2>{this.props.auth.user.name}</h2>
 									<img src="https://place-hold.it/184x184" />
 									<h6 className="pt-3">Battle.net</h6>
 									<p>
@@ -53,7 +75,7 @@ class Profile extends Component {
 							</Row>
 							<Row>
 								<Col md={2}>
-									<h3 className="pt-5">Roles:</h3>
+									<h3 className="pt-5">Preferred Roles:</h3>
 								</Col>
 							</Row>
 							<Row>
