@@ -50,7 +50,7 @@ class App extends Component {
 							path="/profile"
 							component={Profile}
 						/>
-						<Route exact path="/teams" component={Finder}/>
+						<Route exact path="/finder" component={Finder}/>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/stats" component={StatsPage} />
 						<Route exact path="/teamprofile" component={TeamProfile} />
