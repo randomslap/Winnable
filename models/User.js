@@ -36,6 +36,10 @@ const UserSchema = new Schema({
 		type: String,
 		required: false
 	},
+	rankIcon: {
+		type: String,
+		required: false
+	},
 	userIcon: {
 		type: String,
 		required: false

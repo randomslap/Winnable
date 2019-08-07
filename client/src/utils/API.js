@@ -15,6 +15,9 @@ export default {
 	saveUser: function(userData) {
 		return axios.post("/api/users", userData);
 	},
+	updateUser: function(userData) {
+		return axios.post("/api/users/" + userData);
+	},
 	getOWStats: function(gamertag) {
 		return axios.get(`/api/ow/${gamertag}`);
 	},
