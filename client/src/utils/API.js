@@ -29,6 +29,6 @@ export default {
 		return axios.delete("/api/teams/" + id);
 	},
 	saveTeam: function(teamData) {
-		return axios.post("/api/teams", teamData);
+		return axios.post("/api/teams/create", teamData);
 	}
 };
