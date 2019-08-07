@@ -23,6 +23,8 @@ class Profile extends Component {
 		this.loadStats();
 	};
 
+	convertTimeStringToNumber = val => Number(val.replace(/:/g, ""));
+	
 	loadStats = () => {
 		console.log("loading stats......................................");
 		API.getOWStats(
@@ -33,6 +35,16 @@ class Profile extends Component {
 			)
 		).then(res => {
 			var characters = Object.entries(res.data.heroStats.competitive);
+			characters.sort((char1, char2) => {
+				const char1timePlayed = this.convertTimeStringToNumber(
+					char1[1].game.time_played
+				);
+				const char2timePlayed = this.convertTimeStringToNumber(
+					char2[1].game.time_played
+				);
+
+				return char2timePlayed - char1timePlayed;
+			});
 			console.log(characters);
 			this.setState({
 				userRankImg: res.data.rankIconURL,
