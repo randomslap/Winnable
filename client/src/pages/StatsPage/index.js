@@ -1015,6 +1015,7 @@ class StatsPage extends Component {
 							animateIn="fadeIn"
 							animateOut="fadeOut"
 							animateOnce={true}
+							initiallyVisible={true}
 						>
 							<Container>
 								<Row>
