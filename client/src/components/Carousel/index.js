@@ -97,8 +97,8 @@ class Jumbotron extends Component {
 					<Row>
 						<Col md={{ offset: 1}}>
 							<div className="jumboText">
-								<Button className="btn btn-white mr-4">Create a team</Button>
-								<Button className="btn btn-orange">Join a team</Button>
+							<a href="/finder"><Button className="btn btn-white mr-4">Create a team</Button></a>
+								<a href="/finder"><Button className="btn btn-orange">Join a team</Button></a>
 							</div>
 						</Col>
 					</Row>
