@@ -4,15 +4,60 @@
 }
 #leftTabContentDescPlayers {
     text-align: center;
-    padding-bottom: 126px;
+    padding-bottom: 194px;
 }
 #name {
     text-align: left;
     padding-left: 20px;
+    color: #f79c15;
 }
 #joinButton {
     float: right; 
 }
 #descriptionCard {
     min-height: 206px;
+    background-color: #26262c;
+    color: white;
+}
+#heroImageFix {
+    max-width: 120px;
+    padding-top: 35px;
+}
+#playersProfilePic {
+    border: 3px solid #1b1b20 ;
+    max-width: 200px;
+}
+#playerInfoTabs {
+    font-size: 25px;
+}
+#rightContentText {
+    font-size: 25px;
+}
+#playersInfoCard {
+    background-color: #26262c;
+    color: white;
+}
+#playersInfoCardRight {
+    background-color: #26262c;
+    color: white;
+}
+#btn-orangeAddit {
+	background-color: #f79c15 !important;
+	border: 2px solid orange;
+	border-radius: 0px;
+	color: black;
+	width: 160px;
+    font-size: 17px;
+}
+#btn-orangeAddit:hover {
+	border: 2px solid orange;
+	background-color: transparent !important;
+	border-radius: 0px;
+	color: white;
+}
+#btnSpacing {
+    padding-left: 93px;
+}
+#hrcustom2 {
+    border-top: 1px solid #1b1b20;
 }
