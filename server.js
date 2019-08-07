@@ -5,15 +5,15 @@ const bodyParser = require("body-parser");
 const app = express();
 const passport = require("passport");
 const routes = require("./routes");
-const users = require("./routes/api/users");
-const ow = require("./routes/api/ow");
+// const users = require("./routes/api/users");
+// const ow = require("./routes/api/ow");
 
 app.use(
-	bodyParser.urlencoded({
-		extended: false
+	express.urlencoded({
+		extended: true
 	})
 );
-app.use(bodyParser.json());
+app.use(express.json());
 
 const MONGODB_URI =
 	process.env.MONGODB_URI ||
