@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
 const passport = require("passport");
+const routes = require("./routes");
 const users = require("./routes/api/users");
 const ow = require("./routes/api/ow");
 
@@ -26,9 +27,12 @@ mongoose
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
-	app.get("/", (req, res) => {
-		res.sendFile(path.join(__dirname + "client/build/index.html"));
+	app.get("*", function(req, res) {
+		res.sendFile(path.join(__dirname, "./client/build/index.html"));
 	});
+	// app.get("/", (req, res) => {
+	// 	res.sendFile(path.join(__dirname + "client/build/index.html"));
+	// });
 }
 
 // Passport middleware
@@ -36,9 +40,10 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 // Routes
-app.use("/api/users", users);
+app.use(routes);
+// app.use("/api/users", users);
 
-app.use("/api/ow", ow);
+// app.use("/api/ow", ow);
 
 const PORT = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 
