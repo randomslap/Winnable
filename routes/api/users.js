@@ -7,6 +7,8 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
 
+
+
 router.post("/register", (req, res) => {
 	const { errors, isValid } = validateRegisterInput(req.body);
 	if (!isValid) {
@@ -90,7 +92,8 @@ router.post("/login", (req, res) => {
 					battleTag: {
 						name: user.battleTag.name,
 						number: user.battleTag.number
-					}
+					},
+					role: user.preferredRole
 				};
 				jwt.sign(
 					payload,
@@ -113,5 +116,8 @@ router.post("/login", (req, res) => {
 		});
 	});
 });
+
+// router.route("/:id")
+// 	.put(usersController.update)
 
 module.exports = router;
