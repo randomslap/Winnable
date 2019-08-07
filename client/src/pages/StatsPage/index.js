@@ -204,33 +204,33 @@ class StatsPage extends Component {
 		`;
 		const src1 = this.state
 			? require(`../../assets/images/HeroIcons/${
-					this.state.hero1Name ? this.state.hero1Name : "Baptiste"
-			  }.png`)
+				this.state.hero1Name ? this.state.hero1Name : "Baptiste"
+				}.png`)
 			: null;
 		const src2 = this.state
 			? require(`../../assets/images/HeroIcons/${
-					this.state.hero2Name ? this.state.hero2Name : "Baptiste"
-			  }.png`)
+				this.state.hero2Name ? this.state.hero2Name : "Baptiste"
+				}.png`)
 			: null;
 		const src3 = this.state
 			? require(`../../assets/images/HeroIcons/${
-					this.state.hero3Name ? this.state.hero3Name : "Baptiste"
-			  }.png`)
+				this.state.hero3Name ? this.state.hero3Name : "Baptiste"
+				}.png`)
 			: null;
 		const src4 = this.state
 			? require(`../../assets/images/HeroIcons/${
-					this.state.hero4Name ? this.state.hero4Name : "Baptiste"
-			  }.png`)
+				this.state.hero4Name ? this.state.hero4Name : "Baptiste"
+				}.png`)
 			: null;
 		const src5 = this.state
 			? require(`../../assets/images/HeroIcons/${
-					this.state.hero5Name ? this.state.hero5Name : "Baptiste"
-			  }.png`)
+				this.state.hero5Name ? this.state.hero5Name : "Baptiste"
+				}.png`)
 			: null;
 		const src6 = this.state
 			? require(`../../assets/images/HeroIcons/${
-					this.state.hero6Name ? this.state.hero6Name : "Baptiste"
-			  }.png`)
+				this.state.hero6Name ? this.state.hero6Name : "Baptiste"
+				}.png`)
 			: null;
 		const results = (
 			<div>
@@ -252,7 +252,7 @@ class StatsPage extends Component {
 											/>
 										</Col>
 										<Col md={{ span: 8 }}>
-											<h1>
+											<h1 id="owOrange">
 												{this.state.bnetName +
 													"#" +
 													this.state.bnetNum}
@@ -269,12 +269,12 @@ class StatsPage extends Component {
 								animateOnce={true}
 								initiallyVisible={false}
 							>
-								<Card>
+								<Card id="userStatsCard">
 									<Row>
 										<Col md={12}>
 											<Row>
 												<Col md={12}>
-													<p>COMPETITIVE STATS</p>
+													<p id="owOrange">COMPETITIVE STATS</p>
 													<hr />
 												</Col>
 											</Row>
@@ -351,22 +351,22 @@ class StatsPage extends Component {
 								animateOnce={true}
 								initiallyVisible={false}
 							>
-								<Card>
+								<Card id="heroContainer">
 									<Container>
 										<Row>
 											<Col md={12}>
-												<h1 className="pt-3">
+												<h1 id="owOrange" className="pt-3 pb-3">
 													TOP SIX HEROES
 												</h1>
 											</Col>
 										</Row>
 										<Row>
 											<Col md={12} className="pt-3">
-												<Card>
+												<Card id="resultsCard">
 													<Container>
 														<Row>
 															<Col md={2}>
-																<p>
+																<p id="heroName">
 																	{
 																		this
 																			.state
@@ -381,7 +381,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -396,7 +396,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -409,7 +409,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -424,7 +424,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -439,7 +439,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -456,11 +456,11 @@ class StatsPage extends Component {
 												</Card>
 											</Col>
 											<Col md={12} className="pt-3">
-												<Card>
+												<Card id="resultsCard">
 													<Container>
 														<Row>
 															<Col md={2}>
-																<p>
+																<p id="heroName">
 																	{
 																		this
 																			.state
@@ -475,7 +475,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -490,7 +490,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -503,7 +503,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -518,7 +518,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -533,7 +533,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -550,11 +550,11 @@ class StatsPage extends Component {
 												</Card>
 											</Col>
 											<Col md={12} className="pt-3">
-												<Card>
+												<Card id="resultsCard">
 													<Container>
 														<Row>
 															<Col md={2}>
-																<p>
+																<p id="heroName">
 																	{
 																		this
 																			.state
@@ -569,7 +569,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -584,7 +584,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -597,7 +597,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -612,7 +612,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -627,7 +627,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -644,11 +644,11 @@ class StatsPage extends Component {
 												</Card>
 											</Col>
 											<Col md={12} className="pt-3">
-												<Card>
+												<Card id="resultsCard">
 													<Container>
 														<Row>
 															<Col md={2}>
-																<p>
+																<p id="heroName">
 																	{
 																		this
 																			.state
@@ -663,7 +663,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -678,7 +678,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -691,7 +691,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -706,7 +706,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -721,7 +721,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -738,11 +738,11 @@ class StatsPage extends Component {
 												</Card>
 											</Col>
 											<Col md={12} className="pt-3">
-												<Card>
+												<Card id="resultsCard">
 													<Container>
 														<Row>
 															<Col md={2}>
-																<p>
+																<p id="heroName">
 																	{
 																		this
 																			.state
@@ -757,7 +757,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -772,7 +772,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -785,7 +785,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -800,7 +800,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -815,7 +815,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -832,11 +832,11 @@ class StatsPage extends Component {
 												</Card>
 											</Col>
 											<Col md={12} className="pt-3 pb-3">
-												<Card>
+												<Card id="resultsCard">
 													<Container>
 														<Row>
 															<Col md={2}>
-																<p>
+																<p id="heroName">
 																	{
 																		this
 																			.state
@@ -851,7 +851,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -866,7 +866,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -879,7 +879,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -894,7 +894,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -909,7 +909,7 @@ class StatsPage extends Component {
 																md={2}
 																id="statInfo"
 															>
-																<p>
+																<p id="statsInfoSize">
 																	{
 																		this
 																			.state
@@ -936,13 +936,11 @@ class StatsPage extends Component {
 		);
 		const notFound = (
 			<Container>
-				<Col>
-					<Row>
-						<Card>
-							<h1>Player not found</h1>
-						</Card>
-					</Row>
-				</Col>
+				<Row>
+					<Col md={12}>
+						<h1 id="owOrange">Player not found, please try again.</h1>
+					</Col>
+				</Row>
 			</Container>
 		);
 		return (
@@ -950,19 +948,19 @@ class StatsPage extends Component {
 				<Container className="pt-3">
 					<Row>
 						<Col md={12}>
-							<Card>
+							<Card id="searchBarCard">
 								<Row>
 									<Col md={{ span: 3 }}>
 										<Row>
 											<Col>
-												<p id="searchBarText">
+												<p id="searchBarText" className="text-center">
 													CHECK PLAYER RANK AND STATS
 												</p>
 											</Col>
 										</Row>
 									</Col>
 									<Col md={{ span: 5 }}>
-										<Form.Control
+										<Form.Control className="bg-transparent text-white"
 											value={this.state.bnetName}
 											onChange={this.handleInputChange}
 											name="bnetName"
@@ -976,10 +974,10 @@ class StatsPage extends Component {
 										md={{ span: false }}
 										lg={{ span: false }}
 									>
-										<h3>#</h3>
+										<h3 id="searchBarText2">#</h3>
 									</Col>
 									<Col md={{ span: 2 }}>
-										<Form.Control
+										<Form.Control className="bg-transparent text-white"
 											value={this.state.title}
 											onChange={this.handleInputChange}
 											name="bnetNum"
@@ -989,7 +987,7 @@ class StatsPage extends Component {
 										/>
 									</Col>
 									<Col md={{ span: 1 }}>
-										<Button
+										<Button className="btn-orange"
 											onClick={this.handleFormSubmit}
 											size="lg"
 											type="submit"
@@ -1007,8 +1005,8 @@ class StatsPage extends Component {
 					{!this.state.loading && !this.state.loaded ? (
 						<div className="results" />
 					) : (
-						<div />
-					)}
+							<div />
+						)}
 					)
 				</div>
 				<div>
@@ -1033,18 +1031,18 @@ class StatsPage extends Component {
 							</Container>
 						</ScrollAnimation>
 					) : (
-						<div>
-							<ScrollAnimation
-								animateIn="fadeIn"
-								animateOut="fadeOut"
-							>
-								{this.state.loaded && !this.state.notFound
-									? results
-									: notFound}
-								}
+							<div>
+								<ScrollAnimation
+									animateIn="fadeIn"
+									animateOut="fadeOut"
+								>
+									{this.state.loaded && !this.state.notFound
+										? results
+										: notFound}
+									}
 							</ScrollAnimation>
-						</div>
-					)}
+							</div>
+						)}
 				</div>
 			</div>
 		);
