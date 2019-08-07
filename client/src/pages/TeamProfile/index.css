@@ -1,11 +1,21 @@
 .cardOne {
     width: 20%;
+    background: #1b1b20 ;
+    border: none;
+    color: white;
+    
 }
 
 .cardTwo {
     width: 80%;
+    background: #26262c;
+    
+    border: none;
+    color: white;
+    
 }
 
 .container {
     padding-top: 50px;
 }
+
