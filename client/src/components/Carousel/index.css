@@ -36,8 +36,8 @@
 	position: relative;
 	z-index: 2;
 	color: white;
-  font-weight: 800;
-  font-size: 45px;
+	font-weight: 800;
+	font-size: 45px;
 	letter-spacing: 3px;
 }
 
@@ -45,7 +45,6 @@
 	position: relative;
 	z-index: 2;
 	color: white;
-	
 	font-size: 20px;
 }
 
@@ -91,4 +90,52 @@
 	background-color: transparent !important;
 	border-radius: 0px;
 	color: white;
+}
+
+.w-100 {
+	min-height: 600px;
+}
+
+@media only screen and (max-width: 1200px) {
+	.carousel.slide {
+		display: none;
+	}
+	.overlay {
+		display: none;
+		z-index: 0;
+		left: auto;
+		right: auto;
+		width: 100%;
+		position: relative;
+		-moz-transform: none;
+		-webkit-transform: none;
+		-o-transform: none;
+		-ms-transform: none;
+		transform: none;
+	}
+	.zindexfix {
+		position: relative;
+		z-index: 2;
+		left: auto;
+		top: auto;
+		width: auto;
+		height: auto;
+	}
+}
+
+@media only screen and (max-width: 1500px) and (min-width: 1200px) {
+	.jumboText {
+		width: 65rem;
+		font-size: 30px;
+	}
+	.ptext {
+		width: 65rem;
+		font-size: 15px;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.overlay.container {
+		max-width: 1600px !important;
+	}
 }
