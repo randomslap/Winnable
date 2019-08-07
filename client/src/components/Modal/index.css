@@ -11,3 +11,7 @@
 	color: orange;
 	border-style: none !important;
 }
+
+.modal-header {
+	border-color: orange !important;
+}
