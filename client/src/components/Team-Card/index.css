@@ -16,3 +16,14 @@
 #descriptionCard {
     min-height: 206px;
 }
+#leftCardTeams {
+    background-color: #26262c;
+    color: white;
+}
+#rightCardTeams {
+    background-color: #26262c;
+    color: white;
+}
+#playerInfoTabs2 {
+    font-size: 20px;
+}
