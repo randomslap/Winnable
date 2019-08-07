@@ -987,7 +987,7 @@ class StatsPage extends Component {
 										/>
 									</Col>
 									<Col md={{ span: 1 }}>
-										<Button className="btn-orange"
+										<Button className="btn-orange2"
 											onClick={this.handleFormSubmit}
 											size="lg"
 											type="submit"

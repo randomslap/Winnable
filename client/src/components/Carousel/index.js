@@ -115,21 +115,21 @@ class Jumbotron extends Component {
 					<Carousel.Item>
 						<img
 							className="d-block w-100"
-							src="https://d2y4mhrku00tr3.cloudfront.net/images/pages/about/team-logos-40f002676ef0d61a27cee08d85358575bee03e5b2374f52d2fa1b2b7fb0f061ada398c1c99e32189c64d9628b21b091f939c84ed6066ad179193de6a6305e004.jpg"
+							src={require("../../assets/images/Carousel/teamcarousel.jpg")}
 							alt="First slide"
 						/>
 					</Carousel.Item>
 					<Carousel.Item>
 						<img
 							className="d-block w-100"
-							src="https://bnetcmsus-a.akamaihd.net/cms/page_media/sv/SV2HSWCEM6051532817684707.jpg"
+							src={require("../../assets/images/Carousel/carouselpro.jpg")}
 							alt="Third slide"
 						/>
 					</Carousel.Item>
 					<Carousel.Item>
 						<img
 							className="d-block w-100"
-							src="http://calixtechnews.com/wp-content/uploads/2016/06/20141108025652a0dxq9aond8nkjdk.jpg"
+							src={require("../../assets/images/Carousel/statcarousel.jpg")}
 							alt="Third slide"
 						/>
 					</Carousel.Item>
