@@ -61,14 +61,14 @@ div.dropdown-menu form div.container {
 
 .dropdown-item {
 	color: black;
-	background-color: orange !important;
-	border: 2px solid orange;
+	background-color: #f79c15 !important;
+	border: 2px solid #f79c15;
 	border-radius: 0px;
 	font-size: 17px;
 }
 
 .dropdown-item:hover {
-	border: 2px solid orange;
+	border: 2px solid #f79c15;
 	background-color: transparent !important;
 	color: white;
 	-webkit-transition: all 0.3s;
@@ -78,7 +78,7 @@ div.dropdown-menu form div.container {
 	transition: linear 0.3s;
 }
 .dropdown-divider {
-	border-color: orange !important;
+	border-color: #f79c15 !important;
 }
 
 .nav-link {
@@ -86,7 +86,7 @@ div.dropdown-menu form div.container {
 }
 
 .nav-link:hover {
-	color: orange;
+	color: #f79c15;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	-ms-transition: all 0.3s;

@@ -28,7 +28,7 @@ class Finder extends Component {
 
     render() {
         return (
-            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+            <Tabs className="nav-justified" defaultActiveKey="home" id="uncontrolled-tab-example">
                 <Tab eventKey="home" title="Teams">
                     <div>
                         <Container>
