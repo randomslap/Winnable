@@ -1,6 +1,6 @@
 .notLoggedIn div.dropdown-menu {
 	padding: 0px 10px 10px 10px;
-	margin-left: -42px;
+	margin-left: -44px;
 	margin-top: 8px;
 	min-width: 14rem;
 }
@@ -27,7 +27,6 @@ div.dropdown-menu form div.container {
 #oworange {
 	color: #f79c15;
 }
-
 
 .betatext {
 	color: #888c94;

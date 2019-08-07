@@ -33,7 +33,7 @@ const UserSchema = new Schema({
 		default: Date.now
 	},
 	rank: {
-		type: String,
+		type: Number,
 		required: false
 	},
 	rankIcon: {
@@ -45,15 +45,15 @@ const UserSchema = new Schema({
 		required: false
 	},
 	level: {
-		type: String,
+		type: Number,
 		required: false
 	},
 	gamesWon: {
-		type: String,
+		type: Number,
 		required: false
 	},
 	endorsementLvl: {
-		type: String,
+		type: Number,
 		required: false
 	},
 	preferredRole: {
