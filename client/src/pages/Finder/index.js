@@ -6,41 +6,52 @@ import { connect } from "react-redux";
 import "./index.css"
 import TeamCard from "../../components/Team-Card";
 import PlayerCard from "../../components/Player-Card";
+import PlayerResultsContainer from "../../components/PlayerResultsContainer";
 
-const Finder = () => {
-    return (
-        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-            <Tab eventKey="home" title="Teams">
-                <div>
-                    <Container>
-                        <Row>
-                            <Col md={12}>
-                                <Card>
-                                    <TeamCard />
-                                </Card>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
-            </Tab>
-            <Tab eventKey="profile" title="Players">
-                <div>
-                    <Container>
-                        <Row>
-                            <Col md={12}>
-                                <Card>
-                                    <PlayerCard 
-                        
-                                    />
-                                    {/* <p>{this.props.auth.user.battleTag.name + "#" + this.props.auth.user.battleTag.number}</p> */}
-                                </Card>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
-            </Tab>
-        </Tabs>
-    )
+class Finder extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    state = {
+        usersArr: []
+    }
+
+    componentDidMount = () =>{
+        API.getUsers()
+        .then(res =>{
+            console.log(res.data)
+            this.setState({usersArr: res.data})
+        })
+        
+    }
+
+    render(){
+        return (
+            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                <Tab eventKey="home" title="Teams">
+                    <div>
+                        <Container>
+                            <Row>
+                                <Col md={12}>
+                                    <Card>
+                                        <TeamCard />
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </div>
+                </Tab>
+                <Tab eventKey="profile" title="Players">
+                    <div>
+                        <PlayerResultsContainer usersArr={this.state.usersArr}/>
+                    </div>
+                </Tab>
+            </Tabs>
+        )
+
+    }
+    
 }
 
 //export default Finder
