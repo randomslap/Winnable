@@ -9,12 +9,10 @@ const User = require("../../models/User");
 const usersController = require("../../controllers/usersController");
 
 router
-	.route("/:id")
+	.route("/update/:id")
 	.get(usersController.findById)
 	.post(usersController.update)
 	.delete(usersController.remove);
-
-
 
 router.post("/register", (req, res) => {
 	const { errors, isValid } = validateRegisterInput(req.body);
@@ -123,8 +121,5 @@ router.post("/login", (req, res) => {
 		});
 	});
 });
-
-// router.route("/:id")
-// 	.put(usersController.update)
 
 module.exports = router;
