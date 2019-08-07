@@ -17,16 +17,16 @@ class Finder extends Component {
         usersArr: []
     }
 
-    componentDidMount = () =>{
+    componentDidMount = () => {
         API.getUsers()
-        .then(res =>{
-            console.log(res.data)
-            this.setState({usersArr: res.data})
-        })
-        
+            .then(res => {
+                console.log(res.data)
+                this.setState({ usersArr: res.data })
+            })
+
     }
 
-    render(){
+    render() {
         return (
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                 <Tab eventKey="home" title="Teams">
@@ -34,7 +34,7 @@ class Finder extends Component {
                         <Container>
                             <Row>
                                 <Col md={12}>
-                                    <Card>
+                                    <Card md={12} id="backgroundCard">
                                         <TeamCard />
                                     </Card>
                                 </Col>
@@ -44,22 +44,40 @@ class Finder extends Component {
                 </Tab>
                 <Tab eventKey="profile" title="Players">
                     <div>
-                        <PlayerResultsContainer usersArr={this.state.usersArr}/>
+                        <Container>
+                            <Row>
+                                <Col md={{ span: 6, offset: 3}} className="pb-5 pt-2">
+                                    <h1 id="owOrange"> View free-agents from: <span className="text-white">Skill Rating</span>, <span className="text-white">Roles</span>, and <span className="text-white">Region</span></h1>
+                                    <h5 className="pt-2" id="owOrange"> Invite other free-agents to your team. Determine if they accommodate to your teams needs.</h5>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <Card id="backgroundCard">
+                                        <Row>
+                                            <Col md={12}>
+                                                <PlayerResultsContainer usersArr={this.state.usersArr} />
+                                            </Col>
+                                        </Row>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </Container>
                     </div>
                 </Tab>
-            </Tabs>
+            </Tabs >
         )
 
     }
-    
+
 }
 
 //export default Finder
 
 Finder.propTypes = {
-	auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-	auth: state.auth
+    auth: state.auth
 });
 export default connect(mapStateToProps)(Finder);

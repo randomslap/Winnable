@@ -275,7 +275,7 @@ class StatsPage extends Component {
 											<Row>
 												<Col md={12}>
 													<p id="owOrange">COMPETITIVE STATS</p>
-													<hr />
+													<hr id="hrcustom" />
 												</Col>
 											</Row>
 											<Row>
@@ -987,7 +987,7 @@ class StatsPage extends Component {
 										/>
 									</Col>
 									<Col md={{ span: 1 }}>
-										<Button className="btn-orange"
+										<Button className="btn-orange2"
 											onClick={this.handleFormSubmit}
 											size="lg"
 											type="submit"
@@ -1051,97 +1051,3 @@ class StatsPage extends Component {
 }
 
 export default StatsPage;
-
-{
-	/* <Card>
-                            <Row>
-                            <Col>
-                                <Card>
-                                    <Card.Body>
-                                    <div>Hero: {this.state.hero1Name}</div>
-                                    <div>Time Played: {this.state.hero1Time}</div>
-                                    <div>Medals:{this.state.hero1Medals}  </div>
-                                    <div>Eliminations: {this.state.hero1Elims} </div>
-                                    <div>Damage Done: {this.state.hero1Damage}</div>
-                                    <div>Objective Time: {this.state.hero1ObjTime} </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-
-                            <Col>
-                                <Card>
-                                    <Card.Body>
-                                    <div>Hero: {this.state.hero2Name}</div>
-                                    <div>Time Played: {this.state.hero2Time}</div>
-                                    <div>Medals:{this.state.hero2Medals}  </div>
-                                    <div>Eliminations: {this.state.hero2Elims} </div>
-                                    <div>Damage Done: {this.state.hero2Damage}</div>
-                                    <div>Objective Time: {this.state.hero2ObjTime} </div>
-                                    </Card.Body>
-                                    </Card>
-                                    </Col>
-                                    </Row>
-
-                                    <Row>
-                                    <Col>
-                                        <Card>
-                                            <Card.Body>
-                                            <div>Hero: {this.state.hero3Name}</div>
-                                <div>Time Played: {this.state.hero3Time}</div>
-                                <div>Medals:{this.state.hero3Medals}  </div>
-                                <div>Eliminations: {this.state.hero3Elims} </div>
-                                <div>Damage Done: {this.state.hero3Damage}</div>
-                                <div>Objective Time: {this.state.hero3ObjTime} </div>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-
-                                    <Col>
-                                        <Card>
-                                            <Card.Body>
-                                            <div>Hero: {this.state.hero4Name}</div>
-                                <div>Time Played: {this.state.hero4Time}</div>
-                                <div>Medals:{this.state.hero4Medals}  </div>
-                                <div>Eliminations: {this.state.hero4Elims} </div>
-                                <div>Damage Done: {this.state.hero4Damage}</div>
-                                <div>Objective Time: {this.state.hero4ObjTime} </div>
-                                            </Card.Body>
-                                            </Card>
-                                            </Col>
-                                            </Row>
-
-
-                                            <Row>
-                            <Col>
-                                <Card>
-                                    <Card.Body>
-                                    <div>Hero: {this.state.hero5Name}</div>
-                                <div>Time Played: {this.state.hero5Time}</div>
-                                <div>Medals:{this.state.hero5Medals}  </div>
-                                <div>Eliminations: {this.state.hero5Elims} </div>
-                                <div>Damage Done: {this.state.hero5Damage}</div>
-                                <div>Objective Time: {this.state.hero5ObjTime} </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-
-                            <Col>
-                                <Card>
-                                    <Card.Body>
-                                    <div>Hero: {this.state.hero6Name}</div>
-                                <div>Time Played: {this.state.hero6Time}</div>
-                                <div>Medals:{this.state.hero6Medals}  </div>
-                                <div>Eliminations: {this.state.hero6Elims} </div>
-                                <div>Damage Done: {this.state.hero6Damage}</div>
-                                <div>Objective Time: {this.state.hero6ObjTime} </div>
-                                    </Card.Body>
-                                    </Card>
-                                    </Col>
-                                    </Row>
-
-
-
-
-
-                            </Card> */
-}
