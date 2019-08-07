@@ -3,7 +3,7 @@ import { InputGroup, FormControl, Container, Row, Col, Card, Form, Button, Image
 import API from "../../utils/API";
 import "./index.css"
 
-const PlayerCard = () => {
+const PlayerCard = (props) => {
     return (
         <Container className="pt-4 playerCard">
             <Row className="no-gutters">
@@ -41,7 +41,7 @@ const PlayerCard = () => {
                     <Card>
                         <Row>
                             <Col md={8}>
-                                <h1 id="name">PLAYER USERNAME</h1>
+                                <h1 id="name">{props.name}</h1>
                             </Col>
                             <Col md={4}>
                                 <Button id="joinButton" onClick="" size="md" type="submit">INVITE PLAYER</Button>

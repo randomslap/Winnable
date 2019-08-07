@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { InputGroup, Tab, Tabs, FormControl, Container, Row, Col, Card, Form, Button, Image } from "react-bootstrap"
 import API from "../../utils/API";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import "./index.css"
 import TeamCard from "../../components/Team-Card";
 import PlayerCard from "../../components/Player-Card";
@@ -27,7 +29,10 @@ const Finder = () => {
                         <Row>
                             <Col md={12}>
                                 <Card>
-                                    <PlayerCard />
+                                    <PlayerCard 
+                        
+                                    />
+                                    {/* <p>{this.props.auth.user.battleTag.name + "#" + this.props.auth.user.battleTag.number}</p> */}
                                 </Card>
                             </Col>
                         </Row>
@@ -38,4 +43,12 @@ const Finder = () => {
     )
 }
 
-export default Finder
+//export default Finder
+
+Finder.propTypes = {
+	auth: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+	auth: state.auth
+});
+export default connect(mapStateToProps)(Finder);
