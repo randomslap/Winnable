@@ -9,11 +9,11 @@ const routes = require("./routes");
 // const ow = require("./routes/api/ow");
 
 app.use(
-	express.urlencoded({
-		extended: true
+	bodyParser.urlencoded({
+		extended: false
 	})
 );
-app.use(express.json());
+app.use(bodyParser.json());
 
 const MONGODB_URI =
 	process.env.MONGODB_URI ||
