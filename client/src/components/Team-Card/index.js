@@ -8,50 +8,50 @@ const TeamCard = () => {
         <Container className="pt-4">
             <Row className="no-gutters">
                 <Col md={3}>
-                    <Card >
+                    <Card id="leftCardTeams" >
                         <Row>
-                            <Col md={12} className="pt-3">
-                                <img src="http://placehold.jp/150x150.png" ></img>
+                            <Col md={12} id="playersProfilePic" className="pt-3">
+                                <img src="" ></img>
                             </Col>
                         </Row>
                         <Row>
                             <Col md={12} id="leftTabContent" className="pt-5">
-                                <p>SR RANGE: </p>
+                                <p id="playerInfoTabs2">SR RANGE: </p>
                             </Col>
                         </Row>
                         <Row>
                             <Col md={12} id="leftTabContent">
-                                <p>REGION: </p>
+                                <p id="playerInfoTabs2">REGION: </p>
                             </Col>
                         </Row>
                         <Row>
                             <Col md={12} id="leftTabContent">
-                                <p>LANGUAGE: </p>
+                                <p id="playerInfoTabs2">LANGUAGE: </p>
                             </Col>
                         </Row>
                         <Row>
                             <Col md={12} id="leftTabContentDescTeams">
-                                <hr></hr>
+                                <hr id="hrcustom2" />
                             </Col>
                         </Row>
                     </Card>
                 </Col>
 
                 <Col md={9}>
-                    <Card>
+                    <Card id="rightCardTeams">
                         <Row>
                             <Col md={8}>
                                 <h1 id="name">TEAM USERNAME</h1>
                             </Col>
-                            <Col md={4}>
-                                <Button id="joinButton" onClick="" size="md" type="submit">JOIN TEAM</Button>
+                            <Col md={4} id="btnSpacing">
+                            <Button id="btn-orangeAddit" onClick="" size="md" type="submit">JOIN TEAM</Button>
                             </Col>
                         </Row>
                         <Row>
                             <Container className="pt-1">
                                 <Row>
                                     <Col md={12}>
-                                        <p className="text-left">ROLES</p>
+                                        <p className="text-left">ROLES:</p>
                                     </Col>
                                 </Row>
                                 <Row>
@@ -80,8 +80,8 @@ const TeamCard = () => {
                             <Container>
                                 <Row>
                                     <Col md={12}>
-                                        <p className=" text-left">DESCRIPTION</p>
-                                        <hr></hr>
+                                        <hr id="hrcustom2" />
+                                        <p className=" text-center">DESCRIPTION</p>
                                     </Col>
                                 </Row>
                                 <Row>

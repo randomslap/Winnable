@@ -33,6 +33,10 @@ class Finder extends Component {
                     <div>
                         <Container>
                             <Row>
+                                <Col md={{ span: 6, offset: 3 }} className="pb-5 pt-2">
+                                    <h1 id="owOrange"> View Teams from: <span className="text-white">Skill Rating</span>, available <span className="text-white">Roles</span>, and <span className="text-white">Region</span></h1>
+                                    <h5 className="pt-2" id="owOrange"> Looking to join a team? Search through all registered teams on Winnable to view open teams, or just browse. </h5>
+                                </Col>
                                 <Col md={12}>
                                     <Card md={12} id="backgroundCard">
                                         <TeamCard />
@@ -46,7 +50,7 @@ class Finder extends Component {
                     <div>
                         <Container>
                             <Row>
-                                <Col md={{ span: 6, offset: 3}} className="pb-5 pt-2">
+                                <Col md={{ span: 6, offset: 3 }} className="pb-5 pt-2">
                                     <h1 id="owOrange"> View free-agents from: <span className="text-white">Skill Rating</span>, <span className="text-white">Roles</span>, and <span className="text-white">Region</span></h1>
                                     <h5 className="pt-2" id="owOrange"> Invite other free-agents to your team. Determine if they accommodate to your teams needs.</h5>
                                 </Col>
