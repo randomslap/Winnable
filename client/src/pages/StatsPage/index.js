@@ -79,7 +79,7 @@ class StatsPage extends Component {
 			encodeURIComponent(this.state.bnetName + "#" + this.state.bnetNum)
 		)
 			.then(res => {
-				console.log(res.data.heroStats.competitive);
+				console.log(res.data);
 				var characters = Object.entries(res.data.heroStats.competitive);
 				characters.sort((char1, char2) => {
 					const char1timePlayed = this.convertTimeStringToNumber(
@@ -172,6 +172,7 @@ class StatsPage extends Component {
 						notFound: true
 					});
 					console.log("error " + this.state.notFound);
+					console.log(err);
 				}
 			});
 	};

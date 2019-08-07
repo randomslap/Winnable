@@ -1,9 +1,9 @@
 {
-	"name": "mern",
+	"name": "winnable",
 	"version": "0.1.0",
-	"description": "Mern Demo",
+	"description": "",
 	"private": true,
-	"proxy": "http://winnable.herokuapp.com/",
+	"proxy": "http://localhost:5000",
 	"dependencies": {
 		"@emotion/core": "^10.0.15",
 		"axios": "^0.19.0",
