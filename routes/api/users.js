@@ -6,8 +6,13 @@ const keys = require("../../config/keys");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
+const usersController = require("../../controllers/usersController");
 
-
+router
+	.route("/update/:id")
+	.get(usersController.findById)
+	.post(usersController.update)
+	.delete(usersController.remove);
 
 router.post("/register", (req, res) => {
 	const { errors, isValid } = validateRegisterInput(req.body);
@@ -48,7 +53,7 @@ router.post("/register", (req, res) => {
 				password: req.body.password,
 				battleTag: {
 					name: req.body.battleTag.name,
-					number: req.body.battleTag.number 
+					number: req.body.battleTag.number
 				},
 				preferredRole: req.body.preferredRole
 			});
@@ -76,7 +81,7 @@ router.post("/login", (req, res) => {
 	User.findOne({
 		$or: [{ email: req.body.email }, { name: req.body.name }]
 	}).then(user => {
-		console.log(user)
+		console.log(user);
 		if (!user) {
 			return res
 				.status(404)
@@ -116,8 +121,5 @@ router.post("/login", (req, res) => {
 		});
 	});
 });
-
-// router.route("/:id")
-// 	.put(usersController.update)
 
 module.exports = router;

@@ -1,7 +1,5 @@
 import axios from "axios";
 
-
-
 export default {
 	getUsers: function() {
 		return axios.get("/api/users");
@@ -15,8 +13,8 @@ export default {
 	saveUser: function(userData) {
 		return axios.post("/api/users", userData);
 	},
-	updateUser: function(userData) {
-		return axios.post("/api/users/" + userData);
+	updateUser: function(id, userData) {
+		return axios.post("/api/users/update/" + id, userData);
 	},
 	getOWStats: function(gamertag) {
 		return axios.get(`/api/ow/${gamertag}`);
@@ -32,5 +30,5 @@ export default {
 	},
 	saveTeam: function(teamData) {
 		return axios.post("/api/teams", teamData);
-	},
+	}
 };
