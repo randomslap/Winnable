@@ -14,7 +14,7 @@ const TeamResultsContainer = (props) =>{
             image = {team.image}
             teamName = {team.teamName}
             goal = {team.goal}
-            about = {team.preferredRole}
+            about = {team.about}
             range1 = {team.range1}
             range2 = {team.range2}
             
