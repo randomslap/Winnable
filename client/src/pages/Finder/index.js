@@ -37,7 +37,7 @@ class Finder extends Component {
                                     <h1 id="owOrange"> View Teams from: <span className="text-white">Skill Rating</span>, available <span className="text-white">Roles</span>, and <span className="text-white">Region</span></h1>
                                     <h5 className="pt-2" id="owOrange"> Looking to join a team? Search through all registered teams on Winnable to view open teams, or just browse. </h5>
                                 </Col>
-                                <Col md={12}>
+                                <Col md={12} className="pb-5">
                                     <Card md={12} id="backgroundCard">
                                         <TeamCard />
                                     </Card>
@@ -56,7 +56,7 @@ class Finder extends Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Col md={12}>
+                                <Col md={12} className="pb-5">
                                     <Card id="backgroundCard">
                                         <Row>
                                             <Col md={12}>
