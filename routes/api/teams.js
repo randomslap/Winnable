@@ -10,6 +10,8 @@ router.route("/owner/:id").get(teamsController.findById);
 
 router.route("/join/:id").post(teamsController.update);
 
+router.route("/").get(teamsController.findAll)
+
 router.post("/create", (req, res) => {
 	Team.findOne({
 		$or: [{ teamName: req.body.teamName }, { owner: req.body.owner }]
