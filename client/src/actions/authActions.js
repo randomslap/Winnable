@@ -5,8 +5,26 @@ import {
 	GET_ERRORS,
 	SET_CURRENT_USER,
 	USER_LOADING,
-	REGISTER_SUCCESS
+	REGISTER_SUCCESS,
+	TEAM_SUCCESS
 } from "./types";
+export const registerTeam = (teamData, history) => dispatch => {
+	axios
+		.post("/api/teams/create", teamData)
+		.then(res => {
+			console.log("Success");
+			dispatch({
+				type: TEAM_SUCCESS
+			});
+			// window.location.reload();
+		}) // re-direct to login on successful register
+		.catch(err => {
+			dispatch({
+				type: GET_ERRORS,
+				payload: err.response.data
+			});
+		});
+};
 // Register User
 export const registerUser = (userData, history) => dispatch => {
 	axios
