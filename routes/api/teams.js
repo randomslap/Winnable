@@ -6,6 +6,10 @@ const teamsController = require("../../controllers/teamsController");
 // router.route("/create").post(teamsController.create)
 // router.route()
 
+router.route("/owner/:id").get(teamsController.findById);
+
+router.route("/join/:id").post(teamsController.update);
+
 router.post("/create", (req, res) => {
 	Team.findOne({
 		$or: [{ teamName: req.body.teamName }, { owner: req.body.owner }]

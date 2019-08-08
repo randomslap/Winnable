@@ -28,6 +28,9 @@ export default {
 	deleteTeam: function(id) {
 		return axios.delete("/api/teams/" + id);
 	},
+	updateTeam: function(id, userData) {
+		return axios.post("/api/teams/join/" + id, userData);
+	},
 	saveTeam: function(teamData) {
 		return axios.post("/api/teams/create", teamData);
 	}
