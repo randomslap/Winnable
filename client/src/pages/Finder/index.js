@@ -26,11 +26,11 @@ class Finder extends Component {
                 this.setState({ usersArr: res.data })
             })
 
-        // API.getTeams()
-        // .then(res => {
-        //     console.log(res.data)
-        //     this.setState({ usersArr: res.data })
-        // })
+        API.getTeams()
+        .then(res => {
+            console.log(res.data)
+            this.setState({ teamsArr: res.data })
+        })
 
     }
 
