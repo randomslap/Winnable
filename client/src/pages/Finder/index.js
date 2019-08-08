@@ -7,6 +7,7 @@ import "./index.css"
 import TeamCard from "../../components/Team-Card";
 import PlayerCard from "../../components/Player-Card";
 import PlayerResultsContainer from "../../components/PlayerResultsContainer";
+import TeamResultsContainer from "../../components/TeamResultsContainer";
 
 class Finder extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class Finder extends Component {
     }
 
     state = {
-        usersArr: []
+        usersArr: [],
+        teamsArr: []
     }
 
     componentDidMount = () => {
@@ -23,6 +25,12 @@ class Finder extends Component {
                 console.log(res.data)
                 this.setState({ usersArr: res.data })
             })
+
+        // API.getTeams()
+        // .then(res => {
+        //     console.log(res.data)
+        //     this.setState({ usersArr: res.data })
+        // })
 
     }
 
@@ -39,7 +47,7 @@ class Finder extends Component {
                                 </Col>
                                 <Col md={12}>
                                     <Card md={12} id="backgroundCard">
-                                        <TeamCard />
+                                        <TeamResultsContainer teamsArr={this.state.teamsArr} />
                                     </Card>
                                 </Col>
                             </Row>
