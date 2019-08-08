@@ -23,6 +23,8 @@ class Profile extends Component {
 		this.loadStats();
 	};
 
+	convertTimeStringToNumber = val => Number(val.replace(/:/g, ""));
+	
 	loadStats = () => {
 		console.log("loading stats......................................");
 		API.getOWStats(
@@ -33,6 +35,16 @@ class Profile extends Component {
 			)
 		).then(res => {
 			var characters = Object.entries(res.data.heroStats.competitive);
+			characters.sort((char1, char2) => {
+				const char1timePlayed = this.convertTimeStringToNumber(
+					char1[1].game.time_played
+				);
+				const char2timePlayed = this.convertTimeStringToNumber(
+					char2[1].game.time_played
+				);
+
+				return char2timePlayed - char1timePlayed;
+			});
 			console.log(characters);
 			this.setState({
 				userRankImg: res.data.rankIconURL,
@@ -143,7 +155,7 @@ class Profile extends Component {
 											this.props.auth.user.email
 										}?subject=Join%20My%20OW%20Team!&amp;`}
 									>
-										<Button className="btn btn-primary">
+										<Button className="btn btn-orange">
 											Invite Player
 										</Button>
 									</a>
@@ -155,7 +167,7 @@ class Profile extends Component {
 								</Col>
 							</Row>
 							<Row>
-								<Col md={2}>
+								<Col md={3}>
 									<h3 className="pt-5">Preferred Role:</h3>
 								</Col>
 							</Row>
@@ -212,14 +224,22 @@ class Profile extends Component {
 							<Row>
 								<Col md={4}>
 									<h3 className="pt-4">Preferred Heroes:</h3>
-									<p>{this.state.hero1}</p>
-									<img src={src1} />
-									<p>{this.state.hero2}</p>
-									<img src={src2} />
-									<p>{this.state.hero3}</p>
-									<img src={src3} />
 								</Col>
 							</Row>
+							<Row>
+										<Col md={4}> 
+											<p>{this.state.hero1}</p>
+											<img src={src1} />
+										</Col>
+										<Col md={4}> 
+											<p>{this.state.hero2}</p>
+											<img src={src2} />
+										</Col>
+										<Col md={4}> 
+											<p>{this.state.hero3}</p>
+											<img src={src3} />
+										</Col>
+									</Row>
 						</Card>
 					</Row>
 				</Container>

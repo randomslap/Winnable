@@ -4,7 +4,7 @@
 }
 #leftTabContentDescTeams {
     text-align: center;
-    padding-bottom: 116px;
+    padding-bottom: 157px;
 }
 #name {
     text-align: left;
@@ -15,4 +15,24 @@
 }
 #descriptionCard {
     min-height: 206px;
+}
+#leftCardTeams {
+    background-color: #26262c;
+    color: white;
+}
+#rightCardTeams {
+    background-color: #26262c;
+    color: white;
+    padding-bottom: 32px;
+}
+#playerInfoTabs2 {
+    font-size: 20px;
+}
+#TeamLogo {
+    border: 3px solid #1b1b20;
+}
+#teamPlayers {
+    font-size: 10px;
+    padding-top: 10px;
+    color: #f79c15;
 }
