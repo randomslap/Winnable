@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { Animated } from "react-animated-css";
 import Carousel from "react-bootstrap/Carousel";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import TeamModal from "../TeamModal";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerTeam } from "../../actions/authActions";
 import "./index.css";
 class Jumbotron extends Component {
 	state = {
@@ -11,14 +16,26 @@ class Jumbotron extends Component {
 			row2: "Overwatch Team",
 			row3: ""
 		},
-		visible: true
+		visible: true,
+		show: false,
+		teamCreated: false
 	};
 	componentDidMount = () => {
 		this.setState({
 			row1: "test1",
 			row2: "test1",
 			row3: "test1"
-		})
+		});
+	};
+
+	componentDidUpdate() {
+		if (this.props.team.created) {
+			setInterval(() => {
+				this.setState({
+					show: false
+				});
+			}, 100);
+		}
 	}
 
 	onChange() {
@@ -42,7 +59,7 @@ class Jumbotron extends Component {
 				row1: "Keep track on",
 				row2: "Player Statistics",
 				row3: ""
-			},
+			}
 		];
 		this.setState({
 			currentItem: items[selectedIndex],
@@ -59,54 +76,77 @@ class Jumbotron extends Component {
 		return (
 			<div>
 				<div className="zindexfix">
-				<Container>
-				<Row>
-						<Col md={{ offset: 1 }}>
-							<Animated
-								animationIn="fadeInLeft"
-								animationOut="fadeOutRight"
-								animationInDuration={400}
-								isVisible={this.state.visible}
-							>
-								<div
-									onChange={this.onChange}
-									id={this.state.index}
-									className="jumboText"
+					<Container>
+						<Row>
+							<Col md={{ offset: 1 }}>
+								<Animated
+									animationIn="fadeInLeft"
+									animationOut="fadeOutRight"
+									animationInDuration={400}
+									isVisible={this.state.visible}
 								>
-									{this.state.currentItem.row1}
+									<div
+										onChange={this.onChange}
+										id={this.state.index}
+										className="jumboText"
+									>
+										{this.state.currentItem.row1}
+									</div>
+								</Animated>
+							</Col>
+						</Row>
+						<Row>
+							<Col md={{ offset: 1 }}>
+								<div className="jumboText">
+									{this.state.currentItem.row2}
 								</div>
-							</Animated>
-						</Col>
-					</Row>
-					<Row>
-						<Col md={{ offset: 1 }}>
-							<div className="jumboText">
-								{this.state.currentItem.row2}
-							</div>
-						</Col>
-					</Row>
-					<Row>
-						<Col md={{ offset: 1}}>
-							<div className="ptext mt-3">
-								<p>Helping players and teams improve their game.</p>
-								<p>Winnable will guide you to the <span id="oworange">top.</span></p>
-							</div>
-						</Col>
-					</Row>
-					
-					<Row>
-						<Col md={{ offset: 1}}>
-							<div className="jumboText">
-							<a href="/finder"><Button className="btn btn-white mr-4">Create a team</Button></a>
-								<a href="/finder"><Button className="btn btn-orange">Join a team</Button></a>
-							</div>
-						</Col>
-					</Row>
-				</Container>
+							</Col>
+						</Row>
+						<Row>
+							<Col md={{ offset: 1 }}>
+								<div className="ptext mt-3">
+									<p>
+										Helping players and teams improve their
+										game.
+									</p>
+									<p>
+										Winnable will guide you to the{" "}
+										<span id="oworange">top.</span>
+									</p>
+								</div>
+							</Col>
+						</Row>
+
+						<Row>
+							<Col md={{ offset: 1 }}>
+								<div className="jumboText">
+									<a>
+										<Button
+											className="btn btn-white mr-4"
+											onClick={() =>
+												this.setState({ show: true })
+											}
+										>
+											Create a team
+										</Button>
+									</a>
+									<a href="/finder">
+										<Button className="btn btn-orange">
+											Join a team
+										</Button>
+									</a>
+									<TeamModal
+										show={this.state.show}
+										onHide={() =>
+											this.setState({ show: false })
+										}
+									/>
+								</div>
+							</Col>
+						</Row>
+					</Container>
 				</div>
-				<Container className="overlay">
-					
-				</Container>
+				<Container className="overlay" />
 				<Carousel
 					wrap={true}
 					interval={3500}
@@ -133,10 +173,23 @@ class Jumbotron extends Component {
 							alt="Third slide"
 						/>
 					</Carousel.Item>
-					
 				</Carousel>
 			</div>
 		);
 	}
 }
-export default Jumbotron;
+
+Jumbotron.propTypes = {
+	auth: PropTypes.object.isRequired,
+	team: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+	auth: state.auth,
+	team: state.team
+});
+
+export default connect(
+	mapStateToProps,
+	{ registerTeam }
+)(withRouter(Jumbotron));

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import LoginForm from "../LoginForm";
 import LoggedInForm from "../LoggedInForm";
-import RegisterModal from "../Modal";
+import RegisterModal from "../RegisterModal";
 
 import {
 	Navbar,
