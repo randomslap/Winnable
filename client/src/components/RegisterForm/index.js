@@ -20,6 +20,12 @@ class RegisterForm extends Component {
 			hero2: "",
 			hero3: "",
 			role: "",
+			userIcon: "",
+			userRankImg: "",
+			userSR: "",
+			userLevel: "",
+			gamesWon: "",
+			userEndorsLvl: "",
 			errors: {},
 			registered: false
 		};
