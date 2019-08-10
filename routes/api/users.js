@@ -59,7 +59,18 @@ router.post("/register", (req, res) => {
 					name: req.body.battleTag.name,
 					number: req.body.battleTag.number
 				},
-				preferredRole: req.body.preferredRole
+				preferredRole: req.body.preferredRole,
+				rank: req.body.rank,
+				rankIcon: req.body.rankIcon,
+				userIcon: req.body.userIcon,
+				level: req.body.level,
+				gamesWon: req.body.gamesWon,
+				endorsementLvl: req.body.endorsementLvl,
+				preferredHeroes: {
+					hero1: req.body.preferredHeroes.hero1,
+					hero2: req.body.preferredHeroes.hero2,
+					hero3: req.body.preferredHeroes.hero3
+				}
 			});
 			bcrypt.genSalt(10, (err, salt) => {
 				bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -102,7 +113,18 @@ router.post("/login", (req, res) => {
 						name: user.battleTag.name,
 						number: user.battleTag.number
 					},
-					role: user.preferredRole
+					role: user.preferredRole,
+					rank: user.rank,
+					rankIcon: user.rankIcon,
+					userIcon: user.userIcon,
+					level: user.level,
+					gamesWon: user.gamesWon,
+					endorsementLvl: user.endorsementLvl,
+					preferredHeroes: {
+						hero1: user.preferredHeroes.hero1,
+						hero2: user.preferredHeroes.hero2,
+						hero3: user.preferredHeroes.hero3
+					}
 				};
 				jwt.sign(
 					payload,

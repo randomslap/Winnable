@@ -18,7 +18,7 @@ const PlayerResultsContainer = (props) =>{
             endorsement = {user.endorsementLvl}
             gamesWon = {user.gamesWon}
             email = {user.email}
-            hero1 = {user.preferredHeroes.hero1? user.preferredHeroes.hero1 :"N/A"}
+            hero1 = {user.preferredHeroes.hero1}
             hero2 = {user.preferredHeroes.hero2? user.preferredHeroes.hero2 :"N/A"}
             hero3 = {user.preferredHeroes.hero3? user.preferredHeroes.hero3 :"N/A"}
             />

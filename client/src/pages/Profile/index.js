@@ -22,13 +22,13 @@ class Profile extends Component {
 
 	componentDidMount = () => {
 		console.log(this.props.auth);
-		this.loadStats();
+		
 	};
 
-	convertTimeStringToNumber = val => Number(val.replace(/:/g, ""));
+	// convertTimeStringToNumber = val => Number(val.replace(/:/g, ""));
 	
-	loadStats = () => {
-		console.log("loading stats......................................");
+	// loadStats = () => {
+	// 	console.log("loading stats......................................");
 		// API.getOWStats(
 		// 	encodeURIComponent(
 		// 		this.props.auth.user.battleTag.name +
@@ -67,28 +67,28 @@ class Profile extends Component {
 		// 	});
 		// 	this.updateUser();
 		// });
-	};
+	//};
 
-	updateUser = () => {
-		console.log("executed");
-		if (this.props.auth.isAuthenticated) {
-			API.updateUser(this.props.auth.user.id, {
-				rank: this.state.userSR,
-				rankIcon: this.state.userRankImg,
-				userIcon: this.state.userIcon,
-				level: this.state.userLevel,
-				gamesWon: this.state.gamesWon,
-				endorsementLvl: this.state.userEndorsLvl,
-				preferredHeroes: {
-					hero1: this.state.hero1,
-					hero2: this.state.hero2,
-					hero3: this.state.hero3
-				}
-			});
-		} else {
-			return;
-		}
-	};
+	// updateUser = () => {
+	// 	console.log("executed");
+	// 	if (this.props.auth.isAuthenticated) {
+	// 		API.updateUser(this.props.auth.user.id, {
+	// 			rank: this.state.userSR,
+	// 			rankIcon: this.state.userRankImg,
+	// 			userIcon: this.state.userIcon,
+	// 			level: this.state.userLevel,
+	// 			gamesWon: this.state.gamesWon,
+	// 			endorsementLvl: this.state.userEndorsLvl,
+	// 			preferredHeroes: {
+	// 				hero1: this.state.hero1,
+	// 				hero2: this.state.hero2,
+	// 				hero3: this.state.hero3
+	// 			}
+	// 		});
+	// 	} else {
+	// 		return;
+	// 	}
+	// };
 
 	render() {
 		const src1 = this.state
@@ -115,7 +115,7 @@ class Profile extends Component {
 							<Row>
 								<Col md={12}>
 									<h2>{this.props.auth.user.name}</h2>
-									{/* <img src={this.state.userIcon} /> */}
+									<img src={this.props.auth.user.userIcon} />
 									<h6 className="pt-3">Battle.net</h6>
 									<p>
 										{this.props.auth.user.battleTag.name}#
