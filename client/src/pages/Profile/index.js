@@ -25,85 +25,20 @@ class Profile extends Component {
 		
 	};
 
-	// convertTimeStringToNumber = val => Number(val.replace(/:/g, ""));
-	
-	// loadStats = () => {
-	// 	console.log("loading stats......................................");
-		// API.getOWStats(
-		// 	encodeURIComponent(
-		// 		this.props.auth.user.battleTag.name +
-		// 			"#" +
-		// 			this.props.auth.user.battleTag.number
-		// 	)
-		// ).then(res => {
-		// 	var characters = Object.entries(res.data.heroStats.competitive);
-		// 	characters.sort((char1, char2) => {
-		// 		const char1timePlayed = this.convertTimeStringToNumber(
-		// 			char1[1].game.time_played
-		// 		);
-		// 		const char2timePlayed = this.convertTimeStringToNumber(
-		// 			char2[1].game.time_played
-		// 		);
-
-		// 		return char2timePlayed - char1timePlayed;
-		// 	});
-		// 	console.log(characters);
-		// 	this.setState({
-		// 		userRankImg: res.data.rankIconURL,
-		// 		userLevel: res.data.level,
-		// 		userSR: res.data.rank,
-		// 		userIcon: res.data.iconURL,
-		// 		userEndorsLvl: res.data.endorsementLevel,
-		// 		gamesWon: res.data.heroStats.competitive.overall.game.games_won,
-		// 		hero1:
-		// 			characters[1][0].charAt(0).toUpperCase() +
-		// 			characters[1][0].slice(1),
-		// 		hero2:
-		// 			characters[2][0].charAt(0).toUpperCase() +
-		// 			characters[2][0].slice(1),
-		// 		hero3:
-		// 			characters[3][0].charAt(0).toUpperCase() +
-		// 			characters[3][0].slice(1)
-		// 	});
-		// 	this.updateUser();
-		// });
-	//};
-
-	// updateUser = () => {
-	// 	console.log("executed");
-	// 	if (this.props.auth.isAuthenticated) {
-	// 		API.updateUser(this.props.auth.user.id, {
-	// 			rank: this.state.userSR,
-	// 			rankIcon: this.state.userRankImg,
-	// 			userIcon: this.state.userIcon,
-	// 			level: this.state.userLevel,
-	// 			gamesWon: this.state.gamesWon,
-	// 			endorsementLvl: this.state.userEndorsLvl,
-	// 			preferredHeroes: {
-	// 				hero1: this.state.hero1,
-	// 				hero2: this.state.hero2,
-	// 				hero3: this.state.hero3
-	// 			}
-	// 		});
-	// 	} else {
-	// 		return;
-	// 	}
-	// };
-
 	render() {
-		const src1 = this.state
+		const src1 = this.props.auth.user.preferredHeroes
 			? require(`../../assets/images/HeroIcons/${
-					this.state.hero1 ? this.state.hero1 : "Baptiste"
+					this.props.auth.user.preferredHeroes.hero1 ? this.props.auth.user.preferredHeroes.hero1 : "Baptiste"
 			  }.png`)
 			: null;
-		const src2 = this.state
+		const src2 = this.props.auth.user.preferredHeroes
 			? require(`../../assets/images/HeroIcons/${
-					this.state.hero2 ? this.state.hero2 : "Baptiste"
+					this.props.auth.user.preferredHeroes.hero2 ? this.props.auth.user.preferredHeroes.hero2 : "Baptiste"
 			  }.png`)
 			: null;
-		const src3 = this.state
+		const src3 = this.props.auth.user.preferredHeroes
 			? require(`../../assets/images/HeroIcons/${
-					this.state.hero3 ? this.state.hero3 : "Baptiste"
+					this.props.auth.user.preferredHeroes.hero3 ? this.props.auth.user.preferredHeroes.hero3 : "Baptiste"
 			  }.png`)
 			: null;
 
@@ -128,19 +63,19 @@ class Profile extends Component {
 									<h6 className="pt-3">Stats</h6>
 									<p id="test">
 										LEVEL:{" "}
-										{/* <span>{this.state.userLevel}</span>{" "} */}
+										<span>{this.props.auth.user.level}</span>{" "}
 									</p>
 									<p id="test">
 										ENDORSEMENT LEVEL:{" "}
-										{/* <span>{this.state.userEndorsLvl}</span>{" "} */}
+										<span>{this.props.auth.user.endorsementLvl}</span>{" "}
 									</p>
 									<p id="test">
 										GAMES WON:{" "}
-										{/* <span>{this.state.gamesWon}</span>{" "} */}
+										<span>{this.props.auth.user.gamesWon}</span>{" "}
 									</p>
 									<p id="test">
 										RANK SR:{" "}
-										{/* <span>{this.state.userSR}</span>{" "} */}
+										<span>{this.props.auth.user.rank}</span>{" "}
 									</p>
 								</Col>
 							</Row>
@@ -217,7 +152,7 @@ class Profile extends Component {
 							<Row>
 								<Col md={2}>
 									<img
-										src={this.state.userRankImg}
+										src={this.props.auth.user.rankIcon}
 										width="80"
 										height="80"
 									/>
@@ -230,15 +165,15 @@ class Profile extends Component {
 							</Row>
 							<Row>
 										<Col md={4}> 
-											<p>{this.state.hero1}</p>
+											<p>{this.props.auth.user.preferredHeroes.hero1}</p>
 											<img src={src1} />
 										</Col>
 										<Col md={4}> 
-											<p>{this.state.hero2}</p>
+											<p>{this.props.auth.user.preferredHeroes.hero2}</p>
 											<img src={src2} />
 										</Col>
 										<Col md={4}> 
-											<p>{this.state.hero3}</p>
+											<p>{this.props.auth.user.preferredHeroes.hero3}</p>
 											<img src={src3} />
 										</Col>
 									</Row>
