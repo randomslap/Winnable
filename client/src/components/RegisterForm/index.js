@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
+import API from "../../utils/API"
 
 class RegisterForm extends Component {
 	constructor() {
@@ -20,6 +21,12 @@ class RegisterForm extends Component {
 			hero2: "",
 			hero3: "",
 			role: "",
+			userIcon: "",
+			userRankImg: "",
+			userSR: "",
+			userLevel: "",
+			gamesWon: "",
+			userEndorsLvl: "",
 			errors: {},
 			registered: false
 		};
@@ -50,6 +57,10 @@ class RegisterForm extends Component {
 	};
 	onSubmit = e => {
 		e.preventDefault();
+		this.loadStats();
+	};
+
+	registerNewUser = () =>{
 		const newUser = {
 			name: this.state.name,
 			email: this.state.email,
@@ -59,9 +70,66 @@ class RegisterForm extends Component {
 				name: this.state.battleTagName,
 				number: this.state.battleTagNumber
 			},
-			preferredRole: this.state.role
+			preferredRole: this.state.role,
+			rank: this.state.userSR,
+			rankIcon: this.state.userRankImg,
+			userIcon: this.state.userIcon,
+			level: this.state.userLevel,
+			gamesWon: this.state.gamesWon,
+			endorsementLvl: this.state.userEndorsLvl,
+			preferredHeroes: {
+				hero1: this.state.hero1,
+				hero2: this.state.hero2,
+				hero3: this.state.hero3
+			}
 		};
 		this.props.registerUser(newUser, this.props.history);
+		
+	}
+
+	convertTimeStringToNumber = val => Number(val.replace(/:/g, ""));
+
+	loadStats = () => {
+		console.log("loading stats......................................");
+		API.getOWStats(
+			encodeURIComponent(
+				this.state.battleTagName +
+					"#" +
+					this.state.battleTagNumber
+			)
+		).then(res => {
+			var characters = Object.entries(res.data.heroStats.competitive);
+			characters.sort((char1, char2) => {
+				const char1timePlayed = this.convertTimeStringToNumber(
+					char1[1].game.time_played
+				);
+				const char2timePlayed = this.convertTimeStringToNumber(
+					char2[1].game.time_played
+				);
+
+				return char2timePlayed - char1timePlayed;
+			});
+			console.log(characters);
+			this.setState({
+				userRankImg: res.data.rankIconURL,
+				userLevel: res.data.level,
+				userSR: res.data.rank,
+				userIcon: res.data.iconURL,
+				userEndorsLvl: res.data.endorsementLevel,
+				gamesWon: res.data.heroStats.competitive.overall.game.games_won,
+				hero1:
+					characters[1][0].charAt(0).toUpperCase() +
+					characters[1][0].slice(1),
+				hero2:
+					characters[2][0].charAt(0).toUpperCase() +
+					characters[2][0].slice(1),
+				hero3:
+					characters[3][0].charAt(0).toUpperCase() +
+					characters[3][0].slice(1)
+			});
+			console.log("new user info hero: " + this.state.hero1)
+			this.registerNewUser();
+		});
 	};
 
 	render() {
