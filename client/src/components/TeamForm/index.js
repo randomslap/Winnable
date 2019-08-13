@@ -22,6 +22,9 @@ class TeamForm extends Component {
 			errors: {}
 		};
 	}
+	componentDidMount = () => {
+		console.log(this.props.auth.user.id);
+	}
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
 	};

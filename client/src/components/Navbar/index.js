@@ -23,10 +23,14 @@ class MainNavbar extends Component {
 	}
 	componentDidUpdate() {
 		if (this.props.reg.registered) {
-			setInterval(() => {
+			console.log("navbar");
+			setTimeout(() => {
 				this.setState({
 					modalShow: false
 				});
+				setTimeout(() => {
+					window.location.reload();
+				}, 1000);
 			}, 3000);
 		}
 	}
@@ -49,7 +53,7 @@ class MainNavbar extends Component {
 		const auth = (
 			// <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
 			// </ScrollAnimation>
-				<LoggedInForm />
+			<LoggedInForm />
 		);
 
 		const notAuth = (
@@ -62,11 +66,13 @@ class MainNavbar extends Component {
 		return (
 			<Navbar bg="dark" variant="dark" expand="lg">
 				<Navbar.Brand href="/">
-					<img src={require('../Navbar/winnablenavbar.png')} width="180px" height="35px"/>
+					<img
+						src={require("../Navbar/winnablenavbar.png")}
+						width="180px"
+						height="35px"
+					/>
 				</Navbar.Brand>
-				<div className="betatext">
-					BETA
-				</div>
+				<div className="betatext">BETA</div>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse
 					variant="secondary"
