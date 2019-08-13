@@ -3,6 +3,7 @@ import { Animated } from "react-animated-css";
 import Carousel from "react-bootstrap/Carousel";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import TeamModal from "../TeamModal";
+import RegisterModal from "../RegisterModal";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -135,12 +136,23 @@ class Jumbotron extends Component {
 											Join a team
 										</Button>
 									</a>
-									<TeamModal
-										show={this.state.show}
-										onHide={() =>
-											this.setState({ show: false })
-										}
-									/>
+									{this.props.auth.isAuthenticated ? (
+										<TeamModal
+											show={this.state.show}
+											onHide={() =>
+												this.setState({ show: false })
+											}
+										/>
+									) : (
+										<RegisterModal
+											show={this.state.show}
+											onHide={() =>
+												this.setState({
+													show: false
+												})
+											}
+										/>
+									)}
 								</div>
 							</Col>
 						</Row>

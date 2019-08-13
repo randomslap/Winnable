@@ -9,21 +9,32 @@ import {
 	TEAM_SUCCESS
 } from "./types";
 export const registerTeam = (teamData, history) => dispatch => {
-	axios
-		.post("/api/teams/create", teamData)
-		.then(res => {
-			console.log("Success");
-			dispatch({
-				type: TEAM_SUCCESS
+	//axios.all with update user
+	const postTeam = () => {
+		axios
+			.post("/api/teams/create", teamData)
+			.then(res => {
+				console.log("Success");
+				dispatch({
+					type: TEAM_SUCCESS
+				});
+				// window.location.reload();
+			}) // re-direct to login on successful register
+			.catch(err => {
+				dispatch({
+					type: GET_ERRORS,
+					payload: err.response.data
+				});
 			});
-			// window.location.reload();
-		}) // re-direct to login on successful register
-		.catch(err => {
-			dispatch({
-				type: GET_ERRORS,
-				payload: err.response.data
-			});
+	};
+	const updateUser = () => {
+		axios.post("/api/users/update/" + teamData.owner, {
+			team: teamData.id
 		});
+	};
+	axios.all([postTeam(), updateUser()]).then(res => {
+		console.log("Success " + res);
+	});
 };
 // Register User
 export const registerUser = (userData, history) => dispatch => {

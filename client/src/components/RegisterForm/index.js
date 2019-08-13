@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
-import API from "../../utils/API"
+import API from "../../utils/API";
 
 class RegisterForm extends Component {
 	constructor() {
@@ -42,10 +42,11 @@ class RegisterForm extends Component {
 
 	componentDidUpdate() {
 		if (this.props.reg.registered) {
+			console.log("problem?");
 			setInterval(() => {
 				this.setState({
 					registered: true
-				})
+				});
 			}, 1000);
 		}
 	}
@@ -57,10 +58,10 @@ class RegisterForm extends Component {
 	};
 	onSubmit = e => {
 		e.preventDefault();
-		this.loadStats();
+		this.registerNewUser();
 	};
 
-	registerNewUser = () =>{
+	registerNewUser = () => {
 		const newUser = {
 			name: this.state.name,
 			email: this.state.email,
@@ -84,52 +85,6 @@ class RegisterForm extends Component {
 			}
 		};
 		this.props.registerUser(newUser, this.props.history);
-		
-	}
-
-	convertTimeStringToNumber = val => Number(val.replace(/:/g, ""));
-
-	loadStats = () => {
-		console.log("loading stats......................................");
-		API.getOWStats(
-			encodeURIComponent(
-				this.state.battleTagName +
-					"#" +
-					this.state.battleTagNumber
-			)
-		).then(res => {
-			var characters = Object.entries(res.data.heroStats.competitive);
-			characters.sort((char1, char2) => {
-				const char1timePlayed = this.convertTimeStringToNumber(
-					char1[1].game.time_played
-				);
-				const char2timePlayed = this.convertTimeStringToNumber(
-					char2[1].game.time_played
-				);
-
-				return char2timePlayed - char1timePlayed;
-			});
-			console.log(characters);
-			this.setState({
-				userRankImg: res.data.rankIconURL,
-				userLevel: res.data.level,
-				userSR: res.data.rank,
-				userIcon: res.data.iconURL,
-				userEndorsLvl: res.data.endorsementLevel,
-				gamesWon: res.data.heroStats.competitive.overall.game.games_won,
-				hero1:
-					characters[1][0].charAt(0).toUpperCase() +
-					characters[1][0].slice(1),
-				hero2:
-					characters[2][0].charAt(0).toUpperCase() +
-					characters[2][0].slice(1),
-				hero3:
-					characters[3][0].charAt(0).toUpperCase() +
-					characters[3][0].slice(1)
-			});
-			console.log("new user info hero: " + this.state.hero1)
-			this.registerNewUser();
-		});
 	};
 
 	render() {
@@ -200,6 +155,9 @@ class RegisterForm extends Component {
 									// })}
 								/>
 							</Form.Group>
+							<Form.Text className="text-muted">
+								{this.state.errors.battelTagName}
+							</Form.Text>
 						</Col>
 						<Col md={2}>
 							<h2>#</h2>
@@ -218,21 +176,21 @@ class RegisterForm extends Component {
 									// })}
 								/>
 							</Form.Group>
-							{/* <Form.Text className="text-muted">
-								{errors.password2}
-							</Form.Text> */}
+							<Form.Text className="text-muted">
+								{this.state.errors.battleTagNumber}
+							</Form.Text>
 						</Col>
 					</Row>
 					<Row>
 						<Col>
 							<Form.Group controlId="formBasicEmail">
-							<Form.Label>Preferred Role</Form.Label>
-							<Form.Control
+								<Form.Label>Preferred Role</Form.Label>
+								<Form.Control
 									onChange={this.onChange}
 									value={this.state.role}
 									id="role"
 									type="role"
-									placeholder="Damage / Tank / Support"	
+									placeholder="Damage / Tank / Support"
 								/>
 							</Form.Group>
 						</Col>

@@ -7,6 +7,8 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
 const usersController = require("../../controllers/usersController");
+var owjs = require("overwatch-js");
+const ow = require("overwatch-stats-api");
 
 router
 	.route("/update/:id")
@@ -14,9 +16,7 @@ router
 	.post(usersController.update)
 	.delete(usersController.remove);
 
-router
-	.route("/")
-	.get(usersController.findAll)
+router.route("/").get(usersController.findAll);
 
 router.post("/register", (req, res) => {
 	const { errors, isValid } = validateRegisterInput(req.body);
@@ -51,37 +51,95 @@ router.post("/register", (req, res) => {
 			}
 			return;
 		} else {
-			const newUser = new User({
-				name: req.body.name,
-				email: req.body.email,
-				password: req.body.password,
-				battleTag: {
-					name: req.body.battleTag.name,
-					number: req.body.battleTag.number
-				},
-				preferredRole: req.body.preferredRole,
-				rank: req.body.rank,
-				rankIcon: req.body.rankIcon,
-				userIcon: req.body.userIcon,
-				level: req.body.level,
-				gamesWon: req.body.gamesWon,
-				endorsementLvl: req.body.endorsementLvl,
-				preferredHeroes: {
-					hero1: req.body.preferredHeroes.hero1,
-					hero2: req.body.preferredHeroes.hero2,
-					hero3: req.body.preferredHeroes.hero3
-				}
-			});
-			bcrypt.genSalt(10, (err, salt) => {
-				bcrypt.hash(newUser.password, salt, (err, hash) => {
-					if (err) throw err;
-					newUser.password = hash;
-					newUser
-						.save()
-						.then(user => res.json(user))
-						.catch(err => console.log(err));
+			const battleTag = `${req.body.battleTag.name}#${
+				req.body.battleTag.number
+			}`;
+			let newUser;
+			owjs.search(battleTag)
+				.then(response => {
+					if (response[0].urlName) {
+						let stats;
+						(async () => {
+							stats = await ow.getAllStats(
+								response[0].urlName,
+								response[0].platform
+							);
+							let characters = Object.entries(
+								stats.heroStats.competitive
+							);
+							convertTimeStringToNumber = val =>
+								Number(val.replace(/:/g, ""));
+							characters.sort((char1, char2) => {
+								const char1timePlayed = convertTimeStringToNumber(
+									char1[1].game.time_played
+								);
+								const char2timePlayed = convertTimeStringToNumber(
+									char2[1].game.time_played
+								);
+
+								return char2timePlayed - char1timePlayed;
+							});
+							newUser = new User({
+								name: req.body.name,
+								email: req.body.email,
+								password: req.body.password,
+								battleTag: {
+									name: req.body.battleTag.name,
+									number: req.body.battleTag.number
+								},
+								preferredRole: req.body.preferredRole,
+								rank: stats.rank,
+								rankIcon: stats.rankIconURL,
+								userIcon: stats.iconURL,
+								level: stats.level,
+								gamesWon:
+									stats.heroStats.competitive.overall.game
+										.games_won,
+								endorsementLvl: stats.endorsementLvl,
+								preferredHeroes: {
+									hero1:
+										characters[1][0]
+											.charAt(0)
+											.toUpperCase() +
+										characters[1][0].slice(1),
+									hero2:
+										characters[2][0]
+											.charAt(0)
+											.toUpperCase() +
+										characters[2][0].slice(1),
+									hero3:
+										characters[3][0]
+											.charAt(0)
+											.toUpperCase() +
+										characters[3][0].slice(1)
+								}
+							});
+							bcrypt.genSalt(10, (err, salt) => {
+								bcrypt.hash(
+									newUser.password,
+									salt,
+									(err, hash) => {
+										if (err) throw err;
+										newUser.password = hash;
+										newUser
+											.save()
+											.then(user => res.json(user))
+											.catch(err => console.log(err));
+									}
+								);
+							});
+							// res.json(stats);
+						})();
+					} else {
+						console.log("tester");
+					}
+				})
+				.catch(err => {
+					if (err) {
+						console.log(err);
+						return res.status(404).send("error at catch backend");
+					}
 				});
-			});
 		}
 	});
 });
