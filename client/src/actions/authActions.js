@@ -9,32 +9,37 @@ import {
 	TEAM_SUCCESS
 } from "./types";
 export const registerTeam = (teamData, history) => dispatch => {
-	//axios.all with update user
-	const postTeam = () => {
-		axios
-			.post("/api/teams/create", teamData)
-			.then(res => {
-				console.log("Success");
-				dispatch({
-					type: TEAM_SUCCESS
-				});
-				// window.location.reload();
-			}) // re-direct to login on successful register
-			.catch(err => {
-				dispatch({
-					type: GET_ERRORS,
-					payload: err.response.data
-				});
+	console.log(teamData);
+	axios
+		.post("/api/teams/create", teamData)
+		.then(res => {
+			console.log("Success");
+			dispatch({
+				type: TEAM_SUCCESS
 			});
-	};
-	const updateUser = () => {
-		axios.post("/api/users/update/" + teamData.owner, {
-			team: teamData.id
+			if (res) {
+				axios
+					.get("/api/teams/name/" + teamData.teamName)
+					.then(resTeam => {
+						console.log(resTeam);
+						axios.post("/api/users/update/" + teamData.owner, {
+							team: resTeam.data._id
+						});
+					});
+			}
+			// window.location.reload();
+		})
+		.catch(err => {
+			dispatch({
+				type: GET_ERRORS,
+				payload: err.response.data
+			});
 		});
-	};
-	axios.all([postTeam(), updateUser()]).then(res => {
-		console.log("Success " + res);
-	});
+	// axios.all([postTeam(), updateUser()]).then(res => {
+	// 	dispatch({
+	// 		type: TEAM_SUCCESS
+	// 	});
+	// });
 };
 // Register User
 export const registerUser = (userData, history) => dispatch => {

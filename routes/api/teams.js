@@ -6,11 +6,13 @@ const teamsController = require("../../controllers/teamsController");
 // router.route("/create").post(teamsController.create)
 // router.route()
 
-router.route("/owner/:id").get(teamsController.findById);
+router.route("/id/:id").get(teamsController.findById);
+
+router.route("/name/:name").get(teamsController.findByName);
 
 router.route("/join/:id").post(teamsController.update);
 
-router.route("/").get(teamsController.findAll)
+router.route("/").get(teamsController.findAll);
 
 router.post("/create", (req, res) => {
 	Team.findOne({

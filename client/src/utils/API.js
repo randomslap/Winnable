@@ -22,8 +22,11 @@ export default {
 	getTeams: function() {
 		return axios.get("/api/teams");
 	},
-	getTeam: function(id) {
-		return axios.get("/api/teams/" + id);
+	getTeamById: function(id) {
+		return axios.get("/api/teams/id/" + id);
+	},
+	getTeamByName: function(name) {
+		return axios.get("/api/teams/name/" + name);
 	},
 	deleteTeam: function(id) {
 		return axios.delete("/api/teams/" + id);
