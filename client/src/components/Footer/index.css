@@ -5,3 +5,11 @@
 #footerTxt {
     font-size: 12px;
 }
+@media only screen and (max-width: 768px) {
+    #footerTxt {
+        display: none;
+    }
+    #winLogo {
+        padding-bottom: 50px;
+    }
+}
