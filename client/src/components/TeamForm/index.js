@@ -19,7 +19,8 @@ class TeamForm extends Component {
 			about: "",
 			range1: "",
 			range2: "",
-			errors: {}
+			errors: {},
+			created: false
 		};
 	}
 	componentDidMount = () => {
@@ -27,6 +28,7 @@ class TeamForm extends Component {
 	};
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
+		console.log(this.props.team);
 	};
 	onSubmit = e => {
 		e.preventDefault();
@@ -46,7 +48,8 @@ class TeamForm extends Component {
 	};
 	render() {
 		const { errors } = this.state;
-		return (
+		const success = <h4>Successfully created a team!</h4>;
+		const createTeam = (
 			<Form onSubmit={this.onSubmit}>
 				<Container>
 					<Row>
@@ -124,6 +127,7 @@ class TeamForm extends Component {
 									type="goal"
 									as="select"
 								>
+									<option value="">Select a goal</option>
 									<option value="To play competitively">
 										To play competitively
 									</option>
@@ -159,6 +163,7 @@ class TeamForm extends Component {
 									type="region"
 									as="select"
 								>
+									<option value="">Select a region</option>
 									<option value="North America">
 										North America
 									</option>
@@ -178,6 +183,7 @@ class TeamForm extends Component {
 				</Container>
 			</Form>
 		);
+		return this.props.team.created ? success : createTeam;
 	}
 }
 

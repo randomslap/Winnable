@@ -127,7 +127,7 @@ class RegisterForm extends Component {
 			margin-bottom: 6rem;
 		`;
 		const { errors, height } = this.state;
-		const success = <h4>Successfully Registered!</h4>;
+		const success = <h4>Successfully registered!</h4>;
 		const loading = (
 			<Container>
 				<Row>

@@ -16,6 +16,8 @@ router
 	.post(usersController.update)
 	.delete(usersController.remove);
 
+router.route("/:id").get(usersController.findById)
+
 router.route("/").get(usersController.findAll);
 
 router.post("/register", (req, res) => {
