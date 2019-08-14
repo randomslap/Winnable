@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import API from "../../utils/API";
 import { registerTeam } from "../../actions/authActions";
-import classnames from "classnames";
+import AnimateHeight from "react-animate-height";
 
 class TeamForm extends Component {
 	constructor() {
@@ -20,7 +20,9 @@ class TeamForm extends Component {
 			range1: "",
 			range2: "",
 			errors: {},
-			created: false
+			created: false,
+			ownTeam: false,
+			height: 600
 		};
 	}
 	componentDidMount = () => {
@@ -32,22 +34,41 @@ class TeamForm extends Component {
 	};
 	onSubmit = e => {
 		e.preventDefault();
-		if (this.props.auth.isAuthenticated) {
-			const newTeam = {
-				owner: this.props.auth.user.id,
-				teamName: this.state.teamName,
-				image: this.state.image,
-				region: this.state.region,
-				goal: this.state.goal,
-				about: this.state.about,
-				range1: this.state.range1,
-				range2: this.state.range2
-			};
-			this.props.registerTeam(newTeam);
-		}
+		API.getUser(this.props.auth.user.id).then(res => {
+			console.log(res);
+			if (res.data.team) {
+				this.setState({
+					ownTeam: true,
+					height: 50
+				});
+			} else if (this.props.auth.isAuthenticated) {
+				const newTeam = {
+					owner: this.props.auth.user.id,
+					teamName: this.state.teamName,
+					image: this.state.image,
+					region: this.state.region,
+					goal: this.state.goal,
+					about: this.state.about,
+					range1: this.state.range1,
+					range2: this.state.range2
+				};
+				this.props.registerTeam(newTeam);
+				console.log(this.props.team.created);
+				setTimeout(() => {
+					console.log(this.props.team.created);
+					if (this.props.team.created) {
+						this.setState({
+							created: true,
+							height: 50
+						});
+					}
+				}, 1000);
+			}
+		});
 	};
 	render() {
-		const { errors } = this.state;
+		const { errors, height } = this.state;
+		const fail = <h4>You already own a team</h4>;
 		const success = <h4>Successfully created a team!</h4>;
 		const createTeam = (
 			<Form onSubmit={this.onSubmit}>
@@ -183,7 +204,15 @@ class TeamForm extends Component {
 				</Container>
 			</Form>
 		);
-		return this.props.team.created ? success : createTeam;
+		return (
+			<AnimateHeight duration={1000} height={height}>
+				{this.state.ownTeam
+					? fail
+					: this.state.created
+					? success
+					: createTeam}
+			</AnimateHeight>
+		);
 	}
 }
 
