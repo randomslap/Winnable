@@ -116,7 +116,7 @@ class Profile extends Component {
 							</Row>
 							<Row>
 								<Col md={2}>
-									<img src={this.state.team.image} />
+									<img src={this.state.team.image} width="80px" height="80px" />
 								</Col>
 							</Row>
 							<Row>
