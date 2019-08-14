@@ -88,6 +88,7 @@ class RegisterForm extends Component {
 	};
 
 	render() {
+		console.log(errors);
 		const { errors } = this.state;
 		const success = <h4>Successfully Registered!</h4>;
 		const signUp = (
@@ -156,7 +157,7 @@ class RegisterForm extends Component {
 								/>
 							</Form.Group>
 							<Form.Text className="text-muted">
-								{this.state.errors.battelTagName}
+								{errors.battleTagName}
 							</Form.Text>
 						</Col>
 						<Col md={2}>
@@ -177,7 +178,7 @@ class RegisterForm extends Component {
 								/>
 							</Form.Group>
 							<Form.Text className="text-muted">
-								{this.state.errors.battleTagNumber}
+								{errors.battleTagNumber}
 							</Form.Text>
 						</Col>
 					</Row>
@@ -187,11 +188,20 @@ class RegisterForm extends Component {
 								<Form.Label>Preferred Role</Form.Label>
 								<Form.Control
 									onChange={this.onChange}
-									value={this.state.role}
 									id="role"
 									type="role"
-									placeholder="Damage / Tank / Support"
-								/>
+									as="select"
+								>
+									<option value={this.state.role}>
+										Damage
+									</option>
+									<option value={this.state.role}>
+										Tank
+									</option>
+									<option value={this.state.role}>
+										Support
+									</option>
+								</Form.Control>
 							</Form.Group>
 						</Col>
 					</Row>
