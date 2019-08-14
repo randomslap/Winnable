@@ -183,7 +183,8 @@ class StatsPage extends Component {
 
 		// Updating the input's state
 		this.setState({
-			[name]: value
+			[name]: value,
+			loaded: false
 		});
 		console.log(name);
 		console.log(value);
@@ -204,33 +205,33 @@ class StatsPage extends Component {
 		`;
 		const src1 = this.state
 			? require(`../../assets/images/HeroIcons/${
-				this.state.hero1Name ? this.state.hero1Name : "Baptiste"
-				}.png`)
+					this.state.hero1Name ? this.state.hero1Name : "Baptiste"
+			  }.png`)
 			: null;
 		const src2 = this.state
 			? require(`../../assets/images/HeroIcons/${
-				this.state.hero2Name ? this.state.hero2Name : "Baptiste"
-				}.png`)
+					this.state.hero2Name ? this.state.hero2Name : "Baptiste"
+			  }.png`)
 			: null;
 		const src3 = this.state
 			? require(`../../assets/images/HeroIcons/${
-				this.state.hero3Name ? this.state.hero3Name : "Baptiste"
-				}.png`)
+					this.state.hero3Name ? this.state.hero3Name : "Baptiste"
+			  }.png`)
 			: null;
 		const src4 = this.state
 			? require(`../../assets/images/HeroIcons/${
-				this.state.hero4Name ? this.state.hero4Name : "Baptiste"
-				}.png`)
+					this.state.hero4Name ? this.state.hero4Name : "Baptiste"
+			  }.png`)
 			: null;
 		const src5 = this.state
 			? require(`../../assets/images/HeroIcons/${
-				this.state.hero5Name ? this.state.hero5Name : "Baptiste"
-				}.png`)
+					this.state.hero5Name ? this.state.hero5Name : "Baptiste"
+			  }.png`)
 			: null;
 		const src6 = this.state
 			? require(`../../assets/images/HeroIcons/${
-				this.state.hero6Name ? this.state.hero6Name : "Baptiste"
-				}.png`)
+					this.state.hero6Name ? this.state.hero6Name : "Baptiste"
+			  }.png`)
 			: null;
 		const results = (
 			<div>
@@ -274,7 +275,9 @@ class StatsPage extends Component {
 										<Col md={12}>
 											<Row>
 												<Col md={12}>
-													<p id="owOrange">COMPETITIVE STATS</p>
+													<p id="owOrange">
+														COMPETITIVE STATS
+													</p>
 													<hr id="hrcustom" />
 												</Col>
 											</Row>
@@ -355,7 +358,10 @@ class StatsPage extends Component {
 									<Container>
 										<Row>
 											<Col md={12}>
-												<h1 id="owOrange" className="pt-3 pb-3">
+												<h1
+													id="owOrange"
+													className="pt-3 pb-3"
+												>
 													TOP SIX HEROES
 												</h1>
 											</Col>
@@ -938,7 +944,9 @@ class StatsPage extends Component {
 			<Container>
 				<Row>
 					<Col md={12}>
-						<h1 id="owOrange">Player not found, please try again.</h1>
+						<h1 id="owOrange notFound">
+							Player not found, please try again.
+						</h1>
 					</Col>
 				</Row>
 			</Container>
@@ -953,14 +961,18 @@ class StatsPage extends Component {
 									<Col md={{ span: 3 }}>
 										<Row>
 											<Col>
-												<p id="searchBarText" className="text-center">
+												<p
+													id="searchBarText"
+													className="text-center"
+												>
 													CHECK PLAYER RANK AND STATS
 												</p>
 											</Col>
 										</Row>
 									</Col>
 									<Col md={{ span: 5 }}>
-										<Form.Control className="bg-transparent text-white"
+										<Form.Control
+											className="bg-transparent text-white"
 											value={this.state.bnetName}
 											onChange={this.handleInputChange}
 											name="bnetName"
@@ -977,7 +989,8 @@ class StatsPage extends Component {
 										<h3 id="searchBarText2">#</h3>
 									</Col>
 									<Col md={{ span: 2 }}>
-										<Form.Control className="bg-transparent text-white"
+										<Form.Control
+											className="bg-transparent text-white"
 											value={this.state.title}
 											onChange={this.handleInputChange}
 											name="bnetNum"
@@ -987,7 +1000,8 @@ class StatsPage extends Component {
 										/>
 									</Col>
 									<Col md={{ span: 1 }}>
-										<Button className="btn-orange2"
+										<Button
+											className="btn-orange2"
 											onClick={this.handleFormSubmit}
 											size="lg"
 											type="submit"
@@ -1005,8 +1019,8 @@ class StatsPage extends Component {
 					{!this.state.loading && !this.state.loaded ? (
 						<div className="results" />
 					) : (
-							<div />
-						)}
+						<div />
+					)}
 					)
 				</div>
 				<div>
@@ -1032,18 +1046,18 @@ class StatsPage extends Component {
 							</Container>
 						</ScrollAnimation>
 					) : (
-							<div>
-								<ScrollAnimation
-									animateIn="fadeIn"
-									animateOut="fadeOut"
-								>
-									{this.state.loaded && !this.state.notFound
-										? results
-										: notFound}
-									}
+						<div>
+							<ScrollAnimation
+								animateIn="fadeIn"
+								animateOut="fadeOut"
+							>
+								{this.state.loaded && !this.state.notFound
+									? results
+									: notFound}
+								}
 							</ScrollAnimation>
-							</div>
-						)}
+						</div>
+					)}
 				</div>
 			</div>
 		);

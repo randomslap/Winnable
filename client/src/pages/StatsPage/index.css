@@ -50,7 +50,7 @@
 	background-color: #26262c;
 	color: white;
 	border: 5px none;
-    border-radius: 5px 5px 30px 5px;
+	border-radius: 5px 5px 30px 5px;
 }
 .btn-orange2 {
 	background-color: #f79c15 !important;
@@ -72,6 +72,10 @@
 #statsInfoSize {
 	font-size: 35px;
 	color: #f79c15;
+}
+div.col-md-12 h1#owOrange#notFound {
+	color: #f79c15;
+	margin-bottom: 75rem;
 }
 #owOrange {
 	color: #f79c15;
