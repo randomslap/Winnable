@@ -1,6 +1,7 @@
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 module.exports = function validateRegisterInput(data) {
+	console.log(data);
 	let errors = {};
 	// Convert empty fields to an empty string so we can use validator functions
 	data.name = !isEmpty(data.name) ? data.name : "";
@@ -38,10 +39,10 @@ module.exports = function validateRegisterInput(data) {
 	}
 	// BattleTag Checks
 	if (Validator.isEmpty(data.battleTag.name)) {
-		errors.battleTag.name = "BattleTag name ID is required";
+		errors.battleTagName = "BattleTag name ID is required";
 	}
 	if (Validator.isEmpty(data.battleTag.number)) {
-		errors.battleTag.number = "BattleTag number ID is required";
+		errors.battleTagNumber = "BattleTag number ID is required";
 	}
 	return {
 		errors,

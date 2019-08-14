@@ -24,7 +24,7 @@ class TeamForm extends Component {
 	}
 	componentDidMount = () => {
 		console.log(this.props.auth.user.id);
-	}
+	};
 	onChange = e => {
 		this.setState({ [e.target.id]: e.target.value });
 	};
@@ -120,13 +120,16 @@ class TeamForm extends Component {
 								<Form.Label>Select a goal</Form.Label>
 								<Form.Control
 									onChange={this.onChange}
-									value={this.state.goal}
 									id="goal"
 									type="goal"
 									as="select"
 								>
-									<option>To play competitively</option>
-									<option>To have fun</option>
+									<option value={this.state.goal}>
+										To play competitively
+									</option>
+									<option value={this.state.goal}>
+										To have fun
+									</option>
 								</Form.Control>
 							</Form.Group>
 						</Col>
@@ -152,14 +155,19 @@ class TeamForm extends Component {
 								<Form.Label>Select a region</Form.Label>
 								<Form.Control
 									onChange={this.onChange}
-									value={this.state.region}
 									id="region"
 									type="region"
 									as="select"
 								>
-									<option>North America</option>
-									<option>Asia</option>
-									<option>Europe</option>
+									<option value={this.state.region}>
+										North America
+									</option>
+									<option value={this.state.region}>
+										Asia
+									</option>
+									<option value={this.state.region}>
+										Europe
+									</option>
 								</Form.Control>
 							</Form.Group>
 						</Col>
