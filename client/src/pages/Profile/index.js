@@ -7,6 +7,7 @@ import API from "../../utils/API";
 
 class Profile extends Component {
 	state = {
+		team: "",
 		userIcon: "",
 		userRankImg: "",
 		userSR: "",
@@ -22,6 +23,16 @@ class Profile extends Component {
 
 	componentDidMount = () => {
 		console.log(this.props.auth);
+		API.getUser(this.props.auth.user.id).then(res => {
+			API.getTeamById(res.data.team).then(res => {
+				this.setState({
+					team: {
+						teamName: res.data.teamName,
+						image: res.data.image
+					}
+				});
+			});
+		});
 	};
 
 	render() {
@@ -101,13 +112,16 @@ class Profile extends Component {
 								</Col>
 							</Row>
 							<Row>
+								<Col md={2}>{this.state.team.teamName}</Col>
+							</Row>
+							<Row>
 								<Col md={2}>
-									<img src="https://place-hold.it/80x80" />
+									<img src={this.state.team.image} />
 								</Col>
 							</Row>
 							<Row>
 								<Col md={3}>
-									<h3 className="pt-5">Preferred Role:</h3>
+									<h3 className="pt-4">Preferred Role:</h3>
 								</Col>
 							</Row>
 							<Row>

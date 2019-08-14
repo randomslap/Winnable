@@ -44,7 +44,6 @@ class Jumbotron extends Component {
 	}
 
 	handleSelect = selectedIndex => {
-		console.log(selectedIndex);
 		const items = [
 			{
 				row1: "Create or Join an",
