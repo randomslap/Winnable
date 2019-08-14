@@ -7,6 +7,8 @@ import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
 import { PropagateLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import AnimateHeight from "react-animate-height";
+import "./index.css";
 
 class RegisterForm extends Component {
 	constructor() {
@@ -30,7 +32,8 @@ class RegisterForm extends Component {
 			userEndorsLvl: "",
 			errors: {},
 			registered: false,
-			loading: false
+			loading: false,
+			height: 650
 		};
 	}
 
@@ -39,28 +42,26 @@ class RegisterForm extends Component {
 		if (nextProps.errors) {
 			this.setState({
 				errors: nextProps.errors,
-				loading: false
+				loading: false,
+				height: "auto",
+				registered: false
 			});
 		} else if (!nextProps.errors) {
 			this.setState({
-				loading: true
+				loading: true,
+				registered: true
 			});
 		}
 	}
 
 	componentDidUpdate() {
 		if (this.props.reg.registered) {
-			console.log("problem?");
 			setTimeout(() => {
 				this.setState({
-					registered: true
+					registered: true,
+					height: 75
 				});
-			}, 1000);
-			setTimeout(() => {
-				this.setState({
-					loading: false
-				});
-			}, 8000);
+			}, 1);
 		}
 	}
 
@@ -71,7 +72,8 @@ class RegisterForm extends Component {
 		e.preventDefault();
 		console.log(this.state);
 		this.setState({
-			loading: true
+			loading: true,
+			height: 150
 		});
 		this.registerNewUser();
 	};
@@ -121,10 +123,10 @@ class RegisterForm extends Component {
 		const override = css`
 			display: block;
 			margin-left: 7.5rem;
-			margin-top: 2rem;
-			margin-bottom: 8rem;
+			margin-top: 4rem;
+			margin-bottom: 6rem;
 		`;
-		const { errors } = this.state;
+		const { errors, height } = this.state;
 		const success = <h4>Successfully Registered!</h4>;
 		const loading = (
 			<Container>
@@ -314,11 +316,17 @@ class RegisterForm extends Component {
 				</Container>
 			</Form>
 		);
-		return this.state.registered
-			? success
-			: this.state.loading
-			? loading
-			: signUp;
+		return (
+			<AnimateHeight duration={1000} height={height}>
+				<div id="regForm">
+					{this.state.registered
+						? success
+						: this.state.loading
+						? loading
+						: signUp}
+				</div>
+			</AnimateHeight>
+		);
 	}
 }
 

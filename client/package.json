@@ -16,6 +16,7 @@
 		"overwatch-js": "^1.8.0",
 		"overwatch-stats-api": "^1.0.7",
 		"react": "^16.6.3",
+		"react-animate-height": "^2.0.15",
 		"react-animate-on-scroll": "^2.1.5",
 		"react-animated-css": "^1.2.1",
 		"react-app-rewired": "^2.1.3",
