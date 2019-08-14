@@ -124,10 +124,10 @@ class TeamForm extends Component {
 									type="goal"
 									as="select"
 								>
-									<option value={this.state.goal}>
+									<option value="To play competitively">
 										To play competitively
 									</option>
-									<option value={this.state.goal}>
+									<option value="To have fun">
 										To have fun
 									</option>
 								</Form.Control>
@@ -159,15 +159,11 @@ class TeamForm extends Component {
 									type="region"
 									as="select"
 								>
-									<option value={this.state.region}>
+									<option value="North America">
 										North America
 									</option>
-									<option value={this.state.region}>
-										Asia
-									</option>
-									<option value={this.state.region}>
-										Europe
-									</option>
+									<option value="Asia">Asia</option>
+									<option value="Europe">Europe</option>
 								</Form.Control>
 							</Form.Group>
 						</Col>

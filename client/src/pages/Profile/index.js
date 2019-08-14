@@ -22,23 +22,28 @@ class Profile extends Component {
 
 	componentDidMount = () => {
 		console.log(this.props.auth);
-		
 	};
 
 	render() {
 		const src1 = this.props.auth.user.preferredHeroes
 			? require(`../../assets/images/HeroIcons/${
-					this.props.auth.user.preferredHeroes.hero1 ? this.props.auth.user.preferredHeroes.hero1 : "Baptiste"
+					this.props.auth.user.preferredHeroes.hero1
+						? this.props.auth.user.preferredHeroes.hero1
+						: "Baptiste"
 			  }.png`)
 			: null;
 		const src2 = this.props.auth.user.preferredHeroes
 			? require(`../../assets/images/HeroIcons/${
-					this.props.auth.user.preferredHeroes.hero2 ? this.props.auth.user.preferredHeroes.hero2 : "Baptiste"
+					this.props.auth.user.preferredHeroes.hero2
+						? this.props.auth.user.preferredHeroes.hero2
+						: "Baptiste"
 			  }.png`)
 			: null;
 		const src3 = this.props.auth.user.preferredHeroes
 			? require(`../../assets/images/HeroIcons/${
-					this.props.auth.user.preferredHeroes.hero3 ? this.props.auth.user.preferredHeroes.hero3 : "Baptiste"
+					this.props.auth.user.preferredHeroes.hero3
+						? this.props.auth.user.preferredHeroes.hero3
+						: "Baptiste"
 			  }.png`)
 			: null;
 
@@ -63,15 +68,24 @@ class Profile extends Component {
 									<h6 className="pt-3">Stats</h6>
 									<p id="test">
 										LEVEL:{" "}
-										<span>{this.props.auth.user.level}</span>{" "}
+										<span>
+											{this.props.auth.user.level}
+										</span>{" "}
 									</p>
 									<p id="test">
 										ENDORSEMENT LEVEL:{" "}
-										<span>{this.props.auth.user.endorsementLvl}</span>{" "}
+										<span>
+											{
+												this.props.auth.user
+													.endorsementLvl
+											}
+										</span>{" "}
 									</p>
 									<p id="test">
 										GAMES WON:{" "}
-										<span>{this.props.auth.user.gamesWon}</span>{" "}
+										<span>
+											{this.props.auth.user.gamesWon}
+										</span>{" "}
 									</p>
 									<p id="test">
 										RANK SR:{" "}
@@ -84,18 +98,6 @@ class Profile extends Component {
 							<Row>
 								<Col md={2}>
 									<h3 className="">Team:</h3>
-								</Col>
-								<Col className="text-right" md={10}>
-									<a
-										target="_blank"
-										href={`mailto:${
-											this.props.auth.user.email
-										}?subject=Join%20My%20OW%20Team!&amp;`}
-									>
-										<Button className="btn btn-orange">
-											Invite Player
-										</Button>
-									</a>
 								</Col>
 							</Row>
 							<Row>
@@ -164,19 +166,34 @@ class Profile extends Component {
 								</Col>
 							</Row>
 							<Row>
-										<Col md={4}> 
-											<p>{this.props.auth.user.preferredHeroes.hero1}</p>
-											<img src={src1} />
-										</Col>
-										<Col md={4}> 
-											<p>{this.props.auth.user.preferredHeroes.hero2}</p>
-											<img src={src2} />
-										</Col>
-										<Col md={4}> 
-											<p>{this.props.auth.user.preferredHeroes.hero3}</p>
-											<img src={src3} />
-										</Col>
-									</Row>
+								<Col md={4}>
+									<p>
+										{
+											this.props.auth.user.preferredHeroes
+												.hero1
+										}
+									</p>
+									<img src={src1} />
+								</Col>
+								<Col md={4}>
+									<p>
+										{
+											this.props.auth.user.preferredHeroes
+												.hero2
+										}
+									</p>
+									<img src={src2} />
+								</Col>
+								<Col md={4}>
+									<p>
+										{
+											this.props.auth.user.preferredHeroes
+												.hero3
+										}
+									</p>
+									<img src={src3} />
+								</Col>
+							</Row>
 						</Card>
 					</Row>
 				</Container>

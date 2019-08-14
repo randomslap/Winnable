@@ -8,6 +8,7 @@ module.exports = function validateRegisterInput(data) {
 	data.email = !isEmpty(data.email) ? data.email : "";
 	data.password = !isEmpty(data.password) ? data.password : "";
 	data.password2 = !isEmpty(data.password2) ? data.password2 : "";
+	data.preferredRole = !isEmpty(data.preferredRole) ? data.preferredRole : "";
 	data.battleTag.name = !isEmpty(data.battleTag.name)
 		? data.battleTag.name
 		: "";
@@ -26,10 +27,10 @@ module.exports = function validateRegisterInput(data) {
 	}
 	// Password checks
 	if (Validator.isEmpty(data.password)) {
-		errors.password = "Password field is required";
+		errors.password = "Password is required";
 	}
 	if (Validator.isEmpty(data.password2)) {
-		errors.password2 = "Confirm password field is required";
+		errors.password2 = "Confirm password is required";
 	}
 	if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
 		errors.password = "Password must be at least 6 characters";
@@ -43,6 +44,9 @@ module.exports = function validateRegisterInput(data) {
 	}
 	if (Validator.isEmpty(data.battleTag.number)) {
 		errors.battleTagNumber = "BattleTag number ID is required";
+	}
+	if (Validator.isEmpty(data.preferredRole)) {
+		errors.role = "Preferred role is required";
 	}
 	return {
 		errors,
