@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
-import API from "../../utils/API";
+import { PropagateLoader } from "react-spinners";
+import { css } from "@emotion/core";
 
 class RegisterForm extends Component {
 	constructor() {
@@ -28,14 +29,21 @@ class RegisterForm extends Component {
 			gamesWon: "",
 			userEndorsLvl: "",
 			errors: {},
-			registered: false
+			registered: false,
+			loading: false
 		};
 	}
 
 	componentWillReceiveProps(nextProps) {
+		console.log(nextProps.errors);
 		if (nextProps.errors) {
 			this.setState({
-				errors: nextProps.errors
+				errors: nextProps.errors,
+				loading: false
+			});
+		} else if (!nextProps.errors) {
+			this.setState({
+				loading: true
 			});
 		}
 	}
@@ -43,21 +51,28 @@ class RegisterForm extends Component {
 	componentDidUpdate() {
 		if (this.props.reg.registered) {
 			console.log("problem?");
-			setInterval(() => {
+			setTimeout(() => {
 				this.setState({
 					registered: true
 				});
 			}, 1000);
+			setTimeout(() => {
+				this.setState({
+					loading: false
+				});
+			}, 8000);
 		}
 	}
 
 	onChange = e => {
-		console.log([e.target.id]);
-		console.log(e.target.value);
 		this.setState({ [e.target.id]: e.target.value });
 	};
 	onSubmit = e => {
 		e.preventDefault();
+		console.log(this.state);
+		this.setState({
+			loading: true
+		});
 		this.registerNewUser();
 	};
 
@@ -85,12 +100,47 @@ class RegisterForm extends Component {
 			}
 		};
 		this.props.registerUser(newUser, this.props.history);
+		const { errors } = this.state;
+		console.log(this.state.errors);
+		// if (!errors) {
+		// 	setTimeout(() => {
+		// 		this.setState({
+		// 			loading: false
+		// 		});
+		// 	}, 7000);
+		// }
+
+		// setTimeout(() => {
+		// 	this.setState({
+		// 		loading: false
+		// 	});
+		// }, 500);
 	};
 
 	render() {
-		console.log(errors);
+		const override = css`
+			display: block;
+			margin-left: 7.5rem;
+			margin-top: 2rem;
+			margin-bottom: 8rem;
+		`;
 		const { errors } = this.state;
 		const success = <h4>Successfully Registered!</h4>;
+		const loading = (
+			<Container>
+				<Row>
+					<Col>
+						<PropagateLoader
+							css={override}
+							sizeUnit={"px"}
+							size={15}
+							color={"white"}
+							loading={this.state.loading}
+						/>
+					</Col>
+				</Row>
+			</Container>
+		);
 		const signUp = (
 			<Form onSubmit={this.onSubmit}>
 				<Container>
@@ -189,20 +239,17 @@ class RegisterForm extends Component {
 								<Form.Control
 									onChange={this.onChange}
 									id="role"
-									type="role"
 									as="select"
 								>
-									<option value={this.state.role}>
-										Damage
-									</option>
-									<option value={this.state.role}>
-										Tank
-									</option>
-									<option value={this.state.role}>
-										Support
-									</option>
+									<option value="">Select a role</option>
+									<option value="Damage">Damage</option>
+									<option value="Tank">Tank</option>
+									<option value="Support">Support</option>
 								</Form.Control>
 							</Form.Group>
+							<Form.Text className="text-muted">
+								{errors.role}
+							</Form.Text>
 						</Col>
 					</Row>
 					<Row>
@@ -267,7 +314,11 @@ class RegisterForm extends Component {
 				</Container>
 			</Form>
 		);
-		return this.state.registered ? success : signUp;
+		return this.state.registered
+			? success
+			: this.state.loading
+			? loading
+			: signUp;
 	}
 }
 
