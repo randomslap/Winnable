@@ -156,7 +156,7 @@ class RegisterForm extends Component {
 								/>
 							</Form.Group>
 							<Form.Text className="text-muted">
-								{this.state.errors.battelTagName}
+								{errors.battelTag.name}
 							</Form.Text>
 						</Col>
 						<Col md={2}>
@@ -177,7 +177,7 @@ class RegisterForm extends Component {
 								/>
 							</Form.Group>
 							<Form.Text className="text-muted">
-								{this.state.errors.battleTagNumber}
+								{errors.battleTag.number}
 							</Form.Text>
 						</Col>
 					</Row>
