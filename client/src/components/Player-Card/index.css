@@ -61,3 +61,28 @@
 #hrcustom2 {
     border-top: 1px solid #1b1b20;
 }
+@media only screen and (max-width: 1200px) {
+    #btnSpacing {
+        padding-left: 45px;
+    }
+    #name {
+        font-size: 30px;
+    }
+    #playersInfoCard {
+        padding-bottom: 26px;
+    }
+}
+@media only screen and (max-width: 992px) {
+    #btnSpacing {
+        padding-left: 43px;
+    }
+    #name {
+        font-size: 29px;
+    }
+    #rightContentText {
+        font-size: 20px;
+    }
+    #descriptionCard {
+        min-height: 259px;
+    }
+}
