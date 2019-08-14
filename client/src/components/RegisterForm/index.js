@@ -191,6 +191,9 @@ class RegisterForm extends Component {
 					<Row>
 						<Col>
 							<Form.Label>Enter BattleTag</Form.Label>
+							<Form.Text className="text-muted">
+								{errors.battleTagError}
+							</Form.Text>
 						</Col>
 					</Row>
 					<Row>
