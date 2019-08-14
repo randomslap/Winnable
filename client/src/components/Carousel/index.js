@@ -75,7 +75,7 @@ class Jumbotron extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="mediabg">
 				<div className="zindexfix">
 					<Container>
 						<Row>

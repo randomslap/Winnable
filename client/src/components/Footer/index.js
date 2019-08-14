@@ -17,7 +17,7 @@ const Footer = () => {
                         <a href="/stats"> <p id="footerTxt" className="text-white">STATS</p> </a>
                         <a href="/profile"> <p id="footerTxt" className="text-white">PROFILE</p> </a>
                         <a href="/teams"> <p id="footerTxt" className="text-white">TEAMS/PLAYERS</p> </a>
-                        <img className="" src={require('../Navbar/winnablenavbar.png')} width="220px" />
+                        <img class="img-fluid" src={require('../Navbar/winnablenavbar.png')} width="220px" />
                     </Col>
                     <Col md={4}>
                     <h3 id="footerTxt" className="text-white text-right">BACK-END</h3>

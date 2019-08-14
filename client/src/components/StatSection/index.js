@@ -9,7 +9,7 @@ const StatSection = () => {
                 <Row>
                     <Col md={6}>
                     <div class="imagecontainer">
-                        <img src={require("./stat.png")} width="570px" height="284.4px"/>
+                        <img src={require("./stat.png")} class="img-fluid" width="570px" height="284.4px"/>
                     </div>
                     </Col>
                     <Col id="spacing" md={6}>
