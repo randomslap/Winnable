@@ -31,11 +31,14 @@ class Jumbotron extends Component {
 
 	componentDidUpdate() {
 		if (this.props.team.created) {
-			setInterval(() => {
+			setTimeout(() => {
 				this.setState({
 					show: false
 				});
-			}, 100);
+				setTimeout(() => {
+					window.location.reload();
+				}, 1000);
+			}, 3000);
 		}
 	}
 

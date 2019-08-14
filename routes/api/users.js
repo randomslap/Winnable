@@ -130,7 +130,6 @@ router.post("/register", (req, res) => {
 									}
 								);
 							});
-							// res.json(stats);
 						})();
 					} else {
 						console.log("tester");
@@ -153,7 +152,6 @@ router.post("/login", (req, res) => {
 	if (!isValid) {
 		return res.status(400).json(errors);
 	}
-	const email = req.body.email;
 	const password = req.body.password;
 	User.findOne({
 		$or: [{ email: req.body.email }, { name: req.body.name }]
