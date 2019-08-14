@@ -19,11 +19,13 @@
 #leftCardTeams {
     background-color: #26262c;
     color: white;
+    height: 650px;
 }
 #rightCardTeams {
     background-color: #26262c;
     color: white;
     padding-bottom: 32px;
+    height: 650px;
 }
 #playerInfoTabs2 {
     font-size: 20px;
