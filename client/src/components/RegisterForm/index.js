@@ -301,7 +301,7 @@ class RegisterForm extends Component {
 							<Form.Group controlId="formBasicChecbox">
 								<Form.Check
 									type="checkbox"
-									label="By checking this box, you agree to our non-existent policy"
+									label="By checking this box, you agree to our non-existing policy"
 								/>
 							</Form.Group>
 						</Col>
